@@ -217,10 +217,35 @@ h3 {
 }
 
 .book-card p {
+    
     color: #a8bdcf;
     font-size: 14px;
 }
 
+/* BOTÓN AMAZON */
+
+.book-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background: #f5a623;
+    color: #111e30;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.book-link:hover {
+    transform: translateY(-2px);
+    background: #ffc04d;
+}
+
+/* CONTACTO */
+
+.contact {
+    text-align: center;
+    background: #111e30;
 /* CONTACTO */
 
 .contact {
@@ -407,23 +432,53 @@ footer {
     </p>
 <div class="books-grid">
 
-    <div class="book-card">
-        <img src="ionosfera.jpg" alt="Comprendiendo la propagación de las ondas de radio en HF">
-        <h4>Comprendiendo la propagación de las ondas de radio en HF</h4>
-        <p>Español · Propagación · HF</p>
-    </div>
+   <div class="book-card">
+    <img src="ionosfera.jpg"
+         alt="Comprendiendo la propagación de las ondas de radio en HF">
 
-    <div class="book-card">
-        <img src="portada.jpg" alt="Lightweight QRP Antennas">
-        <h4>Lightweight QRP Antennas</h4>
-        <p>English · Antennas · QRP</p>
-    </div>
+    <h4>Comprendiendo la propagación de las ondas de radio en HF</h4>
 
-    <div class="book-card">
-        <img src="PORTADA SWL.jpg" alt="The Complete Guide to Shortwave Listening">
-        <h4>The Complete Guide to Shortwave Listening</h4>
-        <p>English · Shortwave · DX</p>
-    </div>
+    <p>Español · Propagación · HF</p>
+
+    <a href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H8PZZ66C"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="book-link">
+        Ver libro en Amazon
+    </a>
+</div>
+
+   <div class="book-card">
+    <img src="portada.jpg"
+         alt="Lightweight QRP Antennas">
+
+    <h4>Lightweight QRP Antennas</h4>
+
+    <p>English · Antennas · QRP</p>
+
+    <a href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H9BLV3F2"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="book-link">
+        View book on Amazon
+    </a>
+</div>
+
+  <div class="book-card">
+    <img src="PORTADA SWL.jpg"
+         alt="The Complete Guide to Shortwave Listening">
+
+    <h4>The Complete Guide to Shortwave Listening</h4>
+
+    <p>English · Shortwave · DX</p>
+
+    <a href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H8ZJ4QLN"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="book-link">
+        View book on Amazon
+    </a>
+</div>
 
 </div>
 </section>
