@@ -2,17 +2,309 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Héctor Quintas Iglesias CE4RWS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Héctor Quintas Iglesias | CE4RWS</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1220;
+      color: #e8eef7;
+      line-height: 1.7;
+    }
+
+    header {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        radial-gradient(circle at top, #263b5c 0%, #111c30 42%, #080d17 100%);
+    }
+
+    .hero {
+      max-width: 900px;
+    }
+
+    .callsign {
+      display: inline-block;
+      margin-bottom: 25px;
+      padding: 8px 18px;
+      border: 1px solid #607a9d;
+      border-radius: 30px;
+      color: #b8cbe3;
+      letter-spacing: 3px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+
+    .hero h2 {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 400;
+      color: #b9c9dc;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #c7d1df;
+      font-size: 18px;
+    }
+
+    nav {
+      background: #111a2a;
+      border-top: 1px solid #26364d;
+      border-bottom: 1px solid #26364d;
+      text-align: center;
+      padding: 18px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #dce7f5;
+      text-decoration: none;
+      margin: 0 14px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #8db4df;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    section {
+      margin-bottom: 80px;
+    }
+
+    h3 {
+      font-size: 32px;
+      margin-bottom: 18px;
+      color: #f2f6fb;
+    }
+
+    .intro {
+      max-width: 800px;
+      color: #bdc9d8;
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #121d2e;
+      border: 1px solid #293b55;
+      border-radius: 14px;
+      padding: 28px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #607fa5;
+    }
+
+    .card h4 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aebdce;
+    }
+
+    .contact {
+      text-align: center;
+      background: #121d2e;
+      border: 1px solid #293b55;
+      border-radius: 16px;
+      padding: 45px 25px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      border-top: 1px solid #26364d;
+      color: #8292a7;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+
+      header {
+        min-height: 65vh;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <h1>Héctor Quintas Iglesias CE4RWS</h1>
+  <header>
+    <div class="hero">
+      <div class="callsign">CE4RWS · CHILE</div>
 
-  <h2>Radioafición, libros y exploración de las ondas</h2>
+      <h1>Héctor Quintas Iglesias</h1>
 
-  <p>Bienvenido a mi espacio dedicado a la radioafición, la escucha de onda corta, la propagación de las ondas de radio, las antenas y mis libros.</p>
+      <h2>Radioafición, libros y exploración de las ondas</h2>
 
-  <p>73 desde Chile.</p>
+      <p>
+        Un espacio personal dedicado a la radioafición, el DX,
+        la propagación de las ondas de radio, las antenas,
+        la escucha de onda corta y la creación de libros.
+      </p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#radio">Radioafición</a>
+    <a href="#libros">Libros</a>
+    <a href="#fotografia">Fotografía</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <main>
+
+    <section id="sobre-mi">
+      <h3>Sobre mí</h3>
+
+      <p class="intro">
+        Soy Héctor Quintas Iglesias, radioaficionado con indicativo CE4RWS.
+        Este sitio reúne algunos de mis principales intereses y proyectos,
+        desde la radio y la propagación hasta la escritura y la fotografía.
+      </p>
+    </section>
+
+    <section id="radio">
+      <h3>Radioafición</h3>
+
+      <p class="intro">
+        La radio es una forma extraordinaria de explorar el mundo sin
+        necesidad de verlo. Aquí encontrarás contenidos relacionados con
+        HF, DX, propagación, antenas, escucha de onda corta y otros aspectos
+        de la radioafición.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <h4>DX y HF</h4>
+          <p>
+            Exploración de las bandas, estaciones lejanas y las condiciones
+            que permiten que una señal viaje a través del planeta.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Propagación</h4>
+          <p>
+            El fascinante comportamiento de las ondas de radio y los
+            factores que determinan nuestros contactos a larga distancia.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Antenas</h4>
+          <p>
+            Teoría, experimentación y aplicaciones prácticas para quienes
+            disfrutan construyendo y mejorando sus estaciones.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="libros">
+      <h3>Mis libros</h3>
+
+      <p class="intro">
+        La escritura es otra manera de compartir aquello que aprendemos.
+        En esta sección iremos incorporando mis libros y proyectos
+        editoriales relacionados con la radio, la tecnología y otros temas.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <h4>Libros de radioafición</h4>
+          <p>
+            Obras dedicadas a antenas, propagación, DX, historia de la radio
+            y diferentes aspectos de nuestro apasionante hobby.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Proyectos editoriales</h4>
+          <p>
+            Nuevos libros, investigaciones y proyectos que irán formando
+            parte de esta biblioteca personal.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="fotografia">
+      <h3>Fotografía</h3>
+
+      <p class="intro">
+        La fotografía permite detener por un instante aquello que normalmente
+        pasa frente a nuestros ojos. Esta sección estará dedicada a mis
+        imágenes y proyectos fotográficos.
+      </p>
+    </section>
+
+    <section id="contacto">
+      <div class="contact">
+        <h3>Contacto</h3>
+
+        <p>
+          Para conocer más sobre mi actividad como radioaficionado y escritor,
+          puedes visitar próximamente mis espacios y redes vinculadas a este sitio.
+        </p>
+
+        <p style="margin-top: 20px;">
+          <strong>CE4RWS · Chile</strong>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Héctor Quintas Iglesias · CE4RWS · Chile
+  </footer>
 
 </body>
 </html>
