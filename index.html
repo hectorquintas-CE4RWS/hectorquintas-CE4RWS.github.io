@@ -4,630 +4,595 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="p:domain_verify" content="66b801a9bccaa82f2a43a2226737126"/>
-    
+<meta name="description" content="Héctor Quintas Iglesias CE4RWS. Radioafición, DX, propagación, antenas, exploración, fotografía y libros sobre radio.">
+<meta name="author" content="Héctor Quintas Iglesias – CE4RWS">
 <title>Héctor Quintas Iglesias | CE4RWS</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+:root{
+  --navy:#092742;
+  --navy2:#123e62;
+  --blue:#1677b8;
+  --gold:#f5bd21;
+  --gold2:#ffd75a;
+  --ink:#17324b;
+  --muted:#617285;
+  --paper:#f8fafc;
+  --white:#ffffff;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(9,39,66,.12);
 }
 
-html {
-    scroll-behavior: smooth;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--paper);
+  font-family:Inter,Arial,sans-serif;
+  line-height:1.65;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(5,29,49,.96);
+  backdrop-filter:blur(12px);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-inner{
+  max-width:1240px;
+  margin:auto;
+  min-height:82px;
+  padding:14px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.brand{display:flex;flex-direction:column;text-decoration:none;min-width:280px}
+.brand-main{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.brand-main span{color:var(--gold)}
+.brand-sub{
+  margin-top:1px;
+  color:#dbe7f0;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#edf5fa;
+  padding:12px 0;
+  border-bottom:2px solid transparent;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);border-color:var(--gold)}
+
+.hero{
+  position:relative;
+  min-height:610px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#123e62;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.88) 30%,rgba(255,255,255,.18) 58%,rgba(5,29,49,.08) 100%);
+  pointer-events:none;
+}
+.hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:min(1240px,100%);
+  margin:auto;
+  padding:75px 28px 90px;
+}
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:var(--navy);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.kicker::before{
+  content:"";
+  width:56px;
+  height:5px;
+  background:var(--gold);
+}
+.hero h1{
+  margin:10px 0 0;
+  color:var(--navy);
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(58px,8vw,105px);
+  line-height:.88;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+.hero-tag{
+  margin:22px 0 12px;
+  color:var(--navy);
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(19px,2.4vw,31px);
+  letter-spacing:.16em;
+  font-weight:700;
+}
+.hero-copy{
+  max-width:580px;
+  font-size:18px;
+  color:#203d55;
+  margin:0 0 28px;
+}
+.cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:15px 23px;
+  border-radius:999px;
+  font-weight:800;
+  box-shadow:0 10px 25px rgba(245,189,33,.28);
+}
+.cta:hover{background:var(--gold2);transform:translateY(-1px)}
+
+.quick{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+.quick-inner{
+  max-width:1240px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.quick-item{
+  padding:27px 24px;
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  border-right:1px solid var(--line);
+}
+.quick-item:last-child{border-right:0}
+.icon{
+  color:var(--blue);
+  font-size:29px;
+  line-height:1;
+  width:34px;
+  text-align:center;
+}
+.quick h3{
+  margin:0 0 3px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:16px;
+}
+.quick p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+.section{
+  max-width:1240px;
+  margin:auto;
+  padding:82px 28px;
+}
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:35px;
+}
+.eyebrow{
+  color:var(--blue);
+  font-weight:800;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+}
+.section h2{
+  margin:5px 0 0;
+  color:var(--navy);
+  font-family:"Space Grotesk",sans-serif;
+  font-size:38px;
+  line-height:1.05;
+}
+.section-intro{max-width:720px;color:var(--muted);margin-top:14px}
+.text-link{
+  color:var(--navy);
+  font-weight:800;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.text-link:hover{color:var(--blue)}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:55px;
+  align-items:center;
+}
+.about-card{
+  background:var(--navy);
+  color:#fff;
+  padding:42px;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.about-card::after{
+  content:"CE4RWS";
+  position:absolute;
+  right:-18px;
+  bottom:-30px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:95px;
+  font-weight:700;
+  color:rgba(255,255,255,.045);
+}
+.about-card h3{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+  margin:0 0 12px;
+}
+.about-card p{color:#dbe7f0;position:relative;z-index:1}
+.about-copy p{color:var(--muted)}
+.about-copy h3{
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:25px;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #08101d;
-    color: #eef3f9;
-    line-height: 1.7;
+.books-section{background:#fff}
+.books-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
 }
-
-/* PORTADA */
-
-.hero {
-    min-height: 78vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 70px 25px;
-    overflow: hidden;
-    isolation: isolate;
+.book{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(9,39,66,.07);
+  transition:.2s ease;
 }
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            rgba(5, 12, 23, 0.48),
-            rgba(5, 12, 23, 0.72)
-        ),
-        url("radio-ce4rws.png") center center / cover no-repeat;
-    z-index: -2;
+.book:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.book-cover{
+  width:100%;
+  aspect-ratio:1/1.15;
+  object-fit:cover;
+  background:#e8eef3;
 }
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(5, 12, 23, 0.04);
-    z-index: -1;
+.book-body{padding:22px}
+.book h3{
+  margin:0 0 8px;
+  color:var(--navy);
+  font-family:"Space Grotesk",sans-serif;
+  font-size:21px;
+  line-height:1.15;
 }
-
-.hero-content {
-    width: 100%;
-    max-width: 950px;
-    position: relative;
-    z-index: 2;
+.book-meta{
+  color:var(--blue);
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.07em;
 }
-
-.callsign {
-    display: inline-block;
-    padding: 8px 20px;
-    margin-bottom: 25px;
-    border: 1px solid rgba(220, 232, 245, 0.65);
-    border-radius: 30px;
-    letter-spacing: 4px;
-    font-size: 14px;
-    color: #f0f5fa;
-    background: rgba(5, 12, 23, 0.25);
+.book p{color:var(--muted);font-size:14px}
+.amazon{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--gold);
+  color:#172b3d;
+  text-decoration:none;
+  font-weight:800;
+  padding:11px 15px;
+  border-radius:9px;
+  font-size:13px;
 }
+.amazon:hover{background:var(--gold2)}
 
-h1 {
-    font-size: clamp(42px, 7vw, 78px);
-    line-height: 1.05;
-    margin-bottom: 22px;
-    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.65);
+.explore{
+  background:linear-gradient(135deg,#092742,#123e62);
+  color:#fff;
 }
-
-.hero h2 {
-    font-size: clamp(20px, 3vw, 32px);
-    font-weight: 400;
-    color: #dce7f2;
-    margin-bottom: 28px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+.explore .section h2,.explore .eyebrow{color:#fff}
+.explore .section-intro{color:#c9d9e5}
+.explore-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
-
-.hero p {
-    max-width: 760px;
-    margin: auto;
-    color: #f0f4f8;
-    font-size: 18px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+.explore-card{
+  padding:30px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.06);
+  border-radius:20px;
 }
-
-/* MENU */
-
-nav {
-    background: #0b1626;
-    border-top: 1px solid #2b405a;
-    border-bottom: 1px solid #2b405a;
-    text-align: center;
-    padding: 18px 10px;
+.explore-card .big{font-size:36px;color:var(--gold)}
+.explore-card h3{
+  font-family:"Space Grotesk",sans-serif;
+  margin:15px 0 7px;
 }
+.explore-card p{color:#c9d9e5;font-size:14px}
 
-nav a {
-    color: #e4edf6;
-    text-decoration: none;
-    margin: 0 16px;
-    font-size: 15px;
-    transition: color 0.2s ease;
+.photo-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  grid-template-rows:230px 230px;
+  gap:15px;
 }
+.photo-grid a{overflow:hidden;border-radius:16px;display:block}
+.photo-grid a:first-child{grid-row:1/3}
+.photo-grid img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.photo-grid a:hover img{transform:scale(1.04)}
 
-nav a:hover {
-    color: #9fc1e3;
+.contact{
+  background:#edf4f8;
+  text-align:center;
 }
-
-/* CONTENIDO */
-
-main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 75px 25px;
+.contact-inner{max-width:760px;margin:auto}
+.contact h2{margin-bottom:15px}
+.contact p{color:var(--muted)}
+.qrz{
+  display:inline-flex;
+  margin-top:15px;
+  background:var(--navy);
+  color:#fff;
+  text-decoration:none;
+  padding:14px 22px;
+  border-radius:999px;
+  font-weight:800;
 }
+.qrz:hover{background:var(--blue)}
 
-section {
-    margin-bottom: 90px;
-    scroll-margin-top: 30px;
+footer{
+  background:#051d31;
+  color:#aebfcd;
+  padding:35px 28px;
+  text-align:center;
+  font-size:12px;
 }
+footer strong{color:#fff}
 
-h3 {
-    font-size: 34px;
-    margin-bottom: 20px;
-    color: #f5f8fb;
+@media(max-width:900px){
+  .nav-inner{min-height:72px}
+  .nav-links{display:none}
+  .hero{min-height:650px}
+  .hero::after{background:linear-gradient(90deg,rgba(255,255,255,.97),rgba(255,255,255,.78) 55%,rgba(255,255,255,.16))}
+  .quick-inner{grid-template-columns:1fr 1fr}
+  .quick-item:nth-child(2){border-right:0}
+  .quick-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .about-grid,.explore-grid{grid-template-columns:1fr}
+  .books-grid{grid-template-columns:1fr 1fr}
+  .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+  .photo-grid a:first-child{grid-row:auto;grid-column:1/3}
 }
-
-.intro {
-    max-width: 820px;
-    color: #c3cfdd;
-    font-size: 18px;
+@media(max-width:600px){
+  .brand-main{font-size:17px}
+  .brand-sub{font-size:9px}
+  .nav-inner{padding:12px 18px}
+  .hero-content{padding:65px 20px 80px}
+  .hero h1{font-size:62px}
+  .hero-tag{font-size:16px;letter-spacing:.1em}
+  .hero-copy{font-size:16px}
+  .quick-inner,.books-grid{grid-template-columns:1fr}
+  .quick-item{border-right:0;border-bottom:1px solid var(--line)}
+  .quick-item:last-child{border-bottom:0}
+  .section{padding:62px 20px}
+  .section h2{font-size:31px}
+  .section-head{display:block}
+  .section-head .text-link{display:inline-block;margin-top:16px}
+  .about-card{padding:28px}
+  .photo-grid{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(5,240px)}
+  .photo-grid a:first-child{grid-column:auto;grid-row:auto}
 }
-
-/* TARJETAS */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(240px, 1fr)
-    );
-    gap: 24px;
-    margin-top: 32px;
-}
-
-.card {
-    background: #111e30;
-    border: 1px solid #2a405b;
-    border-radius: 14px;
-    padding: 30px;
-}
-
-.card h4 {
-    font-size: 21px;
-    margin-bottom: 12px;
-    color: #f1f5f9;
-}
-
-.card p {
-    color: #adbdcf;
-}
-    /* GALERIA DE LIBROS */
-
-.books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 28px;
-    margin-top: 35px;
-}
-
-.book-card {
-    background: #111e30;
-    border: 1px solid #2a405b;
-    border-radius: 14px;
-    padding: 18px;
-    text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.book-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-}
-
-.book-card img {
-    width: 100%;
-    max-width: 180px;
-    height: 260px;
-    object-fit: cover;
-    border-radius: 6px;
-    display: block;
-    margin: 0 auto 16px;
-}
-
-.book-card h4 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    color: #f1f5f9;
-}
-
-.book-card p {
-    
-    color: #a8bdcf;
-    font-size: 14px;
-}
-
-/* BOTÓN AMAZON */
-
-.book-link {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 18px;
-    background: #f5a623;
-    color: #111e30;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.book-link:hover {
-    transform: translateY(-2px);
-    background: #ffc04d;
-}
-/* GALERÍA FOTOGRÁFICA */
-
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 35px;
-    align-items: start;
-}
-
-.photo-card {
-    background: #111e30;
-    border: 1px solid #2a405b;
-    border-radius: 12px;
-    padding: 12px;
-    overflow: hidden;
-}
-
-.photo-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 6px;
-}
-    .photo-card {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.photo-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-}
-
-.photo-card img {
-    transition: transform 0.3s ease;
-}
-
-.photo-card:hover img {
-    transform: scale(1.03);
-}
-
-@media (max-width: 900px) {
-    .photo-gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .photo-gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .photo-card img {
-        height: auto;
-    }
-}
-/* CONTACTO */
-
-.contact {
-    text-align: center;
-    background: #111e30;
-/* CONTACTO */
-
-.contact {
-    text-align: center;
-    background: #111e30;
-    border: 1px solid #2a405b;
-    border-radius: 16px;
-    padding: 48px 25px;
-}
-
-/* PIE */
-
-footer {
-    text-align: center;
-    padding: 35px 20px;
-    border-top: 1px solid #26384f;
-    color: #8192a7;
-    font-size: 14px;
-}
-
-/* MÓVILES */
-
-@media (max-width: 700px) {
-
-    nav a {
-        display: inline-block;
-        margin: 5px 8px;
-    }
-
-    .hero {
-        min-height: 70vh;
-    }
-
-    h1 {
-        font-size: 44px;
-    }
-
-    .hero h2 {
-        font-size: 23px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<header class="hero">
-
-    <div class="hero-content">
-
-        <div class="callsign">
-            CE4RWS · CHILE
-        </div>
-
-        <h1>
-            Héctor Quintas Iglesias
-        </h1>
-
-        <h2>
-            Radioafición, libros y exploración de las ondas
-        </h2>
-
-        <p>
-            Un espacio dedicado a la radioafición, el DX,
-            la propagación de las ondas de radio, las antenas,
-            la escucha de onda corta y la creación de libros.
-        </p>
-
-    </div>
-
+<header class="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span></div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Photography</div>
+    </a>
+    <nav class="nav-links">
+      <a class="active" href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#libros">Libros</a>
+      <a href="#radio">Radioafición</a>
+      <a href="#fotografia">Fotografía</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
 </header>
-
-<nav>
-
-    <a href="#sobre-mi">Sobre mí</a>
-    <a href="#radio">Radioafición</a>
-    <a href="#libros">Libros</a>
-    <a href="#fotografia">Fotografía</a>
-    <a href="#contacto">Contacto</a>
-
-</nav>
 
 <main>
 
-<section id="sobre-mi">
-
-    <h3>Sobre mí</h3>
-
-    <p class="intro">
-        Soy Héctor Quintas Iglesias, escritor, radioaficionado y fotógrafo,
-        conocido en el mundo de la radio por mi indicativo CE4RWS.
-        Desde hace muchos años, la radioafición me ha permitido explorar
-        las ondas, estudiar la propagación, descubrir lugares distantes
-        y comprender mejor esa extraordinaria comunicación que puede unir
-        a personas separadas por miles de kilómetros.
-    </p>
-
-    <h3>About Me</h3>
-
-    <p class="intro">
-        I am Héctor Quintas Iglesias, a writer, radio amateur and photographer,
-        known in the radio world by my callsign CE4RWS. For many years,
-        amateur radio has allowed me to explore the airwaves, study propagation,
-        discover distant places and better understand the extraordinary
-        communication that can connect people separated by thousands of kilometres.
-    </p>
-
-
+<section class="hero" id="inicio">
+  <img class="hero-image" src="hero-ce4rws.png" alt="Representación artística de la radio, la propagación y la exploración">
+  <div class="hero-content">
+    <div class="kicker">Héctor Quintas Iglesias</div>
+    <h1>CE4RWS</h1>
+    <div class="hero-tag">RADIO · DX · EXPLORACIÓN · LIBROS</div>
+    <p class="hero-copy">Explorando las ondas, documentando experiencias y compartiendo conocimiento.</p>
+    <a class="cta" href="#libros">CONOCE MIS LIBROS <span>→</span></a>
+  </div>
 </section>
 
-
-
-
-   <section id="radio">
-
-    <h3>Radioafición</h3>
-
-    <p class="intro">
-        La radioafición es una forma extraordinaria de explorar el mundo sin necesidad de verlo.
-        A través de las ondas de radio es posible establecer comunicaciones a grandes distancias,
-        estudiar la propagación, experimentar con antenas y descubrir cómo las condiciones de la
-        atmósfera pueden transformar una señal débil en una comunicación clara y distante.
-    </p>
-
-    <p class="intro">
-        Mi interés se centra especialmente en la propagación de las ondas, el DX, las antenas,
-        la escucha de onda corta y la exploración de las diferentes bandas de radio. Cada señal
-        recibida cuenta una pequeña historia y cada contacto representa una oportunidad para
-        aprender algo nuevo.
-    </p>
-
-    <h3>Amateur Radio</h3>
-
-    <p class="intro">
-        Amateur radio is an extraordinary way to explore the world without having to see it.
-        Through radio waves, it is possible to communicate across great distances, study
-        propagation, experiment with antennas and discover how atmospheric conditions can
-        transform a weak signal into a clear and distant communication.
-    </p>
-
-    <p class="intro">
-        My main interests include radio propagation, DX, antennas, shortwave listening and
-        exploring the different radio bands. Every signal received tells a small story,
-        and every contact is an opportunity to learn something new.
-    </p>
-
+<section class="quick">
+  <div class="quick-inner">
+    <div class="quick-item">
+      <div class="icon">◉</div>
+      <div><h3>RADIOAFICIÓN</h3><p>Comunicaciones, DX, QRP, satélites y tecnología.</p></div>
+    </div>
+    <div class="quick-item">
+      <div class="icon">⌁</div>
+      <div><h3>EXPLORACIÓN</h3><p>Operación en terreno, SOTA y radio de campo.</p></div>
+    </div>
+    <div class="quick-item">
+      <div class="icon">▱</div>
+      <div><h3>LIBROS</h3><p>Guías prácticas, historia, tecnología y operación.</p></div>
+    </div>
+    <div class="quick-item">
+      <div class="icon">⌾</div>
+      <div><h3>FOTOGRAFÍA</h3><p>Paisajes, naturaleza y vida al aire libre.</p></div>
+    </div>
+  </div>
 </section>
 
-
-<section id="libros">
-
-    <h3>Mis libros</h3>
-
-    <p class="intro">
-        La escritura es otra forma de explorar y compartir aquello que he aprendido
-        a lo largo de los años. En mis libros reúno conocimientos, experiencias e
-        investigaciones relacionadas principalmente con la radioafición, las antenas,
-        la propagación de las ondas, la historia de la radio y la tecnología.
-    </p>
-
-    <p class="intro">
-        Esta colección reúne mis diferentes proyectos editoriales, escritos con la
-        intención de acercar estos temas tanto a radioaficionados experimentados
-        como a quienes desean descubrir este fascinante mundo.
-    </p>
-
-    <h3>My Books</h3>
-
-    <p class="intro">
-        Writing is another way of exploring and sharing what I have learned over
-        the years. My books focus mainly on amateur radio, antennas, radio
-        propagation, radio history and technology.
-    </p>
-
-    <p class="intro">
-        This collection brings together my different publishing projects, created
-        to share knowledge and experiences with both experienced radio amateurs
-        and readers who are discovering this fascinating world.
-    </p>
-<div class="books-grid">
-
-   <div class="book-card">
-    <img src="ionosfera.jpg"
-         alt="Comprendiendo la propagación de las ondas de radio en HF">
-
-    <h4>Comprendiendo la propagación de las ondas de radio en HF</h4>
-
-    <p>Español · Propagación · HF</p>
-
-    <a href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H8PZZ66C"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="book-link">
-        Ver libro en Amazon
-    </a>
-</div>
-
-   <div class="book-card">
-    <img src="portada.jpg"
-         alt="Lightweight QRP Antennas">
-
-    <h4>Lightweight QRP Antennas</h4>
-
-    <p>English · Antennas · QRP</p>
-
-    <a href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H9BLV3F2"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="book-link">
-        View book on Amazon
-    </a>
-</div>
-
-  <div class="book-card">
-    <img src="PORTADA SWL.jpg"
-         alt="The Complete Guide to Shortwave Listening">
-
-    <h4>The Complete Guide to Shortwave Listening</h4>
-
-    <p>English · Shortwave · DX</p>
-
-    <a href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H8ZJ4QLN"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="book-link">
-        View book on Amazon
-    </a>
-</div>
-
-</div>
+<section class="section" id="sobre-mi">
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="eyebrow" style="color:#f5bd21">SOBRE MÍ · ABOUT ME</div>
+      <h3>Explorar las ondas también es explorar el mundo.</h3>
+      <p>Soy Héctor Quintas Iglesias, escritor, radioaficionado y fotógrafo, conocido en el mundo de la radio por mi indicativo CE4RWS.</p>
+      <p>La radioafición me ha permitido explorar las ondas, estudiar la propagación, descubrir lugares distantes y comprender una comunicación capaz de unir a personas separadas por miles de kilómetros.</p>
+    </div>
+    <div class="about-copy">
+      <h3>Una página para compartir conocimiento</h3>
+      <p>La escritura es otra forma de explorar y compartir aquello que he aprendido a lo largo de los años. Mis libros reúnen conocimientos, experiencias e investigaciones relacionadas principalmente con la radioafición, las antenas, la propagación de las ondas, la historia de la radio y la tecnología.</p>
+      <p>También me interesa la fotografía como una forma de observar el mundo, detener el tiempo por un instante y conservar lugares y momentos que cuentan una historia más allá de la imagen.</p>
+    </div>
+  </div>
 </section>
 
-
-<section id="fotografia">
-
-    <h3>Fotografía</h3>
-
-    <p class="intro">
-        La fotografía es otra forma de observar el mundo, detener el tiempo por un instante
-        y conservar aquello que normalmente pasa frente a nuestros ojos. Me interesa
-        especialmente capturar paisajes, lugares y momentos que transmiten una historia
-        más allá de la imagen.
-    </p>
-
-    <h3>Photography</h3>
-
-    <p class="intro">
-        Photography is another way of observing the world, capturing a moment in time
-        and preserving what might otherwise pass unnoticed. I am especially interested
-        in landscapes, places and moments that tell a story beyond the image itself.
-    </p>
-<div class="photo-gallery">
-
-    <div class="photo-card">
-        <img src="imagenes/foto-01.jpg" alt="Fotografía 1">
+<section class="books-section" id="libros">
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">MIS LIBROS · MY BOOKS</div>
+        <h2>Libros destacados</h2>
+        <p class="section-intro">Una colección de proyectos editoriales sobre radioafición, antenas, propagación, escucha de onda corta y tecnología.</p>
+      </div>
     </div>
 
-    <div class="photo-card">
-        <img src="imagenes/foto-02.jpg" alt="Fotografía 2">
-    </div>
+    <div class="books-grid">
+      <article class="book">
+        <img class="book-cover" src="https://hectorquintas-ce4rws.github.io/ionosfera.jpg" alt="Comprendiendo la propagación de las ondas de radio en HF">
+        <div class="book-body">
+          <div class="book-meta">Español · Propagación · HF</div>
+          <h3>Comprendiendo la propagación de las ondas de radio en HF</h3>
+          <p>Fundamentos y práctica para comprender cómo la propagación condiciona las comunicaciones en HF.</p>
+          <a class="amazon" href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H8PZZ66C" target="_blank" rel="noopener">a&nbsp;&nbsp;Ver en Amazon</a>
+        </div>
+      </article>
 
-    <div class="photo-card">
-        <img src="imagenes/foto-03.jpg" alt="Fotografía 3">
-    </div>
+      <article class="book">
+        <img class="book-cover" src="https://hectorquintas-ce4rws.github.io/portada.jpg" alt="Lightweight QRP Antennas">
+        <div class="book-body">
+          <div class="book-meta">English · Antennas · QRP</div>
+          <h3>Lightweight QRP Antennas</h3>
+          <p>A practical guide to portable and ultralight wire antennas for QRP operators.</p>
+          <a class="amazon" href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H9BLV3F2" target="_blank" rel="noopener">a&nbsp;&nbsp;View on Amazon</a>
+        </div>
+      </article>
 
-    <div class="photo-card">
-        <img src="imagenes/foto-04.jpg" alt="Fotografía 4">
+      <article class="book">
+        <img class="book-cover" src="https://hectorquintas-ce4rws.github.io/PORTADA%20SWL.jpg" alt="The Complete Guide to Shortwave Listening">
+        <div class="book-body">
+          <div class="book-meta">English · Shortwave · DX</div>
+          <h3>The Complete Guide to Shortwave Listening</h3>
+          <p>Receivers, antennas, propagation, SDRs and DX techniques for shortwave listeners.</p>
+          <a class="amazon" href="https://www.amazon.com/-/es/Hector-Quintas-ebook/dp/B0H8ZJ4QLN" target="_blank" rel="noopener">a&nbsp;&nbsp;View on Amazon</a>
+        </div>
+      </article>
     </div>
-
-    <div class="photo-card">
-        <img src="imagenes/foto-05.jpg" alt="Fotografía 5">
-    </div>
-
-</div>
+  </div>
 </section>
 
-<section id="contacto">
+<section class="explore" id="radio">
+  <div class="section">
+    <div class="eyebrow">RADIOAFICIÓN · AMATEUR RADIO</div>
+    <h2>La radio como forma de exploración</h2>
+    <p class="section-intro">Cada señal recibida cuenta una pequeña historia y cada contacto representa una oportunidad para aprender algo nuevo.</p>
 
-    <div class="contact">
-
-       <h3>Contacto</h3>
-
-<p>
-    Si deseas conocer más sobre mi actividad como radioaficionado,
-    escritor y fotógrafo, puedes visitar mis espacios y proyectos
-    vinculados a este sitio.
-</p>
-
-<p style="margin-top:20px;">
-    <a href="https://www.qrz.com/db/CE4RWS" target="_blank">
-        Mi perfil de radioaficionado en QRZ
-    </a>
-</p>
-
-<h3>Contact</h3>
-
-<p>
-    If you would like to learn more about my work as a radio amateur,
-    writer and photographer, you can visit the spaces and projects
-    connected to this website.
-</p>
-
-<p style="margin-top:20px;">
-    <a href="https://www.qrz.com/db/CE4RWS" target="_blank">
-        My amateur radio profile on QRZ
-    </a>
-</p>
-
-<p style="margin-top:20px;">
-    <strong>CE4RWS · Chile</strong>
-</p>
-
+    <div class="explore-grid">
+      <article class="explore-card">
+        <div class="big">⌁</div>
+        <h3>Propagación y DX</h3>
+        <p>Estudio de las condiciones que permiten que una señal débil atraviese grandes distancias.</p>
+      </article>
+      <article class="explore-card">
+        <div class="big">△</div>
+        <h3>Antenas y QRP</h3>
+        <p>Experimentación, operación portátil y búsqueda de soluciones eficientes para el campo.</p>
+      </article>
+      <article class="explore-card">
+        <div class="big">◌</div>
+        <h3>Escucha y tecnología</h3>
+        <p>Onda corta, bandas de radio, comunicaciones digitales y herramientas para comprender las señales.</p>
+      </article>
     </div>
-
+  </div>
 </section>
+
+<section class="section" id="fotografia">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">FOTOGRAFÍA · PHOTOGRAPHY</div>
+      <h2>Observar también es explorar</h2>
+      <p class="section-intro">Paisajes, lugares y momentos que conservan una historia más allá de la imagen.</p>
+    </div>
+  </div>
+
+  <div class="photo-grid">
+    <a href="https://hectorquintas-ce4rws.github.io/imagenes/foto-05.jpg" target="_blank"><img src="https://hectorquintas-ce4rws.github.io/imagenes/foto-05.jpg" alt="Paisaje de montaña"></a>
+    <a href="https://hectorquintas-ce4rws.github.io/imagenes/foto-02.jpg" target="_blank"><img src="https://hectorquintas-ce4rws.github.io/imagenes/foto-02.jpg" alt="Cascada en bosque"></a>
+    <a href="https://hectorquintas-ce4rws.github.io/imagenes/foto-03.jpg" target="_blank"><img src="https://hectorquintas-ce4rws.github.io/imagenes/foto-03.jpg" alt="Río y cascada"></a>
+    <a href="https://hectorquintas-ce4rws.github.io/imagenes/foto-01.jpg" target="_blank"><img src="https://hectorquintas-ce4rws.github.io/imagenes/foto-01.jpg" alt="Paisaje costero y redes de pesca"></a>
+    <a href="https://hectorquintas-ce4rws.github.io/imagenes/foto-04.jpg" target="_blank"><img src="https://hectorquintas-ce4rws.github.io/imagenes/foto-04.jpg" alt="Bosque y río"></a>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="section contact-inner">
+    <div class="eyebrow">CONTACTO</div>
+    <h2>Conoce más sobre CE4RWS</h2>
+    <p>Si deseas conocer más sobre mi actividad como radioaficionado, escritor y fotógrafo, puedes visitar mi perfil de radioaficionado y los proyectos vinculados a este sitio.</p>
+    <a class="qrz" href="https://www.qrz.com/db/CE4RWS" target="_blank" rel="noopener">VISITAR PERFIL EN QRZ →</a>
+  </div>
+</section>
+
 </main>
 
 <footer>
-
-    © 2026 Héctor Quintas Iglesias · CE4RWS · Chile
-
+  <strong>CE4RWS · CHILE</strong><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS · Chile
 </footer>
 
 </body>
