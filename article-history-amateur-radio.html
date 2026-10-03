@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The History of Amateur Radio: From the First Experiments to Modern Radio | CE4RWS</title>
+
+<meta name="description" content="A concise history of amateur radio, from the first wireless experiments and early spark transmitters to licensing, international organization, HF, digital modes and modern amateur radio.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The History of Amateur Radio: From the First Experiments to Modern Radio</h1>
+
+    <p class="hero-intro">
+      Amateur radio grew from the earliest experiments with wireless communication into a worldwide technical, educational and experimental service. Its history is also the history of changing technology, regulation, propagation and the persistent curiosity of radio experimenters.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">Amateur Radio</span>
+      <span class="tag">Technology</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      Amateur radio did not begin with a single invention or on a single date. It emerged from the rapid development of wireless communication at the beginning of the twentieth century, when experimenters began building their own transmitters and receivers and discovering what radio could do.
+    </p>
+
+    <p>
+      Long before modern transceivers, digital modes and satellite communication, amateur experimenters were working with coils, batteries, detectors, spark transmitters and simple antennas. Their equipment was often crude by modern standards, but the essential spirit was already present: build, test, observe and try again.
+    </p>
+
+    <p>
+      The history of amateur radio is therefore not simply a sequence of inventions. It is the story of a community learning what the radio spectrum could make possible.
+    </p>
+
+    <div class="callout">
+      Amateur radio developed at the intersection of technology and experimentation. Its history is not only about equipment; it is also about discovering what could be achieved with limited resources.
+    </div>
+
+    <h2>The wireless experimenters</h2>
+
+    <p>
+      At the beginning of the twentieth century, wireless communication was still a developing technology. Experimenters around the world built equipment inspired by the work of pioneers such as Guglielmo Marconi and other researchers in electromagnetic communication.
+    </p>
+
+    <p>
+      In 1901, Marconi demonstrated that a radio signal could be detected across the Atlantic. The experiment became an important milestone in the development of long-distance wireless communication and helped establish that radio waves could travel far beyond the immediate surroundings of a transmitting station.
+    </p>
+
+    <p>
+      Amateur experimenters quickly became interested in the possibilities. Many built their own equipment and experimented with Morse code, antennas, receivers and increasingly powerful transmitters.
+    </p>
+
+    <h2>The early years were not yet organized</h2>
+
+    <p>
+      The early wireless spectrum was very different from the organized bands familiar to modern radio amateurs.
+    </p>
+
+    <p>
+      Stations could interfere with one another, and spark transmitters produced signals that occupied substantial portions of the available spectrum. Commercial, military, maritime and amateur operators were all competing for access to a still poorly regulated radio environment.
+    </p>
+
+    <p>
+      As the number of stations increased, regulation became unavoidable.
+    </p>
+
+    <h2>The Radio Act of 1912</h2>
+
+    <p>
+      A major turning point came in the United States with the Radio Act of 1912. The legislation introduced licensing requirements and placed severe restrictions on amateur operation, including limiting amateurs to wavelengths of 200 meters or shorter.
+    </p>
+
+    <p>
+      At the time, shorter wavelengths were widely regarded as less useful for long-distance communication. What appeared to be a limitation would eventually lead amateur experimenters toward one of the most important discoveries in the history of the service: the extraordinary usefulness of short waves.
+    </p>
+
+    <p>
+      Amateur radio survived the new regulations and continued to develop.
+    </p>
+
+    <h2>The birth of organized amateur radio</h2>
+
+    <p>
+      In 1914, Hiram Percy Maxim helped establish the American Radio Relay League, initially focused on improving long-distance message relay between amateur stations.
+    </p>
+
+    <p>
+      The idea was simple but powerful. Instead of requiring one station to communicate directly over an entire distance, messages could be passed from station to station.
+    </p>
+
+    <p>
+      This reflected an important characteristic of early amateur radio: operators were not merely consumers of technology. They were actively developing methods to make communication more reliable.
+    </p>
+
+    <h2>World War I changed amateur radio</h2>
+
+    <p>
+      The First World War temporarily interrupted amateur operation in the United States. Amateur transmitting and receiving stations were shut down, and many operators who had developed radio skills went into military or other forms of communications service.
+    </p>
+
+    <p>
+      When amateur operation resumed after the war, the technological landscape had changed. Vacuum-tube technology had advanced, receivers became more sensitive, transmitters became more sophisticated and the possibilities of short-wave communication were becoming clearer.
+    </p>
+
+    <p>
+      The war therefore interrupted amateur radio, but it also accelerated several areas of radio technology that amateurs would later adopt.
+    </p>
+
+    <h2>The discovery of the short-wave world</h2>
+
+    <p>
+      One of the great surprises of early amateur radio was the performance of short wavelengths.
+    </p>
+
+    <p>
+      Frequencies that had once been considered unsuitable for long-distance communication proved capable of supporting remarkable distances under the right conditions.
+    </p>
+
+    <p>
+      Amateur operators became important contributors to the practical understanding of these bands. Long-distance communication became possible with equipment and antennas that were increasingly accessible to individual experimenters.
+    </p>
+
+    <p>
+      This changed the future of amateur radio permanently.
+    </p>
+
+    <h2>The transatlantic experiments</h2>
+
+    <p>
+      In 1921, organized transatlantic tests demonstrated that amateur stations could establish communication across the Atlantic using short waves.
+    </p>
+
+    <p>
+      These experiments helped overturn the earlier assumption that longer wavelengths were necessarily superior for long-distance communication.
+    </p>
+
+    <p>
+      The significance was much larger than a successful contact between two stations. It demonstrated that amateurs could contribute to the practical understanding of radio propagation through direct experimentation.
+    </p>
+
+    <h2>The creation of the IARU</h2>
+
+    <p>
+      As amateur radio expanded internationally, the need for international coordination became increasingly important.
+    </p>
+
+    <p>
+      In 1925, representatives from different countries met in Paris and created the International Amateur Radio Union, or IARU.
+    </p>
+
+    <p>
+      The organization gave amateur radio an international structure and a collective voice in discussions affecting access to the radio spectrum.
+    </p>
+
+    <p>
+      Two years later, international frequency allocations provided important amateur bands including 160, 80, 40, 20 and 10 meters. These allocations became part of the foundation of the HF amateur-radio spectrum used for generations of experimentation and communication.
+    </p>
+
+    <h2>From spark to continuous-wave radio</h2>
+
+    <p>
+      The technology of amateur radio continued to evolve rapidly.
+    </p>
+
+    <p>
+      Spark transmitters gradually gave way to continuous-wave transmitters, while vacuum tubes made more sophisticated oscillators, amplifiers and receivers possible.
+    </p>
+
+    <p>
+      Morse code remained central to amateur operation, but the equipment used to generate and receive it became increasingly efficient.
+    </p>
+
+    <p>
+      This period established many of the technical foundations that would later lead to voice communication, single-sideband operation and modern solid-state equipment.
+    </p>
+
+    <h2>The arrival of voice</h2>
+
+    <p>
+      Voice communication gradually became an important part of amateur radio as transmitters, receivers and modulation techniques improved.
+    </p>
+
+    <p>
+      Amateurs experimented with amplitude modulation and later with more efficient forms of voice communication. Single-sideband technology eventually became particularly important on HF because it allowed voice communication to use spectrum and transmitter power more efficiently than conventional AM.
+    </p>
+
+    <p>
+      Amateur radio therefore evolved from a primarily telegraphic service into a remarkably diverse communications environment.
+    </p>
+
+    <h2>From tubes to transistors</h2>
+
+    <p>
+      The introduction and widespread adoption of semiconductor technology transformed radio equipment.
+    </p>
+
+    <p>
+      Transistors reduced size, power consumption and in many applications improved reliability. Solid-state components gradually replaced many vacuum-tube circuits in receivers, transmitters and accessories.
+    </p>
+
+    <p>
+      Later generations of integrated circuits and microprocessors brought another transformation: radio equipment could increasingly perform functions that previously required separate hardware.
+    </p>
+
+    <h2>The computer enters the radio station</h2>
+
+    <p>
+      The arrival of computers changed amateur radio again.
+    </p>
+
+    <p>
+      Logging, frequency control, contest operation, digital modes, satellite tracking and signal processing could now be performed with software.
+    </p>
+
+    <p>
+      Digital communication modes expanded rapidly, from packet radio and RTTY to newer systems using sophisticated digital signal processing.
+    </p>
+
+    <p>
+      The modern amateur station became something fundamentally different from the station of the early twentieth century. The radio remained at its centre, but the computer became an increasingly important part of the operating system.
+    </p>
+
+    <h2>Amateur radio enters the digital age</h2>
+
+    <p>
+      Modern amateur radio includes an enormous variety of technologies and operating methods.
+    </p>
+
+    <p>
+      Operators can use CW, SSB, FM, RTTY, packet radio, digital weak-signal modes, satellites, microwave links, software-defined radios and computer-assisted operating systems.
+    </p>
+
+    <p>
+      Modes such as FT8 demonstrate how far digital signal processing has evolved. A modern computer can extract structured information from signals that would have been extremely difficult to use with many earlier systems.
+    </p>
+
+    <p>
+      Yet the fundamental objective remains familiar: establish communication through a radio channel and understand why it works.
+    </p>
+
+    <h2>What has really changed?</h2>
+
+    <p>
+      The equipment has changed enormously. The questions have not.
+    </p>
+
+    <p>
+      Amateur operators still ask how far a signal can travel, why one frequency works while another does not, how an antenna should be designed, how noise can be reduced and how limited power can be used effectively.
+    </p>
+
+    <p>
+      These are the same fundamental questions that occupied the experimenters of the early wireless era.
+    </p>
+
+    <p>
+      The tools are simply better.
+    </p>
+
+    <h2>The enduring value of experimentation</h2>
+
+    <p>
+      Perhaps the most important part of amateur-radio history is not a particular radio, band or operating mode. It is the tradition of experimentation.
+    </p>
+
+    <p>
+      Amateur radio has repeatedly demonstrated that practical knowledge can emerge from people building equipment, testing ideas, comparing observations and sharing what they discover.
+    </p>
+
+    <p>
+      That tradition continues today with antennas, propagation studies, digital modes, software-defined radio, satellites, microwave communication and low-power operation.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      Amateur radio is more than an old communication technology. It is a continuously evolving technical activity whose history follows the development of electronics, radio propagation, computing and international regulation.
+    </p>
+
+    <p>
+      From spark transmitters and Morse code to software-defined radios and weak-signal digital modes, the technology has changed repeatedly.
+    </p>
+
+    <p>
+      What has remained remarkably constant is the desire to understand the radio environment by actually using it.
+    </p>
+
+    <p>
+      That is why the history of amateur radio is still relevant today. Every modern contact, antenna experiment or digital reception is part of a much longer tradition of technical curiosity.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore the history of amateur radio</h3>
+      <p>
+        The CE4RWS history books examine the people, technologies, discoveries, regulations and milestones that shaped amateur radio from its earliest experiments to the modern era.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
