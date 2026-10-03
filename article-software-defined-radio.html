@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Software-Defined Radio: When the Radio Became Software | CE4RWS</title>
+
+<meta name="description" content="How software-defined radio transformed amateur radio by moving signal processing from dedicated hardware into software.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:920px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>Software-Defined Radio: When the Radio Became Software</h1>
+
+    <p class="intro">
+      How digital signal processing moved an increasing part of the radio from dedicated hardware into software, creating one of the most important technological changes in modern amateur radio.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">SDR</span>
+      <span class="tag">DSP</span>
+      <span class="tag">Digital Radio</span>
+      <span class="tag">Technology</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>The Question Behind Software Radio</h2>
+
+    <p>
+      For most of the history of radio, the characteristics of a receiver or transmitter were determined primarily by its hardware.
+    </p>
+
+    <p>
+      Filters were hardware.
+    </p>
+
+    <p>
+      Mixers were hardware.
+    </p>
+
+    <p>
+      Oscillators were hardware.
+    </p>
+
+    <p>
+      Demodulators were hardware.
+    </p>
+
+    <p>
+      If an operator wanted a substantially different radio function, it often meant changing circuits or adding another piece of equipment.
+    </p>
+
+    <p>
+      The arrival of increasingly powerful digital electronics introduced a different possibility:
+    </p>
+
+    <p>
+      <strong>What if some of those functions could be performed by mathematics instead of dedicated circuits?</strong>
+    </p>
+
+    <p>
+      That question is at the heart of software-defined radio.
+    </p>
+
+    <h2>From Analog Signals to Digital Samples</h2>
+
+    <p>
+      A radio signal exists in the physical world as an electromagnetic waveform.
+    </p>
+
+    <p>
+      A computer cannot directly manipulate that analog waveform as it exists in the antenna system. It needs numbers.
+    </p>
+
+    <p>
+      An analog-to-digital converter, or ADC, samples the incoming signal and converts it into digital data.
+    </p>
+
+    <p>
+      Once the signal exists as numbers, software can process it.
+    </p>
+
+    <p>
+      Digital filters can be applied.
+    </p>
+
+    <p>
+      Signals can be shifted in frequency.
+    </p>
+
+    <p>
+      Different demodulation algorithms can be used.
+    </p>
+
+    <p>
+      Multiple signals can be displayed simultaneously.
+    </p>
+
+    <p>
+      The same hardware can therefore perform many different functions depending on the software.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>SDR does not mean that there is no hardware.</strong> It means that an important part of the radio's signal processing is performed digitally and defined by software.
+      </p>
+    </div>
+
+    <h2>DSP Made the Idea Practical</h2>
+
+    <p>
+      Software-defined radio depends heavily on <strong>digital signal processing</strong>, or DSP.
+    </p>
+
+    <p>
+      DSP had already become an important area of amateur experimentation before complete SDR transceivers became common. The ARRL published extensive amateur-radio work on digital signal processing during the 1990s, including tutorials and experimental designs. :chatgpt-content-reference{index="1"}
+    </p>
+
+    <p>
+      The fundamental idea was simple but powerful.
+    </p>
+
+    <p>
+      Instead of building a separate analog circuit for every filtering or signal-processing function, mathematical operations could be performed on digital samples.
+    </p>
+
+    <p>
+      A software filter could be changed without physically replacing a capacitor, coil or crystal.
+    </p>
+
+    <p>
+      A different algorithm could create a different behavior.
+    </p>
+
+    <p>
+      The radio was becoming programmable.
+    </p>
+
+    <h2>The DSP-10</h2>
+
+    <p>
+      One of the notable amateur projects demonstrating this transition was the <strong>DSP-10</strong>, developed by Bob Larkin, W7PUA.
+    </p>
+
+    <p>
+      The project was described by ARRL as an all-mode 2-meter transceiver using a DSP intermediate frequency and a PC-controlled front panel. Its design appeared in QST in 1999. :chatgpt-content-reference{index="2"}
+    </p>
+
+    <p>
+      The importance of the project was not simply its particular frequency range or architecture.
+    </p>
+
+    <p>
+      It demonstrated a new way of thinking about a transceiver.
+    </p>
+
+    <p>
+      The computer could become part of the radio's operating interface and signal-processing system.
+    </p>
+
+    <h2>A Radio Defined by Algorithms</h2>
+
+    <p>
+      In a conventional analog radio, changing the filter bandwidth might require changing a physical circuit or selecting a different hardware filter.
+    </p>
+
+    <p>
+      In an SDR, the filtering can be implemented digitally.
+    </p>
+
+    <p>
+      The same physical hardware can potentially provide several bandwidths simply by changing the software configuration.
+    </p>
+
+    <p>
+      The same principle applies to demodulation.
+    </p>
+
+    <p>
+      A digital signal-processing system can implement different algorithms for AM, SSB, CW, FM and other modes.
+    </p>
+
+    <p>
+      This is why SDR can be extraordinarily flexible.
+    </p>
+
+    <p>
+      The hardware establishes the physical limits of the system, but software determines many of its operating characteristics.
+    </p>
+
+    <h2>GNU Radio</h2>
+
+    <p>
+      Another important development was <strong>GNU Radio</strong>.
+    </p>
+
+    <p>
+      GNU Radio provided a software framework in which signal-processing functions could be connected together to create complete radio systems.
+    </p>
+
+    <p>
+      The concept was especially attractive to experimenters because the radio could be treated as a collection of software-defined processing blocks.
+    </p>
+
+    <p>
+      ARRL's SDR working group documented the important role of amateur-radio contributors in GNU Radio and its associated hardware projects, including the Universal Software Radio Peripheral, or USRP. :chatgpt-content-reference{index="3"}
+    </p>
+
+    <p>
+      The significance was enormous for experimentation.
+    </p>
+
+    <p>
+      A radio amateur could build or modify a signal-processing chain in software rather than redesigning an entire RF circuit.
+    </p>
+
+    <h2>From the Sound Card to the SDR</h2>
+
+    <p>
+      One of the important stepping stones toward accessible SDR was the use of the computer's sound card.
+    </p>
+
+    <p>
+      A sound card already contained analog-to-digital and digital-to-analog converters capable of handling audio-frequency signals.
+    </p>
+
+    <p>
+      Experimenters discovered that those interfaces could be used to process radio signals after suitable frequency conversion.
+    </p>
+
+    <p>
+      This approach helped make software radio experimentation possible without requiring extremely expensive specialized hardware.
+    </p>
+
+    <p>
+      Gerald Youngblood's series <em>A Software-Defined Radio for the Masses</em>, published in QEX beginning in 2002, described a PC-based SDR using a sound card and an innovative detector architecture. :chatgpt-content-reference{index="4"}
+    </p>
+
+    <p>
+      The title itself captured an important idea:
+    </p>
+
+    <p>
+      <strong>SDR was becoming accessible to ordinary experimenters.</strong>
+    </p>
+
+    <h2>FlexRadio and the Modern SDR Transceiver</h2>
+
+    <p>
+      Commercial amateur-radio SDRs soon began to appear.
+    </p>
+
+    <p>
+      FlexRadio became one of the most visible examples of this transition, combining RF hardware with extensive software-based signal processing and a computer-centered operating interface.
+    </p>
+
+    <p>
+      By the middle of the 2000s, SDR was moving from experimental projects toward practical amateur-radio equipment. An ARRL Software Defined Radio Working Group report from 2007 described FlexRadio systems, HPSDR, GNU Radio, Linrad and other projects as increasingly available to radio amateurs. :chatgpt-content-reference{index="5"}
+    </p>
+
+    <p>
+      This was a turning point.
+    </p>
+
+    <p>
+      SDR was no longer simply an interesting laboratory concept.
+    </p>
+
+    <p>
+      It was becoming a practical architecture for an amateur transceiver.
+    </p>
+
+    <h2>The Panadapter Changes the Operating Experience</h2>
+
+    <p>
+      One of the most visible consequences of SDR was the panadapter.
+    </p>
+
+    <p>
+      Instead of tuning the receiver to one frequency and hearing only what happened there, the operator could see a section of spectrum displayed on the computer screen.
+    </p>
+
+    <p>
+      Signals appeared visually as peaks or traces.
+    </p>
+
+    <p>
+      The operator could see several signals at once.
+    </p>
+
+    <p>
+      The relationship between frequency and signal activity became much easier to understand.
+    </p>
+
+    <p>
+      This changed the operating experience.
+    </p>
+
+    <p>
+      The spectrum was no longer something the operator imagined from the sound in the speaker.
+    </p>
+
+    <p>
+      It became visible.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The waterfall did more than make the radio look modern.</strong> It gave the operator a visual representation of how signals occupied the spectrum over time.
+      </p>
+    </div>
+
+    <h2>One Radio, Many Receivers</h2>
+
+    <p>
+      Another important advantage of many SDR architectures is the ability to process multiple signals from the same sampled spectrum.
+    </p>
+
+    <p>
+      If the receiver digitizes a sufficiently wide portion of spectrum, software can select and process different signals within that bandwidth.
+    </p>
+
+    <p>
+      Depending on the architecture, this can allow multiple simultaneous receivers or multiple independent processing channels.
+    </p>
+
+    <p>
+      This is very different from the traditional concept of a single analog receiver chain.
+    </p>
+
+    <p>
+      The software can decide how the available digital bandwidth is divided and processed.
+    </p>
+
+    <h2>SDR and Digital Modes</h2>
+
+    <p>
+      The growth of SDR also accelerated the relationship between amateur radio and digital modes.
+    </p>
+
+    <p>
+      Once signals exist as digital samples, software can analyze them using sophisticated algorithms.
+    </p>
+
+    <p>
+      This makes it possible to implement decoders for different digital modes without requiring a separate hardware demodulator for every one.
+    </p>
+
+    <p>
+      Modern modes such as FT8 represent an extreme example of this philosophy.
+    </p>
+
+    <p>
+      The transceiver provides the RF path, but the computer performs timing, signal detection, decoding and message processing.
+    </p>
+
+    <p>
+      The modern digital station is therefore the result of several historical developments coming together:
+    </p>
+
+    <p>
+      <strong>computer + interface + DSP + software + radio.</strong>
+    </p>
+
+    <h2>SDR in Amateur Satellites</h2>
+
+    <p>
+      SDR technology also found an important application in amateur spacecraft.
+    </p>
+
+    <p>
+      A spacecraft has severe constraints on size, weight, power consumption and flexibility. A programmable radio can provide multiple communication functions without requiring a separate hardware chain for every mode.
+    </p>
+
+    <p>
+      AMSAT's ARISSat-1, launched from the International Space Station in 2011, demonstrated the use of SDR technology in an amateur spacecraft and supported several different functions, including telemetry and slow-scan television. :chatgpt-content-reference{index="6"}
+    </p>
+
+    <p>
+      This illustrates one of the deeper advantages of SDR.
+    </p>
+
+    <p>
+      Software can allow a radio system to evolve after the hardware has been built.
+    </p>
+
+    <h2>The Radio Becomes an Open Platform</h2>
+
+    <p>
+      Traditional radio design tended to define a product through its hardware.
+    </p>
+
+    <p>
+      SDR introduced a different relationship between the manufacturer, the operator and the equipment.
+    </p>
+
+    <p>
+      A software update could change the capabilities of the radio.
+    </p>
+
+    <p>
+      Open-source projects could allow operators and developers to create new functions.
+    </p>
+
+    <p>
+      Experimental hardware could be combined with independently developed software.
+    </p>
+
+    <p>
+      Projects such as HPSDR demonstrated the possibilities of open hardware and software development within the amateur-radio community. ARRL documentation from the 2000s describes HPSDR as an open-source project developed with participation from TAPR and AMSAT. :chatgpt-content-reference{index="7"}
+    </p>
+
+    <h2>What SDR Did Not Change</h2>
+
+    <p>
+      Despite all these changes, SDR did not eliminate the fundamentals of radio.
+    </p>
+
+    <p>
+      The antenna still matters.
+    </p>
+
+    <p>
+      Propagation still matters.
+    </p>
+
+    <p>
+      Noise still matters.
+    </p>
+
+    <p>
+      Receiver dynamic range still matters.
+    </p>
+
+    <p>
+      Transmitter linearity still matters.
+    </p>
+
+    <p>
+      Frequency accuracy still matters.
+    </p>
+
+    <p>
+      An SDR can process signals in extraordinary ways, but it cannot repeal the laws of electromagnetism.
+    </p>
+
+    <p>
+      This is an important distinction for modern operators.
+    </p>
+
+    <p>
+      Software can make a radio more flexible.
+    </p>
+
+    <p>
+      It cannot make a poor antenna behave like a high-gain antenna or make a weak propagation path disappear.
+    </p>
+
+    <h2>From Hardware Radio to Software Radio</h2>
+
+    <p>
+      The history of amateur radio can now be seen as a long movement from fixed hardware toward programmable systems.
+    </p>
+
+    <p>
+      Spark transmitters gave way to continuous-wave oscillators.
+    </p>
+
+    <p>
+      Vacuum tubes gave way to transistors.
+    </p>
+
+    <p>
+      Analog circuits were supplemented by digital processing.
+    </p>
+
+    <p>
+      Computers entered the station.
+    </p>
+
+    <p>
+      DSP moved signal processing into mathematics.
+    </p>
+
+    <p>
+      SDR moved an increasing part of the radio itself into software.
+    </p>
+
+    <p>
+      The result is not the disappearance of hardware.
+    </p>
+
+    <p>
+      It is a new division of labor.
+    </p>
+
+    <p>
+      Hardware handles the physical interface with the electromagnetic world.
+    </p>
+
+    <p>
+      Software handles an increasing amount of the intelligence used to process that world.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The great change brought by SDR was not that the radio stopped being electronic.</strong> It was that the behavior of the radio became increasingly programmable.
+      </p>
+    </div>
+
+    <h2>The Modern Amateur Station</h2>
+
+    <p>
+      A modern amateur station may contain a transceiver, computer, digital interface, logging software, propagation tools, satellite tracking software and digital-mode applications.
+    </p>
+
+    <p>
+      In some stations, much of the receiver and transmitter architecture is implemented through digital processing.
+    </p>
+
+    <p>
+      In others, conventional RF hardware remains dominant while the computer handles control and digital modes.
+    </p>
+
+    <p>
+      Both approaches belong to the same technological evolution.
+    </p>
+
+    <p>
+      The important idea is that the computer has become part of the radio system.
+    </p>
+
+    <p>
+      And once that happened, the possibilities expanded dramatically.
+    </p>
+
+    <h2>The Continuing Experiment</h2>
+
+    <p>
+      Software-defined radio is not the end of amateur-radio experimentation.
+    </p>
+
+    <p>
+      It is another stage in it.
+    </p>
+
+    <p>
+      GNU Radio, open-source hardware, FPGA processing, networked receivers, inexpensive SDR devices and increasingly capable computers continue to give amateurs new ways to explore the radio spectrum. The ARRL continues to maintain extensive SDR resources, while GNU Radio has developed into a general-purpose open-source toolkit for signal processing and SDR experimentation. :chatgpt-content-reference{index="8"}
+    </p>
+
+    <p>
+      The tools are different from those used by the pioneers of amateur radio.
+    </p>
+
+    <p>
+      The principle is remarkably similar.
+    </p>
+
+    <p>
+      Experiment.
+    </p>
+
+    <p>
+      Build.
+    </p>
+
+    <p>
+      Measure.
+    </p>
+
+    <p>
+      Improve.
+    </p>
+
+    <p>
+      And then share what was learned.
+    </p>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From SDR to the modern digital station</h3>
+
+      <p>
+        Software-defined radio brought together decades of development in computers, DSP, digital interfaces and radio engineering. The result is the highly integrated amateur station we use today.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
