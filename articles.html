@@ -1,826 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Articles | CE4RWS</title>
-
-<meta name="description" content="Practical amateur radio articles about HF propagation, antennas, digital radio, DX and radio technology.">
-
-<style>
-
-:root{
-  --navy:#071525;
-  --cobalt:#155EEF;
-  --yellow:#FFD21F;
-  --paper:#F5F7FA;
-  --white:#ffffff;
-  --ink:#071525;
-  --muted:#617285;
-  --line:#dfe7ee;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-}
-
-a{
-  color:inherit;
-}
-
-header{
-  background:var(--navy);
-  color:white;
-  padding:22px 7%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
-}
-
-.brand{
-  text-decoration:none;
-}
-
-.brand-main{
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:-.02em;
-}
-
-.brand-main span{
-  color:var(--yellow);
-}
-
-.brand-sub{
-  margin-top:8px;
-  font-size:13px;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:#dce7f2;
-}
-
-nav{
-  display:flex;
-  gap:28px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:800;
-  letter-spacing:.05em;
-  text-transform:uppercase;
-}
-
-nav a:hover{
-  color:var(--yellow);
-}
-
-.hero{
-  background:var(--navy);
-  color:white;
-  padding:90px 7% 85px;
-}
-
-.hero-inner{
-  max-width:1250px;
-  margin:auto;
-}
-
-.kicker{
-  color:var(--yellow);
-  font-size:14px;
-  font-weight:800;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  margin-bottom:18px;
-}
-
-.hero h1{
-  font-size:clamp(52px,7vw,88px);
-  line-height:.92;
-  letter-spacing:-.055em;
-  margin:0;
-  max-width:900px;
-}
-
-.hero p{
-  max-width:720px;
-  margin:28px 0 0;
-  font-size:19px;
-  line-height:1.7;
-  color:#dce7f2;
-}
-
-main{
-  max-width:1250px;
-  margin:auto;
-  padding:70px 7% 100px;
-}
-
-.section-intro{
-  max-width:800px;
-  margin-bottom:45px;
-}
-
-.section-label{
-  color:var(--cobalt);
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  margin-bottom:12px;
-}
-
-.section-intro h2{
-  font-size:42px;
-  line-height:1.05;
-  letter-spacing:-.035em;
-  margin:0 0 16px;
-}
-
-.section-intro p{
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.7;
-  margin:0;
-}
-
-.category{
-  margin-top:70px;
-}
-
-.category-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:30px;
-  border-bottom:2px solid var(--line);
-  padding-bottom:18px;
-  margin-bottom:28px;
-}
-
-.category-head h2{
-  margin:0;
-  font-size:30px;
-  letter-spacing:-.025em;
-}
-
-.category-head p{
-  margin:0;
-  max-width:560px;
-  color:var(--muted);
-  line-height:1.6;
-}
-
-.articles-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-
-.article-card{
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:28px;
-  box-shadow:0 12px 30px rgba(9,39,66,.06);
-  transition:transform .2s ease,box-shadow .2s ease;
-}
-
-.article-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 38px rgba(9,39,66,.11);
-}
-
-.article-number{
-  color:var(--yellow);
-  font-weight:900;
-  font-size:13px;
-  letter-spacing:.1em;
-  margin-bottom:20px;
-}
-
-.article-card h3{
-  margin:0 0 14px;
-  font-size:23px;
-  line-height:1.2;
-}
-
-.article-card p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.7;
-  font-size:15px;
-}
-
-.article-tag{
-  display:inline-block;
-  margin-top:22px;
-  color:var(--cobalt);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-
-.deep{
-  margin-top:75px;
-  background:var(--navy);
-  color:white;
-  border-radius:20px;
-  padding:32px 36px;
-}
-
-.deep strong{
-  color:var(--yellow);
-  margin-right:10px;
-}
-
-.deep p{
-  display:inline;
-  color:#dce7f2;
-}
-
-footer{
-  background:var(--navy);
-  color:#dce7f2;
-  padding:35px 7%;
-  text-align:center;
-  font-size:14px;
-}
-
-footer strong{
-  color:white;
-}
-
-@media(max-width:900px){
-
-  header{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .articles-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-}
-
-@media(max-width:650px){
-
-  .articles-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    padding:65px 6%;
-  }
-
-  main{
-    padding:55px 6% 80px;
-  }
-
-  .category-head{
-    display:block;
-  }
-
-  .category-head p{
-    margin-top:12px;
-  }
-
-  nav{
-    gap:16px;
-  }
-
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-
-  <a class="brand" href="index.html">
-    <div class="brand-main">
-      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
-    </div>
-
-    <div class="brand-sub">
-      Amateur Radio · Exploration · Books · Technology
-    </div>
-  </a>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="index.html#sobre-mi">About</a>
-    <a href="articles.html">Articles</a>
-    <a href="index.html#libros">Books</a>
-    <a href="index.html#radio">Amateur Radio</a>
-    <a href="index.html#contacto">Contact</a>
-  </nav>
-
-</header>
-
-<section class="hero">
-
-  <div class="hero-inner">
-
-    <div class="kicker">
-      CE4RWS · ARTICLES
-    </div>
-
-    <h1>
-      Amateur Radio,<br>
-      Explained Simply.
-    </h1>
-
-    <p>
-      Practical articles about propagation, antennas, digital radio,
-      DX and the technology behind amateur radio. Clear explanations
-      for radio amateurs who want to understand not only what happens,
-      but why it happens.
-    </p>
-
-  </div>
-
-</section>
-
 <main>
 
   <div class="section-intro">
-
-    <div class="section-label">
-      Knowledge · Experience · Radio
-    </div>
-
-    <h2>
-      Understanding the radio world.
-    </h2>
-
+    <div class="section-label">Knowledge · Experience · Radio</div>
+    <h2>Understanding the radio world.</h2>
     <p>
       Amateur radio brings together electronics, antennas, propagation,
       software, physics and practical experience. These articles explore
       those subjects in a clear and useful way, connecting technical
       theory with what we actually observe at the station.
     </p>
-
   </div>
 
-
   <section class="category">
-
     <div class="category-head">
-
       <h2>Propagation & DX</h2>
-
       <p>
         Understanding the ionosphere, solar activity, propagation
         conditions and the changing behaviour of the HF bands.
       </p>
-
     </div>
 
     <div class="articles-grid">
 
       <article class="article-card">
         <div class="article-number">01 · PROPAGATION</div>
-     <h3><a href="article-hf-band.html" style="text-decoration:none;color:inherit;">Why Is One HF Band Open While Another Seems Completely Dead?</a></h3>
-        <p>
-          A practical look at why different HF bands can behave very
-          differently at the same moment.
-        </p>
+        <h3><a href="article-hf-band.html">Why Is One HF Band Open While Another Seems Completely Dead?</a></h3>
+        <p>A practical look at why different HF bands can behave very differently at the same moment.</p>
         <div class="article-tag">HF Propagation</div>
       </article>
 
       <article class="article-card">
-        <div class="article-number">02 · PROPAGATION</div>
-      <h3><a href="article-muf.html" style="text-decoration:none;color:inherit;">What Is the MUF and How Can It Help Us Choose a Band?</a></h3>
-        <p>
-          Understanding the Maximum Usable Frequency and what it means
-          for real-world HF communication.
-        </p>
-        <div class="article-tag">MUF</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">03 · PROPAGATION</div>
-       <h3><a href="article-luf.html" style="text-decoration:none;color:inherit;">What Is the LUF and Why Do Lower Frequencies Sometimes Disappear?</a></h3>
-        <p>
-          Why absorption and noise can make lower HF frequencies
-          increasingly difficult to use.
-        </p>
-        <div class="article-tag">LUF</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">04 · PROPAGATION</div>
-        <h3><a href="article-grey-line.html" style="text-decoration:none;color:inherit;">Why Does the Grey Line Matter in HF Propagation?</a></h3>
-        <p>
-          How the transition between daylight and darkness can influence
-          long-distance HF paths.
-        </p>
-        <div class="article-tag">Grey Line</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">05 · SOLAR ACTIVITY</div>
-        <h3><a href="article-sfi.html" style="text-decoration:none;color:inherit;">What Does Solar Flux Really Tell Us About HF Propagation?</a></h3>
-        <p>
-          What the SFI indicates, what it does not indicate, and how to
-          interpret it alongside other propagation data.
-        </p>
+        <div class="article-number">02 · SOLAR ACTIVITY</div>
+        <h3><a href="article-sfi.html">What Does Solar Flux Really Tell Us About HF Propagation?</a></h3>
+        <p>What the SFI indicates, what it does not indicate, and how to interpret it alongside other propagation data.</p>
         <div class="article-tag">SFI</div>
       </article>
 
       <article class="article-card">
-        <div class="article-number">06 · GEOMAGNETIC</div>
-        <h3>What Does Kp Really Tell Us About HF Propagation?</h3>
-        <p>
-          Understanding the Kp index and why geomagnetic conditions can
-          change the behaviour of the HF bands.
-        </p>
-        <div class="article-tag">Kp Index</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">07 · SOLAR ACTIVITY</div>
-        <h3><a href="article-solar-flare.html" style="text-decoration:none;color:inherit;">What Does a Solar Flare Really Mean for HF Radio?</a></h3>
-        <p>
-          What happens when solar radiation suddenly increases and how
-          this can affect HF communications.
-        </p>
-        <div class="article-tag">Solar Flares</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">08 · SOLAR ACTIVITY</div>
-        <h3><a href="article-geomagnetic-storm.html" style="text-decoration:none;color:inherit;">What Is a Geomagnetic Storm and How Can It Affect HF?</a></h3>
-        <p>
-          A practical explanation of geomagnetic storms and their possible
-          effects on amateur radio propagation.
-        </p>
-        <div class="article-tag">Geomagnetic Storms</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">09 · SOLAR CYCLE</div>
-        <h3><a href="article-solar-cycle.html" style="text-decoration:none;color:inherit;">How Does the Solar Cycle Change Amateur Radio?</a></h3>
-        <p>
-          Why the eleven-year solar cycle matters to HF operators and
-          long-distance communication.
-        </p>
-        <div class="article-tag">Solar Cycle</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">10 · IONOSPHERE</div>
-        <h3>What Are Ionospheric Data and Why Do They Matter?</h3>
-        <p>
-          How ionospheric measurements can help us understand what is
-          happening above the station.
-        </p>
-        <div class="article-tag">Ionosphere</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">11 · NVIS</div>
-        <h3><a href="article-nvis.html" style="text-decoration:none;color:inherit;">What Is NVIS and When Can It Be Useful?</a></h3>
-        <p>
-          Understanding Near Vertical Incidence Skywave propagation and
-          when it can provide useful regional coverage.
-        </p>
-        <div class="article-tag">NVIS</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">12 · SIGNALS</div>
-        <h3>Why Can a Strong Signal Still Be Difficult to Copy?</h3>
-        <p>
-          Signal strength is only part of the story. Noise, fading,
-          interference and propagation can change what we actually hear.
-        </p>
-        <div class="article-tag">Reception</div>
+        <div class="article-number">03 · PROPAGATION</div>
+        <h3><a href="article-grey-line.html">Why Does the Grey Line Matter in HF Propagation?</a></h3>
+        <p>How the transition between daylight and darkness can influence long-distance HF paths.</p>
+        <div class="article-tag">Grey Line</div>
       </article>
 
     </div>
-
   </section>
 
-
   <section class="category">
-
     <div class="category-head">
-
       <h2>Antennas & RF</h2>
-
       <p>
         Practical explanations about antennas, SWR, reflected power,
         polarization, height and the factors that determine real
         station performance.
       </p>
-
     </div>
 
     <div class="articles-grid">
 
       <article class="article-card">
         <div class="article-number">01 · ANTENNAS</div>
-      <h3>What Does SWR Really Tell Us?</h3>
-        <p>
-          Understanding standing wave ratio and what it actually tells us
-          about the relationship between a transmitter, feed line and load.
-        </p>
+        <h3><a href="article-swr.html">What Does SWR Really Tell Us?</a></h3>
+        <p>Understanding standing wave ratio and what it actually tells us about the relationship between a transmitter, feed line and load.</p>
         <div class="article-tag">SWR</div>
       </article>
 
       <article class="article-card">
         <div class="article-number">02 · ANTENNAS</div>
-        <h3><a href="article-swr-antenna.html" style="text-decoration:none;color:inherit;">Why Doesn’t a Perfect 1:1 SWR Always Mean a Good Antenna?</a></h3>
-        <p>
-          A low SWR is useful, but it does not automatically tell us
-          how efficiently an antenna radiates.
-        </p>
+        <h3><a href="article-swr-antenna.html">Why Doesn’t a Perfect 1:1 SWR Always Mean a Good Antenna?</a></h3>
+        <p>A low SWR is useful, but it does not automatically tell us how efficiently an antenna radiates.</p>
         <div class="article-tag">Antenna Efficiency</div>
       </article>
 
       <article class="article-card">
-        <div class="article-number">03 · RF</div>
-      <h3><a href="article-reflected-power.html" style="text-decoration:none;color:inherit;">What Happens to Reflected Power?</a></h3>
-        <p>
-          Understanding what really happens when energy returns toward
-          the transmitter and how feed lines are involved.
-        </p>
-        <div class="article-tag">Reflected Power</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">04 · ANTENNAS</div>
-        <h3>How Does Antenna Height Really Change HF Performance?</h3>
-        <p>
-          Height changes the radiation pattern and therefore changes
-          how an antenna interacts with different propagation paths.
-        </p>
+        <div class="article-number">03 · ANTENNAS</div>
+        <h3><a href="article-antenna-height.html">How Does Antenna Height Really Change HF Performance?</a></h3>
+        <p>Height changes the radiation pattern and therefore changes how an antenna interacts with different propagation paths.</p>
         <div class="article-tag">Antenna Height</div>
       </article>
 
-      <article class="article-card">
-        <div class="article-number">05 · ANTENNAS</div>
-        <h3><a href="article-polarization.html" style="text-decoration:none;color:inherit;">Why Does Polarization Matter So Much in HF?</a></h3>
-        <p>
-          Understanding polarization and why its practical importance
-          depends strongly on the propagation path.
-        </p>
-        <div class="article-tag">Polarization</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">06 · RF</div>
-        <h3>Why Is Noise Sometimes More Important Than Signal Strength?</h3>
-        <p>
-          A useful look at signal-to-noise ratio and why a weaker signal
-          can sometimes be easier to copy than a stronger one.
-        </p>
-        <div class="article-tag">SNR</div>
-      </article>
-
     </div>
-
   </section>
 
-
- 
-    <section class="category">
-
+  <section class="category">
     <div class="category-head">
-
       <h2>Digital Radio</h2>
-
       <p>
         FT8, digital communication, software, interfaces and the technology
         that has transformed the modern amateur-radio station.
       </p>
-
     </div>
 
     <div class="articles-grid">
 
       <article class="article-card">
         <div class="article-number">01 · FT8</div>
-        <h3><a href="article-ft8.html" style="text-decoration:none;color:inherit;">What Is FT8 and Why Has It Become So Important in Amateur Radio?</a></h3>
-        <p>
-          How FT8 works, why it is so effective with weak signals and what
-          makes it different from traditional amateur-radio modes.
-        </p>
+        <h3><a href="article-ft8.html">What Is FT8 and Why Has It Become So Important in Amateur Radio?</a></h3>
+        <p>How FT8 works, why it is so effective with weak signals and what makes it different from traditional amateur-radio modes.</p>
         <div class="article-tag">FT8</div>
       </article>
 
       <article class="article-card">
         <div class="article-number">02 · DIGITAL</div>
-        <h3><a href="article-digital-signal-report.html" style="text-decoration:none;color:inherit;">What Is a Digital Signal Report and What Does It Really Mean?</a></h3>
-        <p>
-          Understanding digital signal reports, dB values and what a
-          negative FT8 report actually tells us.
-        </p>
+        <h3><a href="article-digital-signal-report.html">What Is a Digital Signal Report and What Does It Really Mean?</a></h3>
+        <p>Understanding digital signal reports, dB values and what a negative FT8 report actually tells us.</p>
         <div class="article-tag">Signal Reports</div>
       </article>
 
       <article class="article-card">
-        <div class="article-number">03 · SOFTWARE</div>
-        <h3><a href="article-wsjt-x.html" style="text-decoration:none;color:inherit;">What Is WSJT-X and How Does It Work with FT8?</a></h3>
-        <p>
-          The role of WSJT-X in digital operation, from audio and CAT control
-          to decoding and transmission.
-        </p>
-        <div class="article-tag">WSJT-X</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">04 · INTERFACES</div>
-        <h3><a href="article-digital-interface.html" style="text-decoration:none;color:inherit;">What Is a Digital Radio Interface and Why Is It Important?</a></h3>
-        <p>
-          How audio, CAT, PTT and the computer connect together to create a
-          reliable digital-radio station.
-        </p>
-        <div class="article-tag">Interfaces</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">05 · PROPAGATION</div>
-        <h3><a href="article-psk-reporter.html" style="text-decoration:none;color:inherit;">What Is PSK Reporter and What Can It Tell You About Propagation?</a></h3>
-        <p>
-          How reception reports from digital stations can reveal band
-          openings, propagation paths and real-world signal behaviour.
-        </p>
+        <div class="article-number">03 · PROPAGATION</div>
+        <h3><a href="article-psk-reporter.html">What Is PSK Reporter and What Can It Tell You About Propagation?</a></h3>
+        <p>How reception reports from digital stations can reveal band openings, propagation paths and real-world signal behaviour.</p>
         <div class="article-tag">PSK Reporter</div>
       </article>
 
-      <article class="article-card">
-        <div class="article-number">06 · RTTY</div>
-        <h3><a href="article-rtty.html" style="text-decoration:none;color:inherit;">What Is RTTY and How Does It Work?</a></h3>
-        <p>
-          The history and operation of Radio Teletype, from FSK and shift
-          keying to modern computer-based RTTY.
-        </p>
-        <div class="article-tag">RTTY</div>
-      </article>
-
     </div>
-
   </section>
 
-
   <section class="category">
-
     <div class="category-head">
-
       <h2>Radio History</h2>
-
       <p>
         The people, inventions, experiments and technological changes that
         shaped amateur radio from its beginnings to the modern station.
       </p>
-
     </div>
 
     <div class="articles-grid">
 
       <article class="article-card">
         <div class="article-number">01 · HISTORY</div>
-        <h3><a href="article-history-amateur-radio.html" style="text-decoration:none;color:inherit;">The History of Amateur Radio: From the First Experiments to Modern Radio</a></h3>
-        <p>
-          A broad journey through the experiments, people and technologies
-          that shaped amateur radio.
-        </p>
+        <h3><a href="article-history-amateur-radio.html">The History of Amateur Radio: From the First Experiments to Modern Radio</a></h3>
+        <p>A broad journey through the experiments, people and technologies that shaped amateur radio.</p>
         <div class="article-tag">Origins</div>
       </article>
 
       <article class="article-card">
         <div class="article-number">02 · HF HISTORY</div>
-        <h3><a href="article-short-wave-discovery.html" style="text-decoration:none;color:inherit;">The Discovery of Short-Wave Propagation: How Amateur Radio Changed the Understanding of HF</a></h3>
-        <p>
-          How amateur experiments helped reveal the extraordinary potential
-          of the short-wave spectrum.
-        </p>
+        <h3><a href="article-short-wave-discovery.html">The Discovery of Short-Wave Propagation: How Amateur Radio Changed the Understanding of HF</a></h3>
+        <p>How amateur experiments helped reveal the extraordinary potential of the short-wave spectrum.</p>
         <div class="article-tag">Short Wave</div>
       </article>
 
       <article class="article-card">
-        <div class="article-number">03 · PEOPLE</div>
-        <h3><a href="article-hiram-percy-maxim.html" style="text-decoration:none;color:inherit;">Who Was Hiram Percy Maxim?</a></h3>
-        <p>
-          The engineer and radio amateur whose work helped organize amateur
-          radio in the United States.
-        </p>
-        <div class="article-tag">H. P. Maxim</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">04 · LAW</div>
-        <h3><a href="article-radio-act-1912.html" style="text-decoration:none;color:inherit;">How the Radio Act of 1912 Changed Amateur Radio</a></h3>
-        <p>
-          Why the first major federal regulation of radio had an unexpected
-          influence on amateur experimentation.
-        </p>
-        <div class="article-tag">1912</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">05 · CW</div>
-        <h3><a href="article-spark-to-cw.html" style="text-decoration:none;color:inherit;">From Spark to CW</a></h3>
-        <p>
-          How continuous-wave transmission replaced spark and transformed
-          the possibilities of radio communication.
-        </p>
-        <div class="article-tag">CW</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">06 · VOICE</div>
-        <h3><a href="article-rise-of-voice.html" style="text-decoration:none;color:inherit;">The Rise of Voice Radio: From CW to AM</a></h3>
-        <p>
-          How voice transmission became practical and changed the way radio
-          amateurs communicated.
-        </p>
-        <div class="article-tag">AM</div>
-      </article>
-
-      <article class="article-card">
-        <div class="article-number">07 · SSB</div>
-        <h3><a href="article-rise-of-ssb.html" style="text-decoration:none;color:inherit;">The Rise of SSB</a></h3>
-        <p>
-          Why single-sideband transmission became one of the defining
-          technologies of modern HF amateur radio.
-        </p>
+        <div class="article-number">03 · SSB</div>
+        <h3><a href="article-rise-of-ssb.html">The Rise of SSB</a></h3>
+        <p>Why single-sideband transmission became one of the defining technologies of modern HF amateur radio.</p>
         <div class="article-tag">SSB</div>
       </article>
 
-      <article class="article-card">
-        <div class="article-number">08 · ELECTRONICS</div>
-        <h3><a href="article-transistor-revolution.html" style="text-decoration:none;color:inherit;">The Transistor Revolution: How Solid-State Electronics Changed Amateur Radio</a></h3>
-        <p>
-          How the transistor transformed radio equipment, portability,
-          reliability and electronic experimentation.
-        </p>
-        <div class="article-tag">Transistors</div>
-      </article>
-
-    
-
-      
-
-      <article class="article-card">
-        <div class="article-number">12 · SDR</div>
-        <h3><a href="article-software-defined-radio.html" style="text-decoration:none;color:inherit;">Software-Defined Radio: When the Radio Became Software</a></h3>
-        <p>
-          How digital signal processing moved an increasing part of the
-          radio from dedicated hardware into software.
-        </p>
-        <div class="article-tag">SDR</div>
-      </article>
-
     </div>
-
   </section>
 
-
   <div class="deep">
-
     <strong>GO DEEPER</strong>
-
     <p>
       Many of these subjects are explored in greater depth in the
       CE4RWS technical books and training manuals.
     </p>
-
   </div>
 
 </main>
-
-
-<footer>
-
-  <strong>CE4RWS · CHILE</strong><br><br>
-  © 2026 Héctor Quintas Iglesias · CE4RWS
-
-</footer>
-
-</body>
-</html>
