@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is the MUF and How Can It Help Us Choose a Band? | CE4RWS</title>
+
+<meta name="description" content="What is the Maximum Usable Frequency? A practical explanation of MUF and how it can help amateur radio operators understand HF propagation and choose a band.">
+
+<style>
+
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+a{
+  color:inherit;
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+}
+
+.brand-main{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:8px;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--yellow);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:white;
+  padding:85px 7% 90px;
+}
+
+.article-hero-inner{
+  max-width:1050px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.article-hero h1{
+  font-size:clamp(46px,6.5vw,78px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin:0;
+  max-width:1000px;
+}
+
+.article-intro{
+  max-width:780px;
+  margin:30px 0 0;
+  font-size:20px;
+  line-height:1.7;
+  color:#dce7f2;
+}
+
+.article-meta{
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.article-meta span{
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:75px 7% 100px;
+}
+
+.article-body{
+  font-size:18px;
+  line-height:1.85;
+  color:#26384d;
+}
+
+.article-body p{
+  margin:0 0 28px;
+}
+
+.article-body h2{
+  color:var(--ink);
+  font-size:32px;
+  line-height:1.15;
+  letter-spacing:-.025em;
+  margin:55px 0 20px;
+}
+
+.article-body strong{
+  color:var(--ink);
+}
+
+.highlight{
+  margin:42px 0;
+  padding:28px 30px;
+  border-left:5px solid var(--yellow);
+  background:white;
+  border-radius:0 14px 14px 0;
+  box-shadow:0 10px 28px rgba(9,39,66,.06);
+}
+
+.highlight p{
+  margin:0;
+}
+
+.back{
+  margin-top:65px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
+
+.back a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--cobalt);
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+.back a:hover{
+  color:var(--navy);
+}
+
+.deep{
+  margin-top:55px;
+  background:var(--navy);
+  color:white;
+  border-radius:18px;
+  padding:30px 32px;
+}
+
+.deep strong{
+  color:var(--yellow);
+  margin-right:8px;
+}
+
+.deep p{
+  display:inline;
+  color:#dce7f2;
+}
+
+footer{
+  background:var(--navy);
+  color:#dce7f2;
+  padding:35px 7%;
+  text-align:center;
+  font-size:14px;
+}
+
+footer strong{
+  color:white;
+}
+
+@media(max-width:800px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .article-hero{
+    padding:65px 6% 70px;
+  }
+
+  main{
+    padding:55px 6% 80px;
+  }
+
+  nav{
+    gap:16px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <a class="brand" href="index.html">
+
+    <div class="brand-main">
+      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
+    </div>
+
+    <div class="brand-sub">
+      Amateur Radio · Exploration · Books · Technology
+    </div>
+
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#sobre-mi">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="index.html#libros">Books</a>
+    <a href="index.html#radio">Amateur Radio</a>
+    <a href="index.html#contacto">Contact</a>
+  </nav>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">
+      CE4RWS · PROPAGATION & DX
+    </div>
+
+    <h1>
+      What Is the MUF and How Can It Help Us Choose a Band?
+    </h1>
+
+    <p class="article-intro">
+      The Maximum Usable Frequency is one of the most useful concepts
+      for understanding HF propagation. It helps explain why a path
+      may work on one band while becoming difficult or impossible on
+      a higher frequency.
+    </p>
+
+    <div class="article-meta">
+      <span>MUF</span>
+      <span>HF Propagation</span>
+      <span>DX</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <article class="article-body">
+
+    <p>
+      When an HF operator moves from one band to another, it is common
+      to find that the propagation conditions change dramatically.
+      A path that works well on 14 MHz may be difficult on 21 MHz,
+      while a lower band may continue to provide useful signals.
+      One of the concepts that helps us understand this behaviour is
+      the Maximum Usable Frequency, or MUF.
+    </p>
+
+    <p>
+      The MUF is not simply the highest frequency that a radio can
+      receive or transmit. It is a propagation concept. For a
+      particular path and set of ionospheric conditions, it represents
+      an estimate of the highest frequency that can normally be used
+      for ionospheric propagation over that path.
+    </p>
+
+    <h2>
+      What does MUF actually mean?
+    </h2>
+
+    <p>
+      Imagine a radio signal travelling from one station toward the
+      ionosphere. Depending on its frequency, the ionospheric conditions
+      and the geometry of the path, the signal may be refracted back
+      toward Earth or may continue through the ionosphere instead of
+      returning to the required destination.
+    </p>
+
+    <p>
+      The MUF is associated with the upper frequency limit at which
+      the required ionospheric propagation can normally be maintained
+      for a particular path. Above that frequency, the same path may
+      become unreliable because the signal is no longer returned to
+      Earth in the way required for communication.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>The important point:</strong>
+        MUF is always connected to a propagation path. There is not
+        one single MUF for the entire ionosphere or for every station
+        at the same moment.
+      </p>
+
+    </div>
+
+    <h2>
+      There is no single MUF for the whole world
+    </h2>
+
+    <p>
+      This is one of the most important things to understand about the
+      concept. MUF depends on the path between two locations. A
+      propagation path from Chile to Europe can have a different
+      usable upper frequency from a path between Chile and Australia,
+      even at approximately the same time.
+    </p>
+
+    <p>
+      The ionosphere is not uniform over the entire planet. Solar
+      illumination, latitude, local time, season, geomagnetic
+      conditions and the geometry of the radio path all influence
+      propagation.
+    </p>
+
+    <p>
+      For this reason, a propagation map can show very different
+      conditions for different parts of the world. A band may be
+      excellent in one direction and much less useful in another.
+    </p>
+
+    <h2>
+      What happens above the MUF?
+    </h2>
+
+    <p>
+      As the operating frequency increases, the ionosphere must be able
+      to refract the signal sufficiently for the required path. If the
+      frequency becomes too high for the prevailing conditions, the
+      signal may no longer return to Earth along that path.
+    </p>
+
+    <p>
+      This is why a higher amateur band can sometimes appear to
+      disappear while a lower band remains active. The lower frequency
+      may still be within a useful propagation range, while the higher
+      frequency has moved beyond what the ionosphere can support for
+      that particular path.
+    </p>
+
+    <p>
+      This does not mean that the higher band is globally closed.
+      Another path, another time or another location may have very
+      different conditions.
+    </p>
+
+    <h2>
+      MUF changes with time
+    </h2>
+
+    <p>
+      The MUF is dynamic because the ionosphere is dynamic. Solar
+      radiation changes throughout the day, and the ionospheric layers
+      respond to those changes.
+    </p>
+
+    <p>
+      During periods of stronger ionization, higher HF frequencies may
+      become useful over some paths. After sunset, the behaviour of
+      the ionosphere changes again. Geomagnetic disturbances can also
+      alter propagation conditions and make previously useful paths
+      less predictable.
+    </p>
+
+    <p>
+      This is why the same path can support a contact on 21 MHz at one
+      time of day and work much better on 14 MHz later. The useful
+      frequency range has changed with the propagation environment.
+    </p>
+
+    <h2>
+      MUF is not the same as the best operating frequency
+    </h2>
+
+    <p>
+      Another common misunderstanding is to assume that the MUF is
+      automatically the frequency we should use. It is not.
+    </p>
+
+    <p>
+      The MUF represents an upper limit associated with a propagation
+      path. Operating exactly at that limit may not provide the most
+      stable communication. Conditions fluctuate, measurements have
+      uncertainty and the ionosphere does not behave like a perfectly
+      fixed boundary.
+    </p>
+
+    <p>
+      In practical operation, radio amateurs often consider frequencies
+      below the estimated MUF when choosing where to operate. The
+      precise margin depends on the path, the type of propagation,
+      the data available and the objective of the communication.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>Think of MUF as a ceiling, not a target.</strong>
+        Knowing where the ceiling is can help us understand why a band
+        may stop working, but it does not tell us that the ceiling
+        itself is the ideal operating frequency.
+      </p>
+
+    </div>
+
+    <h2>
+      How can the MUF help at the station?
+    </h2>
+
+    <p>
+      The practical value of MUF is that it gives the operator another
+      way to interpret what is happening on the bands. If a propagation
+      tool indicates that the MUF for a desired path is well above
+      14 MHz, the 20-metre band may have a good opportunity for that
+      path. If the estimated MUF is close to or below 14 MHz, a lower
+      band may deserve attention.
+    </p>
+
+    <p>
+      The MUF should not be used alone. Solar flux, geomagnetic
+      activity, ionospheric measurements, local time, the direction
+      of the path and actual signals heard at the receiver all provide
+      useful information.
+    </p>
+
+    <p>
+      In other words, propagation tools help us build a picture of the
+      conditions, but the radio itself remains an important source of
+      information. Listening across several bands can quickly reveal
+      whether the real conditions agree with the general propagation
+      picture.
+    </p>
+
+    <h2>
+      A practical example
+    </h2>
+
+    <p>
+      Suppose a station is trying to work a distant European path.
+      The operator checks the propagation conditions and finds that
+      the estimated MUF for that path is around the upper part of the
+      20-metre band.
+    </p>
+
+    <p>
+      The operator may find that 20 metres is working, but that 17
+      metres and 15 metres are much less reliable at that moment.
+      Later, as ionospheric conditions change, the MUF may rise and
+      those higher-frequency bands may become useful.
+    </p>
+
+    <p>
+      The important observation is not simply that one band was open
+      and another was closed. The useful propagation range changed
+      with the ionosphere.
+    </p>
+
+    <h2>
+      MUF is one piece of the propagation picture
+    </h2>
+
+    <p>
+      Understanding MUF becomes much more useful when it is considered
+      together with other propagation concepts. LUF helps us understand
+      the lower-frequency limit imposed by absorption and noise.
+      Solar flux provides information about solar ultraviolet activity
+      that can influence ionization. Geomagnetic indices provide clues
+      about disturbances in the Earth's magnetic environment.
+    </p>
+
+    <p>
+      Together, these concepts help turn propagation from something
+      that appears mysterious into something that can be observed,
+      interpreted and discussed in practical terms.
+    </p>
+
+    <div class="deep">
+
+      <strong>GO DEEPER</strong>
+
+      <p>
+        Explore the CE4RWS technical books for a deeper look at HF
+        propagation, the ionosphere, antennas and practical radio
+        operation.
+      </p>
+
+    </div>
+
+    <div class="back">
+
+      <a href="articles.html">
+        ← Back to Articles
+      </a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer>
+
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+
+</footer>
+
+</body>
+</html>
