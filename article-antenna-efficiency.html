@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is Antenna Efficiency and Why Does It Matter? | CE4RWS</title>
+
+<meta name="description" content="What is antenna efficiency and why does it matter in amateur radio? Understand radiation resistance, loss resistance, matching and how efficiently an antenna converts RF power into radiation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · ANTENNAS &amp; RF</div>
+
+    <h1>What Is Antenna Efficiency and Why Does It Matter?</h1>
+
+    <p class="hero-intro">
+      An antenna can present a good impedance to the transmitter and still waste a significant part of the available RF power as heat. Antenna efficiency tells us something that SWR alone cannot: how effectively the power delivered to the antenna is converted into electromagnetic radiation.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Antennas</span>
+      <span class="tag">Efficiency</span>
+      <span class="tag">RF</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      Antenna efficiency is one of the most important concepts in practical RF engineering, but it is sometimes confused with SWR, impedance matching or transmitter power. These are related aspects of an antenna system, but they describe different things.
+    </p>
+
+    <p>
+      Efficiency asks a very practical question: <strong>of the power delivered to the antenna, how much is actually converted into electromagnetic radiation?</strong>
+    </p>
+
+    <p>
+      This distinction becomes especially important with electrically small antennas, loading coils, thin conductors, poor ground systems and other installations where losses can represent a significant fraction of the available RF power.
+    </p>
+
+    <h2>What does antenna efficiency mean?</h2>
+
+    <p>
+      In simple terms, antenna efficiency is the ratio between the power actually radiated by the antenna and the power accepted by the antenna system.
+    </p>
+
+    <p>
+      If an antenna accepts 100 watts and radiates 90 watts, its radiation efficiency is 90 percent. If it accepts the same 100 watts but radiates only 40 watts, its efficiency is 40 percent.
+    </p>
+
+    <p>
+      The remaining power is not simply disappearing. It is being dissipated through losses in the antenna system, most commonly as heat in conductors, loading components, ground systems or other resistive elements.
+    </p>
+
+    <div class="callout">
+      A good SWR tells us about impedance matching. Antenna efficiency tells us how much of the accepted RF power becomes useful electromagnetic radiation. They are different measurements.
+    </div>
+
+    <h2>Radiation resistance and loss resistance</h2>
+
+    <p>
+      One useful way to understand efficiency is to consider the resistive part of the antenna impedance.
+    </p>
+
+    <p>
+      The total effective resistance can be thought of as having two important components: radiation resistance and loss resistance. Radiation resistance represents the part associated with electromagnetic radiation, while loss resistance represents power dissipated in the antenna system.
+    </p>
+
+    <p>
+      The relationship can be expressed conceptually as:
+    </p>
+
+    <p>
+      <strong>Efficiency = Radiation Resistance / (Radiation Resistance + Loss Resistance)</strong>
+    </p>
+
+    <p>
+      This is not a complete model of every real antenna system, but it is a very useful way to understand why some antennas are inherently more difficult to make efficient than others.
+    </p>
+
+    <h2>Why electrically short antennas can be inefficient</h2>
+
+    <p>
+      An electrically short antenna is physically much smaller than the wavelength at which it operates. Its radiation resistance can become very small.
+    </p>
+
+    <p>
+      This creates a difficult situation. If the radiation resistance is only a few ohms, even a relatively small amount of loss resistance can represent a significant fraction of the total resistance.
+    </p>
+
+    <p>
+      Loading coils are a good example. They can make a physically short antenna electrically resonant, but the coil itself has resistance and therefore dissipates some of the RF energy as heat.
+    </p>
+
+    <p>
+      The antenna may therefore be easy to tune while still having relatively low radiation efficiency.
+    </p>
+
+    <h2>Thin conductors and other losses</h2>
+
+    <p>
+      Conductor losses also matter. Real wires have finite resistance, and that resistance increases the amount of power converted into heat.
+    </p>
+
+    <p>
+      At HF, skin effect changes the way current is distributed through the conductor. The effective RF resistance can therefore differ from the simple DC resistance measured with an ordinary multimeter.
+    </p>
+
+    <p>
+      Connections, traps, loading components and other elements can introduce additional losses. None of these necessarily produces a dramatic SWR problem, because the resulting impedance can still be transformed into a suitable value for the transmitter.
+    </p>
+
+    <h2>Ground and counterpoise losses</h2>
+
+    <p>
+      Ground losses can be particularly important with vertical antennas and other systems that depend on the ground or a counterpoise as part of the RF return path.
+    </p>
+
+    <p>
+      A poor radial or counterpoise system can increase loss resistance. The antenna may still show an acceptable SWR, especially when a matching network is used, but part of the available power can be dissipated in the surrounding system instead of being radiated efficiently.
+    </p>
+
+    <p>
+      This is one reason why the physical RF environment around an antenna matters just as much as the visible radiator.
+    </p>
+
+    <h2>Why matching does not automatically improve efficiency</h2>
+
+    <p>
+      An impedance-matching network can transform the impedance seen by the transmitter. This can make the transmitter operate into a very good match.
+    </p>
+
+    <p>
+      But matching does not automatically remove the physical losses already present in the antenna system.
+    </p>
+
+    <p>
+      For example, a lossy antenna can be transformed to approximately 50 ohms at the transmitter. The SWR can then approach 1:1 while the antenna continues to dissipate a significant amount of the accepted power.
+    </p>
+
+    <p>
+      Matching is therefore about transferring power into the antenna system under the desired impedance conditions. Efficiency is about what the antenna system does with that power.
+    </p>
+
+    <h2>Efficiency and antenna size</h2>
+
+    <p>
+      Antenna size has a major influence on efficiency, particularly when the physical dimensions become small compared with wavelength.
+    </p>
+
+    <p>
+      Larger antennas can often achieve useful radiation resistance without requiring extreme loading or very high currents in lossy components. Electrically small antennas face a more difficult balance between radiation resistance and unavoidable losses.
+    </p>
+
+    <p>
+      This does not mean that small antennas are useless. Compact antennas can be extremely valuable for portable, mobile and restricted-space operation. It simply means that their efficiency should be understood realistically.
+    </p>
+
+    <h2>Why efficiency matters on the air</h2>
+
+    <p>
+      Suppose two stations use the same transmitter power, but one antenna system radiates 90 watts while the other radiates only 30 watts because of system losses. The difference can be substantial at the receiving station.
+    </p>
+
+    <p>
+      Every decibel matters in weak-signal communication. Improving antenna efficiency can therefore provide a useful increase in effective radiated power without increasing transmitter output.
+    </p>
+
+    <p>
+      This is especially important for QRP operation, where the available transmitter power is already limited. Recovering losses in the antenna system can sometimes be more useful than simply trying to increase transmitter power.
+    </p>
+
+    <h2>Efficiency is not the same as gain</h2>
+
+    <p>
+      Efficiency and gain should also be kept separate. Efficiency describes how much accepted power is converted into radiation. Gain additionally considers how that radiation is distributed in particular directions compared with a reference antenna.
+    </p>
+
+    <p>
+      An antenna can therefore have good efficiency but modest gain in a particular direction, or it can concentrate its radiation in certain directions and produce useful gain while still having some losses.
+    </p>
+
+    <p>
+      The radiation pattern matters because an antenna is not simply a device that produces “more” or “less” signal. It determines where the available radiated energy goes.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      Antenna efficiency is one of the reasons we should never judge an antenna from SWR alone.
+    </p>
+
+    <p>
+      A low SWR tells us that the impedance relationship is favourable. It does not tell us whether the accepted power is being radiated efficiently, nor does it tell us where the radiated energy is going.
+    </p>
+
+    <p>
+      To understand a real antenna system, we need to consider its physical size, radiation resistance, conductor losses, loading components, ground or counterpoise system, feed-line losses, radiation pattern and operating frequency.
+    </p>
+
+    <p>
+      The most useful antenna is therefore not necessarily the one with the lowest SWR. It is the one that converts available RF power into the radiation pattern required for the communication objective with acceptable losses.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore antenna efficiency and practical RF design</h3>
+      <p>
+        The CE4RWS technical books explore antenna efficiency, radiation resistance, loss resistance, SWR, impedance, ground systems and practical antenna design in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
