@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is a Geomagnetic Storm and How Can It Affect HF? | CE4RWS</title>
+
+<meta name="description" content="A practical explanation of geomagnetic storms, the Earth's magnetic field, ionospheric disturbances and their effects on HF amateur radio propagation.">
+
+<style>
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-main{
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:-.03em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:7px;
+  font-size:14px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+}
+
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+}
+
+.nav-links a:hover{
+  color:var(--yellow);
+}
+
+.hero{
+  background:var(--navy);
+  color:#fff;
+  padding:105px 7% 95px;
+}
+
+.hero-inner{
+  max-width:1280px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:28px;
+}
+
+.hero h1{
+  max-width:1150px;
+  margin:0;
+  font-size:clamp(48px,6.5vw,88px);
+  line-height:.96;
+  letter-spacing:-.055em;
+  font-weight:800;
+}
+
+.hero-intro{
+  max-width:920px;
+  margin:38px 0 0;
+  font-size:21px;
+  line-height:1.65;
+  color:#dce7f2;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:32px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  padding:9px 16px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+.article{
+  max-width:900px;
+  margin:0 auto;
+  padding:85px 28px 100px;
+}
+
+.article p{
+  margin:0 0 30px;
+  font-size:20px;
+  line-height:1.75;
+  color:#263c54;
+}
+
+.article h2{
+  margin:72px 0 22px;
+  font-size:38px;
+  line-height:1.12;
+  letter-spacing:-.035em;
+  color:var(--ink);
+}
+
+.note{
+  margin:45px 0;
+  padding:32px 36px;
+  background:#fff;
+  border-left:6px solid var(--yellow);
+  border-radius:0 18px 18px 0;
+  box-shadow:0 12px 30px rgba(9,39,66,.08);
+}
+
+.note p{
+  margin:0;
+  font-size:19px;
+  line-height:1.65;
+}
+
+.note strong{
+  color:var(--ink);
+}
+
+.go-deeper{
+  margin-top:70px;
+  padding:28px 30px;
+  background:var(--navy);
+  border-radius:18px;
+  color:#fff;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.go-deeper strong{
+  color:var(--yellow);
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  padding:42px 7%;
+  text-align:center;
+}
+
+footer strong{
+  color:#fff;
+}
+
+@media(max-width:900px){
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    gap:18px;
+  }
+
+  .hero{
+    padding:80px 7% 75px;
+  }
+
+  .article{
+    padding:65px 24px 80px;
+  }
+}
+
+@media(max-width:600px){
+  .brand-main{
+    font-size:22px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero-intro{
+    font-size:18px;
+  }
+
+  .article p{
+    font-size:18px;
+  }
+
+  .article h2{
+    font-size:31px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a class="brand" href="index.html">
+  <div class="brand-main">HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span></div>
+  <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+</a>
+
+<nav class="nav-links">
+  <a href="index.html">Home</a>
+  <a href="index.html#sobre-mi">About</a>
+  <a href="articles.html">Articles</a>
+  <a href="index.html#libros">Books</a>
+  <a href="index.html#radio">Amateur Radio</a>
+  <a href="index.html#contacto">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · PROPAGATION &amp; DX</div>
+
+    <h1>What Is a Geomagnetic Storm and How Can It Affect HF?</h1>
+
+    <p class="hero-intro">
+      Geomagnetic storms can produce major changes in HF propagation. They can
+      alter the ionosphere, increase absorption, disturb propagation paths and
+      make some normally reliable frequencies suddenly difficult to use.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HF Propagation</span>
+      <span class="tag">Geomagnetic Activity</span>
+      <span class="tag">DX</span>
+    </div>
+
+  </div>
+</section>
+
+<main class="article">
+
+<p>
+A geomagnetic storm is a disturbance in Earth's magnetic environment caused by
+changes in the solar wind and the interaction between the solar wind and
+Earth's magnetosphere. For amateur radio operators, the important consequence
+is that these disturbances can modify the ionosphere and therefore change the
+way HF signals propagate.
+</p>
+
+<p>
+The effects are not always identical. A geomagnetic storm can produce very poor
+conditions on some paths while other frequencies or locations continue to work.
+The result depends on the strength of the disturbance, geographic location,
+time of day, frequency and the particular propagation path being used.
+</p>
+
+<h2>Where does a geomagnetic storm come from?</h2>
+
+<p>
+The Sun continuously emits a stream of charged particles known as the solar
+wind. Normally, Earth's magnetic field provides substantial protection from
+this flow. However, changes in the solar wind can transfer energy into Earth's
+magnetosphere and disturb the magnetic field.
+</p>
+
+<p>
+One important source of strong disturbances is a coronal mass ejection, or CME.
+A CME can carry a large amount of magnetized plasma away from the Sun. If that
+material reaches Earth with the appropriate magnetic orientation, it can
+produce a significant geomagnetic disturbance.
+</p>
+
+<div class="note">
+  <p>
+    <strong>The important point:</strong> a geomagnetic storm is not simply
+    “bad solar activity.” It is a disturbance of Earth's magnetic environment
+    that can subsequently modify the ionosphere and HF propagation.
+  </p>
+</div>
+
+<h2>What happens to the ionosphere?</h2>
+
+<p>
+During geomagnetic disturbances, energy is deposited into the upper atmosphere
+and the ionosphere becomes more disturbed. The distribution and movement of
+ionization can change, and the ionosphere may become less stable as a medium
+for long-distance HF communication.
+</p>
+
+<p>
+For radio amateurs, this can mean changes in signal strength, propagation
+paths, absorption and the frequencies that remain useful for a particular
+contact. A path that was stable before the storm may become highly variable.
+</p>
+
+<h2>Why can HF propagation become worse?</h2>
+
+<p>
+One important effect is increased absorption, particularly at lower HF
+frequencies in regions affected by enhanced ionization. At the same time,
+irregularities in the ionosphere can make propagation less predictable.
+</p>
+
+<p>
+Signals may become weaker, fluctuate rapidly or disappear from a particular
+path. The maximum usable frequency can also change as the ionospheric
+conditions evolve.
+</p>
+
+<p>
+This is why a geomagnetic storm can produce the strange experience of hearing
+some stations very well while other expected signals have disappeared.
+Propagation is determined by the complete path through the ionosphere, not
+simply by the condition at the transmitting station.
+</p>
+
+<h2>Why are polar paths often affected strongly?</h2>
+
+<p>
+Geomagnetic activity is particularly important at high latitudes, where
+energy from the solar wind can enter the upper atmosphere more efficiently.
+This can strongly disturb radio propagation through polar and auroral regions.
+</p>
+
+<p>
+For operators working long-distance paths that cross high latitudes, this can
+be especially significant. A path that normally works through a polar region
+may become unreliable during strong geomagnetic activity.
+</p>
+
+<p>
+However, this does not mean that every high-latitude path will always fail.
+The actual result depends on the storm intensity, the propagation geometry and
+the evolving state of the ionosphere.
+</p>
+
+<h2>What does Kp tell us?</h2>
+
+<p>
+The Kp index is one of the most widely used indicators of geomagnetic activity.
+It describes disturbances in Earth's magnetic field using observations from
+magnetometers distributed around the world.
+</p>
+
+<p>
+For amateur radio, Kp is useful as an indicator of the overall level of
+geomagnetic disturbance, but it should not be treated as a direct prediction
+of whether a particular QSO will succeed.
+</p>
+
+<p>
+A high Kp value tells us that geomagnetic activity is elevated. It does not
+tell us exactly what will happen on every band or every propagation path.
+Actual observations remain essential.
+</p>
+
+<h2>What should a radio amateur watch during a storm?</h2>
+
+<p>
+The most useful approach is to combine several types of information. Solar
+wind conditions, geomagnetic indices, ionospheric measurements and real-time
+radio reports can all provide pieces of the picture.
+</p>
+
+<p>
+Listening to the bands is especially important. If familiar signals disappear,
+become unstable or change strength dramatically, compare those observations
+with current geomagnetic conditions.
+</p>
+
+<p>
+Digital modes can also provide useful evidence. FT8 reports, reverse beacon
+systems and online propagation monitors can reveal whether particular paths
+are still active even when the traditional voice portions of a band sound
+quiet.
+</p>
+
+<h2>Does a geomagnetic storm always mean that HF is useless?</h2>
+
+<p>
+No. Propagation does not respond to a geomagnetic storm as a simple
+all-or-nothing system. The effects vary with frequency, location, time and
+path.
+</p>
+
+<p>
+Some bands may remain usable while others deteriorate. Shorter paths may
+behave differently from long-distance paths, and conditions can change as the
+storm develops and later subsides.
+</p>
+
+<p>
+This is one reason experienced operators do not rely on a single propagation
+index. They combine forecasts with observation and adapt their operating
+frequency to what the ionosphere is actually doing.
+</p>
+
+<h2>The practical lesson for HF operators</h2>
+
+<p>
+A geomagnetic storm is a reminder that HF propagation is controlled by a
+constantly changing physical environment. The magnetic field, solar wind and
+ionosphere are all part of the system that determines whether a signal reaches
+its destination.
+</p>
+
+<p>
+When conditions suddenly deteriorate, the correct question is not simply,
+“Is the band closed?” A better question is what part of the propagation system
+has changed and which paths or frequencies may still be useful.
+</p>
+
+<p>
+Understanding geomagnetic storms does not allow us to predict every contact,
+but it gives us a much better framework for interpreting what we hear on the
+bands and for deciding when it is worth changing frequency, changing path or
+simply waiting for conditions to recover.
+</p>
+
+<div class="go-deeper">
+  <strong>GO DEEPER</strong>
+  &nbsp; Explore the subject in CE4RWS technical books and training manuals.
+</div>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
