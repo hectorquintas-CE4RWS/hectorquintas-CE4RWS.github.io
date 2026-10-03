@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Personal Computer Enters Amateur Radio | CE4RWS</title>
+
+<meta name="description" content="How personal computers transformed amateur radio stations, from early microcomputers and packet radio to logging, digital modes and computer-controlled radios.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:920px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The Personal Computer Enters Amateur Radio</h1>
+
+    <p class="intro">
+      How microcomputers transformed the amateur station and changed the way radio amateurs logged contacts, controlled equipment, exchanged data and experimented with digital communication.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">Computers</span>
+      <span class="tag">Digital Radio</span>
+      <span class="tag">Logging</span>
+      <span class="tag">Station Technology</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>A New Machine Arrives in the Shack</h2>
+
+    <p>
+      During the 1970s, a new type of electronic device began appearing in homes, schools, laboratories and workshops: the personal computer.
+    </p>
+
+    <p>
+      For amateur radio, this development was much more important than simply having another piece of equipment on the operating desk.
+    </p>
+
+    <p>
+      The computer could perform calculations, store information, generate signals, communicate with external devices and execute programs created by the operator.
+    </p>
+
+    <p>
+      In other words, it could become a tool for experimentation.
+    </p>
+
+    <p>
+      That idea fitted amateur radio perfectly.
+    </p>
+
+    <h2>From Microprocessors to Microcomputers</h2>
+
+    <p>
+      The appearance of the microprocessor made it possible to build computers that were dramatically smaller and less expensive than the machines of previous decades.
+    </p>
+
+    <p>
+      By the late 1970s, computers such as the Apple II, Commodore PET and TRS-80 were entering the consumer market.
+    </p>
+
+    <p>
+      These machines were extremely limited compared with a modern computer. Memory was small, storage was primitive and graphical interfaces were either nonexistent or very basic.
+    </p>
+
+    <p>
+      Yet they had something that mattered enormously to radio amateurs:
+    </p>
+
+    <p>
+      <strong>They were programmable.</strong>
+    </p>
+
+    <p>
+      A radio amateur could write a program to perform a task that previously required specialized electronics or manual work.
+    </p>
+
+    <p>
+      ARRL's historical account of early personal computing in amateur radio describes operators using machines such as the TRS-80 for programming, printing, modem communication and radio-related applications during this period. :chatgpt-content-reference{index="1"}
+    </p>
+
+    <h2>The Computer Becomes a Radio Tool</h2>
+
+    <p>
+      The first uses were often simple.
+    </p>
+
+    <p>
+      A computer could calculate frequencies, keep lists, store callsigns, control external equipment or help prepare information for a radio net.
+    </p>
+
+    <p>
+      It could also replace repetitive manual work.
+    </p>
+
+    <p>
+      A task that required writing information on paper could now be stored electronically.
+    </p>
+
+    <p>
+      A calculation that required a calculator could be performed instantly by software.
+    </p>
+
+    <p>
+      A message that previously had to be copied by hand could be transferred digitally.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The important change was not simply that computers became smaller.</strong> It was that the amateur could now modify the behavior of the station by changing software.
+      </p>
+    </div>
+
+    <h2>Logging Moves From Paper to Digital</h2>
+
+    <p>
+      One of the most obvious applications was logging.
+    </p>
+
+    <p>
+      For generations, radio amateurs had recorded contacts in paper logs. Date, time, frequency, callsign, mode, signal report and other information were written manually.
+    </p>
+
+    <p>
+      A computer could store those records electronically and search them almost instantly.
+    </p>
+
+    <p>
+      The transformation was gradual. Early systems were simple databases or custom programs, often written by the operators themselves.
+    </p>
+
+    <p>
+      But the basic concept was already there:
+    </p>
+
+    <p>
+      <strong>the computer could become the station's memory.</strong>
+    </p>
+
+    <p>
+      This eventually led to sophisticated logging applications capable of managing thousands of contacts, checking previous QSOs, generating contest records and exchanging data with other station software.
+    </p>
+
+    <p>
+      Modern amateur logging still follows the same fundamental idea. ARRL describes logging as an operational and personal record of amateur activity, with information such as date, frequency, mode, power, callsign and signal report forming the basic contact record. :chatgpt-content-reference{index="2"}
+    </p>
+
+    <h2>The Modem Changes Everything</h2>
+
+    <p>
+      Another important development was the modem.
+    </p>
+
+    <p>
+      A modem converts digital information into signals that can travel through a communications channel and then reconstructs the digital data at the receiving end.
+    </p>
+
+    <p>
+      Telephone modems became an important part of the early computer revolution.
+    </p>
+
+    <p>
+      Radio amateurs recognized that a similar concept could be applied to radio.
+    </p>
+
+    <p>
+      This led naturally toward packet radio.
+    </p>
+
+    <p>
+      Instead of connecting a computer to another computer through a telephone line, the radio could become the communication path.
+    </p>
+
+    <p>
+      The computer therefore stopped being merely a calculation device and became part of the communications system itself.
+    </p>
+
+    <h2>Packet Radio Makes the Computer a Network Node</h2>
+
+    <p>
+      The emergence of packet radio in the early 1980s accelerated this transformation.
+    </p>
+
+    <p>
+      TAPR developed a Terminal Node Controller that acted as an interface between the computer and the radio. The organization traces the beginning of its TNC project to discussions in October 1981, followed by successful packet communication using the first TAPR unit in 1982. :chatgpt-content-reference{index="3"}
+    </p>
+
+    <p>
+      Suddenly, the computer was not simply controlling a station.
+    </p>
+
+    <p>
+      It was participating in a network.
+    </p>
+
+    <p>
+      Messages could be stored, forwarded and exchanged between stations.
+    </p>
+
+    <p>
+      Bulletin board systems appeared.
+    </p>
+
+    <p>
+      Digital mailboxes appeared.
+    </p>
+
+    <p>
+      Amateur radio operators began thinking in terms of nodes, routing and networks.
+    </p>
+
+    <p>
+      The station itself had changed character.
+    </p>
+
+    <h2>Computer-Controlled Radios</h2>
+
+    <p>
+      Another major step was the ability to control the transceiver directly from a computer.
+    </p>
+
+    <p>
+      Instead of manually turning the radio's frequency knob, the operator could eventually instruct the computer to select a frequency.
+    </p>
+
+    <p>
+      The same principle could be extended to other functions such as mode selection and, depending on the equipment, additional radio controls.
+    </p>
+
+    <p>
+      This concept became known as <strong>computer-aided transceiver control</strong>, commonly referred to as CAT.
+    </p>
+
+    <p>
+      The development of standardized interfaces between computers and transceivers created a new relationship between the operator and the radio.
+    </p>
+
+    <p>
+      The radio was no longer an isolated instrument.
+    </p>
+
+    <p>
+      It could exchange information with the computer.
+    </p>
+
+    <h2>The Station Becomes an Integrated System</h2>
+
+    <p>
+      Once the computer could communicate with the transceiver, logging software could know the current frequency.
+    </p>
+
+    <p>
+      A digital-mode program could change the radio frequency automatically.
+    </p>
+
+    <p>
+      Contest software could coordinate logging and operating information.
+    </p>
+
+    <p>
+      Packet software could exchange messages through the radio.
+    </p>
+
+    <p>
+      Specialized programs could calculate propagation, track satellites or control antennas.
+    </p>
+
+    <p>
+      These functions did not necessarily require a new radio.
+    </p>
+
+    <p>
+      They required software and interfaces.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>This was a profound change in amateur-radio architecture:</strong> the station became a system of cooperating components rather than a collection of independent devices.
+      </p>
+    </div>
+
+    <h2>Software Becomes Part of the Radio</h2>
+
+    <p>
+      As computers became more capable, software began taking over tasks that had previously required dedicated hardware.
+    </p>
+
+    <p>
+      Signal generation, filtering, logging, decoding and control could increasingly be performed by programs.
+    </p>
+
+    <p>
+      The boundary between radio equipment and computer equipment began to disappear.
+    </p>
+
+    <p>
+      A modem could be implemented partly in software.
+    </p>
+
+    <p>
+      A decoder could run on a computer.
+    </p>
+
+    <p>
+      A logging program could communicate with the radio.
+    </p>
+
+    <p>
+      A satellite-tracking program could calculate the spacecraft's position and frequency correction.
+    </p>
+
+    <p>
+      Each development moved a little more of the station's intelligence into software.
+    </p>
+
+    <h2>The Rise of Digital Signal Processing</h2>
+
+    <p>
+      The next major step was digital signal processing, or <strong>DSP</strong>.
+    </p>
+
+    <p>
+      Instead of relying entirely on analog circuits to filter and manipulate signals, a computer could convert the signal into digital information and process it mathematically.
+    </p>
+
+    <p>
+      This opened an enormous field of experimentation.
+    </p>
+
+    <p>
+      Filters could be implemented in software.
+    </p>
+
+    <p>
+      Noise reduction could be performed digitally.
+    </p>
+
+    <p>
+      Demodulation techniques could be implemented by algorithms.
+    </p>
+
+    <p>
+      New modes could be developed without necessarily requiring a completely new radio architecture.
+    </p>
+
+    <p>
+      TAPR and AMSAT later became important participants in amateur DSP development. Tom Clark, K3IO/W3IWI, was a key figure in the TAPR/AMSAT DSP project, which helped demonstrate the potential of computer-based digital signal processing for amateur radio. :chatgpt-content-reference{index="4"}
+    </p>
+
+    <h2>The Personal Computer Changes the Culture</h2>
+
+    <p>
+      The effect of the personal computer was not limited to equipment.
+    </p>
+
+    <p>
+      It also changed the culture of experimentation.
+    </p>
+
+    <p>
+      A radio amateur could now write software, modify existing programs, build interfaces and share code with other operators.
+    </p>
+
+    <p>
+      Amateur-radio experimentation increasingly involved both electronics and programming.
+    </p>
+
+    <p>
+      This attracted people who were interested in computers but might not initially have approached radio through traditional electronics.
+    </p>
+
+    <p>
+      Contemporary discussions within the packet-radio community recognized precisely this connection between the emerging computer hobby and amateur radio. A 1985 TAPR paper observed that many technically minded young people were increasingly becoming interested in computers and suggested that packet radio could help bring those people into amateur radio. :chatgpt-content-reference{index="5"}
+    </p>
+
+    <h2>From the Shack to the Network</h2>
+
+    <p>
+      The personal computer therefore changed the scale of amateur radio.
+    </p>
+
+    <p>
+      The traditional station connected one operator to the radio spectrum.
+    </p>
+
+    <p>
+      The computer-connected station could become part of a larger information system.
+    </p>
+
+    <p>
+      It could exchange data with other stations, maintain large databases, control equipment, participate in networks and process signals.
+    </p>
+
+    <p>
+      The radio spectrum remained the communication medium.
+    </p>
+
+    <p>
+      But the computer increasingly determined what could be done with that medium.
+    </p>
+
+    <h2>The Road to Modern Amateur Radio</h2>
+
+    <p>
+      Many features that seem completely normal in today's amateur station can be traced back to this transition.
+    </p>
+
+    <p>
+      Computerized logging, CAT control, digital interfaces, packet networking, DSP, satellite tracking and software-defined radio all share a common principle:
+    </p>
+
+    <p>
+      <strong>software can extend what the radio is capable of doing.</strong>
+    </p>
+
+    <p>
+      Modern FT8 operation is a particularly clear example. The transceiver produces and receives radio-frequency signals, but the computer performs timing, decoding, message handling and much of the digital processing.
+    </p>
+
+    <p>
+      The same is true of many contemporary digital modes.
+    </p>
+
+    <p>
+      The radio remains essential.
+    </p>
+
+    <p>
+      But it is no longer operating alone.
+    </p>
+
+    <h2>From Computer-Assisted Radio to Software-Defined Radio</h2>
+
+    <p>
+      The arrival of the personal computer did not immediately create software-defined radio.
+    </p>
+
+    <p>
+      That development required faster processors, improved analog-to-digital converters, more capable digital signal processing and new radio architectures.
+    </p>
+
+    <p>
+      But the conceptual foundation had already been established.
+    </p>
+
+    <p>
+      Amateur radio operators had learned that computers could process signals, control equipment and participate directly in communication.
+    </p>
+
+    <p>
+      The next question was therefore almost inevitable:
+    </p>
+
+    <p>
+      <strong>How much of the radio itself could be implemented in software?</strong>
+    </p>
+
+    <p>
+      That question would lead to one of the most important technological transformations in modern amateur radio.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The personal computer did not replace the radio.</strong> It changed what the radio could become.
+      </p>
+    </div>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From computers to software-defined radio</h3>
+
+      <p>
+        The personal computer introduced a new architecture into the amateur station. Logging, control, packet radio and DSP were only the beginning. The next step was to move an increasing part of the radio itself into software.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
