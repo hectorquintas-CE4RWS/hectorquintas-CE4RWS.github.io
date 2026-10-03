@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Rise of Voice Radio: From CW to AM | CE4RWS</title>
+
+<meta name="description" content="How voice transmission transformed amateur radio, from early experiments with amplitude modulation to the development of practical AM voice communication.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:900px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The Rise of Voice Radio: From CW to AM</h1>
+
+    <p class="intro">
+      How radio moved beyond Morse code and learned to carry the human voice, transforming the way amateurs communicated and opening a new era of radio operation.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">AM</span>
+      <span class="tag">Voice</span>
+      <span class="tag">CW</span>
+      <span class="tag">HF</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>When Radio Spoke in Morse Code</h2>
+
+    <p>
+      During the first decades of radio, communication was closely associated with Morse code. Operators translated messages into dots and dashes, transmitted them using radio signals and reconstructed the original information at the receiving station.
+    </p>
+
+    <p>
+      This system was remarkably effective. Morse code allowed relatively weak signals to be copied at considerable distances, and the transition from spark to continuous wave made radio communication much more efficient.
+    </p>
+
+    <p>
+      But radio engineers and experimenters wanted something more.
+    </p>
+
+    <p>
+      Instead of converting every message into code, they wanted the radio itself to carry the sound of the human voice.
+    </p>
+
+    <h2>The Problem of Sending Voice</h2>
+
+    <p>
+      Human speech is an audio signal. Radio-frequency energy, however, operates at frequencies far above the range of human hearing.
+    </p>
+
+    <p>
+      A radio transmitter therefore needs a way to combine the information contained in the voice with a radio-frequency carrier that can be radiated efficiently by an antenna.
+    </p>
+
+    <p>
+      This led to the development and practical use of <strong>amplitude modulation</strong>, or AM.
+    </p>
+
+    <p>
+      In AM, the amplitude of a radio-frequency carrier is varied according to the instantaneous amplitude of the audio signal. The carrier provides the radio-frequency foundation, while the changing amplitude contains the information representing the voice.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The fundamental idea was simple:</strong> instead of sending dots and dashes, the transmitter could make the radio-frequency signal follow the shape of the speaker's voice.
+      </p>
+    </div>
+
+    <h2>The Development of Voice Transmission</h2>
+
+    <p>
+      Experiments with transmitting speech over radio had already begun before amateur radio became widely established. The development of vacuum-tube technology made practical voice transmitters increasingly possible because tubes could generate, amplify and control radio-frequency signals.
+    </p>
+
+    <p>
+      The same technological advances that helped create better CW transmitters also made voice communication more practical.
+    </p>
+
+    <p>
+      During the 1910s and early 1920s, engineers, commercial operators, military services and amateurs continued experimenting with radio telephone systems. The technology gradually moved from laboratory demonstrations toward practical communication.
+    </p>
+
+    <p>
+      For amateur radio, this represented a major change in what a contact could be.
+    </p>
+
+    <h2>From Operator to Conversation</h2>
+
+    <p>
+      CW communication required the receiving operator to decode Morse code continuously. Voice radio changed the experience completely.
+    </p>
+
+    <p>
+      Two operators could now speak directly to one another.
+    </p>
+
+    <p>
+      This made radio communication more accessible to people who did not have advanced Morse skills and created a much more natural form of interaction.
+    </p>
+
+    <p>
+      Amateur radio was no longer only a technical system for exchanging written messages through code. It was becoming a medium for conversation.
+    </p>
+
+    <p>
+      That change had enormous consequences for the culture of the hobby.
+    </p>
+
+    <h2>AM and the Expansion of Amateur Radio</h2>
+
+    <p>
+      By the 1920s, AM voice operation was becoming increasingly important in amateur radio.
+    </p>
+
+    <p>
+      The technology still had significant limitations. Early voice transmitters could be large, inefficient and technically demanding. Generating a stable carrier and sufficient audio modulation required equipment that was considerably more complicated than a basic CW transmitter.
+    </p>
+
+    <p>
+      But the benefits were obvious.
+    </p>
+
+    <p>
+      A successful voice contact could now become a real-time conversation. Operators could exchange technical information, discuss equipment, compare propagation conditions or simply talk to another amateur thousands of kilometres away.
+    </p>
+
+    <p>
+      Amateur radio was acquiring a new social dimension.
+    </p>
+
+    <h2>Why AM Required More Bandwidth</h2>
+
+    <p>
+      Voice communication also introduced a new technical challenge.
+    </p>
+
+    <p>
+      Unlike CW, which can occupy a very narrow bandwidth, AM voice transmission requires considerably more spectrum because the audio information produces sidebands around the carrier.
+    </p>
+
+    <p>
+      The bandwidth depends largely on the highest audio frequency being transmitted. A conventional AM signal therefore occupies significantly more spectrum than a narrow CW signal.
+    </p>
+
+    <p>
+      This difference would become increasingly important as the number of amateur stations increased.
+    </p>
+
+    <p>
+      Spectrum was limited, and amateur operators had to learn that efficient communication was not only about transmitter power. It was also about using frequency and bandwidth responsibly.
+    </p>
+
+    <h2>The Arrival of Broadcast Radio</h2>
+
+    <p>
+      The development of AM voice was not limited to amateur radio.
+    </p>
+
+    <p>
+      During the early 1920s, commercial broadcasting developed rapidly. Radio stations began transmitting scheduled programs containing music, news, entertainment and spoken content to large audiences.
+    </p>
+
+    <p>
+      The rise of broadcasting demonstrated that radio could become a mass communication medium rather than simply a point-to-point communication technology.
+    </p>
+
+    <p>
+      Amateur radio developed alongside this transformation, but its purpose remained different. Amateurs were not simply broadcasting programs to passive listeners. They were using radio as a two-way experimental communication service.
+    </p>
+
+    <p>
+      That distinction remains fundamental to amateur radio today.
+    </p>
+
+    <h2>Voice and the Growth of DX</h2>
+
+    <p>
+      As short-wave propagation became better understood, voice communication and long-distance operation began to reinforce one another.
+    </p>
+
+    <p>
+      A station could now establish a distant contact and actually speak with the operator at the other end.
+    </p>
+
+    <p>
+      The combination of HF propagation, increasingly capable transmitters and AM voice helped make international amateur communication much more attractive.
+    </p>
+
+    <p>
+      DX was no longer only a technical achievement measured by the successful exchange of Morse characters. It could also become a conversation between people separated by oceans and continents.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Voice changed the meaning of a radio contact.</strong> The technology still depended on antennas, propagation and radio engineering, but the result now felt much more like a direct human conversation.
+      </p>
+    </div>
+
+    <h2>AM Was Not the End of the Story</h2>
+
+    <p>
+      AM eventually gave way to more spectrum-efficient voice technologies, especially single-sideband modulation, or SSB.
+    </p>
+
+    <p>
+      The basic reason was technical. A conventional AM signal contains a carrier and two sidebands. Much of the transmitted power resides in the carrier, which does not itself contain the voice information, while both sidebands contain essentially the same information.
+    </p>
+
+    <p>
+      SSB made it possible to remove the carrier and one of the sidebands, greatly reducing bandwidth and improving the efficiency of voice communication.
+    </p>
+
+    <p>
+      But AM remained an important stage in the historical development of amateur voice radio.
+    </p>
+
+    <p>
+      It proved that radio could carry the human voice reliably over significant distances and established the basic architecture from which later voice technologies evolved.
+    </p>
+
+    <h2>From AM to the Modern Transceiver</h2>
+
+    <p>
+      The modern amateur-radio transceiver contains technologies that early radio operators could hardly have imagined.
+    </p>
+
+    <p>
+      Digital signal processing can generate and demodulate complex signals, automatic gain control can maintain usable audio levels, filters can isolate narrow portions of spectrum and software can control almost every part of the station.
+    </p>
+
+    <p>
+      Yet the basic chain remains recognizable:
+    </p>
+
+    <p>
+      <strong>information → modulation → radio-frequency transmission → propagation → reception → demodulation → information.</strong>
+    </p>
+
+    <p>
+      Whether the information is Morse code, human speech or a digital message, the fundamental communication process remains the same.
+    </p>
+
+    <h2>Why the Rise of Voice Still Matters</h2>
+
+    <p>
+      The transition from CW to voice was more than a technological upgrade. It changed the culture of amateur radio.
+    </p>
+
+    <p>
+      Morse code remained an important and highly effective mode, but voice made radio more immediately accessible and more conversational. It expanded the ways amateurs could use their stations and helped establish the familiar image of the amateur radio operator speaking with another station somewhere around the world.
+    </p>
+
+    <p>
+      Modern amateur radio contains many different modes, but voice remains one of its central forms of communication.
+    </p>
+
+    <p>
+      From early AM transmitters to today's SSB transceivers and software-defined radios, the objective is still remarkably simple:
+    </p>
+
+    <p>
+      <strong>put information onto a radio wave and recover it at the other end.</strong>
+    </p>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From AM to SSB and modern voice radio</h3>
+
+      <p>
+        The development of voice communication was only the beginning. The search for greater efficiency would lead to SSB, transistors, solid-state transmitters and eventually software-defined radio.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
