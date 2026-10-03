@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Discovery of Short-Wave Propagation | CE4RWS</title>
+
+<meta name="description" content="How amateur radio operators discovered the extraordinary long-distance potential of short-wave radio and helped transform HF communication.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:920px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The Discovery of Short-Wave Propagation</h1>
+
+    <p class="intro">
+      How amateur radio operators discovered that the frequencies once considered unsuitable for long-distance communication could carry signals across oceans and around the world.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">Short Wave</span>
+      <span class="tag">HF</span>
+      <span class="tag">DX</span>
+      <span class="tag">Propagation</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>When Short Waves Were Considered Nearly Useless</h2>
+
+    <p>
+      In the early years of radio, long-distance communication was strongly associated with long wavelengths. Large commercial and government stations operated at low frequencies, using enormous antennas and substantial transmitter power. The prevailing assumption was simple: if a signal had to travel a very long distance, a long wavelength was the sensible choice.
+    </p>
+
+    <p>
+      Shorter wavelengths were viewed with considerably less enthusiasm. They were often treated as having limited practical value for long-distance communication, especially when compared with the powerful stations operating at much longer wavelengths.
+    </p>
+
+    <p>
+      Amateur radio would help challenge that assumption.
+    </p>
+
+    <h2>The Experimenters Who Looked Beyond Conventional Wisdom</h2>
+
+    <p>
+      Radio amateurs had an important advantage that large commercial stations did not always share: they were willing to experiment simply to discover what was possible.
+    </p>
+
+    <p>
+      During the early 1920s, amateurs began moving into shorter wavelengths and experimenting with equipment that, by commercial standards, was modest. Their objective was not to build the largest transmitter or the most powerful station. It was to discover how far they could communicate with the equipment they could actually build and operate themselves.
+    </p>
+
+    <p>
+      The results were surprising. Signals transmitted on wavelengths that had been regarded as unsuitable for serious long-distance work could be detected at extraordinary distances.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The important discovery was not simply that short waves could travel far.</strong> It was that relatively modest amateur stations could use them to establish communication over distances previously associated with much larger and more powerful systems.
+      </p>
+    </div>
+
+    <h2>The Transatlantic Tests of 1921</h2>
+
+    <p>
+      One of the most important demonstrations came through the Transatlantic Tests organized by the American Radio Relay League. The objective was to determine whether low-power amateur stations operating on short wavelengths could be heard across the Atlantic.
+    </p>
+
+    <p>
+      The first test in 1921 did not produce the expected result. The second series, held in December of that year, was different.
+    </p>
+
+    <p>
+      ARRL sent experienced operator and receiver designer Paul Godley, 2ZE, to Ardrossan, Scotland, to listen for signals transmitted from North America. On December 11, 1921, the signal from amateur station 1BCG in Greenwich, Connecticut, was successfully heard in Scotland. More than two dozen American amateur stations were eventually heard during the tests. :chatgpt-content-reference{index="1"}
+    </p>
+
+    <p>
+      The significance of the experiment went far beyond one successful reception. It provided practical evidence that amateur stations using relatively low power and shorter wavelengths could communicate across the Atlantic.
+    </p>
+
+    <h2>A New Understanding of HF</h2>
+
+    <p>
+      These experiments helped change the way radio engineers and amateurs thought about the high-frequency spectrum.
+    </p>
+
+    <p>
+      The short-wave region was no longer simply a collection of frequencies with limited value. It was becoming a powerful resource for long-distance communication. The amateur experiments demonstrated that the Earth's atmosphere could support propagation mechanisms capable of carrying signals over enormous distances.
+    </p>
+
+    <p>
+      This did not mean that short-wave propagation was simple or predictable. Quite the opposite. Signals could behave differently according to frequency, time of day, season, solar activity, ionospheric conditions and geographic path.
+    </p>
+
+    <p>
+      What the amateurs had discovered was therefore the beginning of a much larger field of experimentation.
+    </p>
+
+    <h2>From Experiment to Global Amateur Radio</h2>
+
+    <p>
+      The consequences were enormous. Once the potential of short waves became clear, interest in HF communication increased rapidly.
+    </p>
+
+    <p>
+      The experiments between 1921 and 1924 helped establish the practical value of international amateur communication. The first successful transatlantic reception in 1921 was followed by further experiments, eventually leading to two-way transatlantic amateur communication. :chatgpt-content-reference{index="2"}
+    </p>
+
+    <p>
+      The discovery also changed the social character of amateur radio. A station was no longer limited primarily to communication with nearby operators. With the right frequency, equipment and propagation conditions, an amateur station could potentially reach another continent.
+    </p>
+
+    <p>
+      DX was becoming a realistic part of amateur radio.
+    </p>
+
+    <h2>Why the Discovery Still Matters Today</h2>
+
+    <p>
+      Modern operators sometimes take HF propagation for granted. We select a band, tune the antenna, call CQ and wait for an answer. Software can display propagation reports, stations can be located on maps, and digital modes can decode signals that are barely audible to the human ear.
+    </p>
+
+    <p>
+      But the fundamental question remains the same one that fascinated the experimenters of the 1920s:
+    </p>
+
+    <p>
+      <strong>How far can a signal travel with the equipment available to us?</strong>
+    </p>
+
+    <p>
+      That question is still at the heart of amateur radio.
+    </p>
+
+    <p>
+      A modern operator using a few watts, a modest antenna and FT8 may establish a contact across an ocean. Another operator may achieve the same distance using CW or SSB under completely different propagation conditions. The technology has changed enormously, but the experimental spirit has not.
+    </p>
+
+    <h2>The Lesson for Today's Radio Amateur</h2>
+
+    <p>
+      The history of short-wave propagation offers a particularly useful lesson: accepted assumptions are not always the end of the story.
+    </p>
+
+    <p>
+      The amateurs who experimented with short wavelengths were not simply following established radio practice. They were testing the limits of what was believed to be possible. Their observations contributed to a transformation in the understanding and use of HF radio.
+    </p>
+
+    <p>
+      The short-wave spectrum eventually became central to international amateur radio. In 1925, the International Amateur Radio Union was created in Paris, and two years later amateur allocations including 160, 80, 40, 20 and 10 meters were established at the Washington International Radiotelegraph Conference. :chatgpt-content-reference{index="3"}
+    </p>
+
+    <p>
+      Every time an amateur checks the bands, changes frequency and discovers that one band is open while another is silent, the same experimental tradition continues.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>HF propagation is not merely a technical subject.</strong> It is one of the reasons amateur radio became an experimental service in the first place. The bands themselves became a laboratory.
+      </p>
+    </div>
+
+    <p>
+      The discovery of short-wave propagation therefore belongs to much more than radio history. It is part of the foundation of modern DX operating, propagation study and the continuing experimental character of amateur radio.
+    </p>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>Explore the history behind amateur radio</h3>
+
+      <p>
+        The development of short-wave communication is only one chapter in the transformation of amateur radio from local wireless experimentation into a worldwide technical and scientific community.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
