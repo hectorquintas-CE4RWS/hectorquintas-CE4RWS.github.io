@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is a Digital Signal Report and What Does It Really Mean? | CE4RWS</title>
+
+<meta name="description" content="What does a digital signal report really mean? Understand FT8 dB reports, signal-to-noise ratio, noise floor, S-units and why digital reports are different from conventional signal-strength readings.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · DIGITAL RADIO</div>
+
+    <h1>What Is a Digital Signal Report and What Does It Really Mean?</h1>
+
+    <p class="hero-intro">
+      Digital modes such as FT8 use signal reports expressed in decibels, but these numbers are easy to misunderstand. A report such as −10 dB is not a transmitter power measurement and it is not the same thing as an S-unit on a conventional receiver.
+    </p>
+
+    <div class="tags">
+      <span class="tag">FT8</span>
+      <span class="tag">Signal Report</span>
+      <span class="tag">Digital Radio</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      One of the first things that surprises operators when they begin using FT8 is the appearance of signal reports such as <strong>−18 dB</strong>, <strong>−10 dB</strong> or <strong>+5 dB</strong>.
+    </p>
+
+    <p>
+      At first glance, these numbers can seem strange. A conventional amateur radio receiver normally describes signal strength using S-units or sometimes an approximate dB measurement. FT8 uses a different reporting system designed specifically for digital weak-signal decoding.
+    </p>
+
+    <p>
+      Understanding what the number represents is important because it prevents a very common mistake: treating an FT8 report as though it were a direct measurement of transmitter power or absolute signal strength.
+    </p>
+
+    <div class="callout">
+      An FT8 report such as −10 dB describes the decoded signal relative to the noise under the measurement convention used by the digital decoder. It does not mean that the transmitter is producing −10 dB of power.
+    </div>
+
+    <h2>What does the dB report represent?</h2>
+
+    <p>
+      In FT8 and related weak-signal modes, the reported value is based on the signal-to-noise relationship observed by the decoder over its defined measurement bandwidth and processing conditions.
+    </p>
+
+    <p>
+      The exact number therefore depends not only on the transmitted signal, but also on the receiver, local noise, propagation conditions, bandwidth and digital signal-processing environment.
+    </p>
+
+    <p>
+      A report of −10 dB means the decoded signal is below the noise level according to the measurement convention being used. The fact that the decoder can still recover the structured message is one of the important strengths of the mode.
+    </p>
+
+    <h2>Why can a negative report still produce a contact?</h2>
+
+    <p>
+      Human hearing and digital signal processing do not work in exactly the same way.
+    </p>
+
+    <p>
+      A weak FT8 signal may be difficult or impossible to identify by ear when listening to the receiver audio. The decoder, however, knows what kind of signal it is looking for and can apply digital processing and error-correction techniques to determine whether a valid message is present.
+    </p>
+
+    <p>
+      This allows useful information to be recovered from signals that appear buried in the noise to a human listener.
+    </p>
+
+    <p>
+      The result is one of the most interesting characteristics of weak-signal digital radio: <strong>a signal can be successfully decoded even when its measured level is below the apparent noise floor.</strong>
+    </p>
+
+    <h2>Does −10 dB mean the signal is weak?</h2>
+
+    <p>
+      It means the signal is weak relative to the noise under the decoder's measurement conditions. That is an important distinction.
+    </p>
+
+    <p>
+      A −10 dB report does not provide a universal statement about how much RF power reached the receiving antenna. Two stations could produce the same digital report under different combinations of transmitter power, antenna gain, propagation conditions and local noise.
+    </p>
+
+    <p>
+      The report is therefore most useful as an indicator of the quality of the received digital signal under the specific conditions of the measurement.
+    </p>
+
+    <h2>Why is 0 dB not a threshold between “working” and “not working”?</h2>
+
+    <p>
+      A common misunderstanding is to assume that a signal must reach 0 dB before it can be decoded.
+    </p>
+
+    <p>
+      That is not how FT8 works. The decoder can recover some signals at substantially negative reported values, depending on the actual signal, noise characteristics and decoding conditions.
+    </p>
+
+    <p>
+      The practical decoding limit is not represented by a single universal number that applies to every possible reception.
+    </p>
+
+    <p>
+      This is another reason why digital reports should be treated as measurements within a particular system rather than as absolute universal limits.
+    </p>
+
+    <h2>Digital reports are not S-units</h2>
+
+    <p>
+      An S-meter on a conventional receiver indicates signal strength according to the receiver's calibration. The exact relationship between S-units and absolute RF power can vary between equipment and calibration standards.
+    </p>
+
+    <p>
+      FT8 reports are different. They are generated by the digital decoder from the received signal and noise conditions within the software's processing system.
+    </p>
+
+    <p>
+      A report of −10 dB should therefore not be translated directly into “S5” or another S-meter value.
+    </p>
+
+    <p>
+      They are different measurements serving different purposes.
+    </p>
+
+    <h2>Why can the same station report different values?</h2>
+
+    <p>
+      The same transmitting station can produce different reports at different receiving stations, and even at the same station at different times.
+    </p>
+
+    <p>
+      Propagation changes continuously. The signal may arrive through different paths, experience fading, encounter different levels of ionospheric absorption or simply be affected by changing interference.
+    </p>
+
+    <p>
+      Local noise is equally important. A station in a quiet rural environment may report a different value from a station in an electrically noisy urban environment even if both receive approximately the same transmitted signal.
+    </p>
+
+    <h2>Why can a station be decoded but not heard by another receiver?</h2>
+
+    <p>
+      Digital decoding depends on more than the existence of RF energy at the receiving antenna.
+    </p>
+
+    <p>
+      The signal must arrive within the receiver's passband, with suitable timing and sufficient characteristics for the decoder to identify the digital waveform. Interference, receiver overload, incorrect audio configuration or timing errors can prevent decoding even when RF energy is present.
+    </p>
+
+    <p>
+      This is why a digital reception report is the result of an entire receiving chain, not just the antenna.
+    </p>
+
+    <h2>Why local noise changes everything</h2>
+
+    <p>
+      Imagine two stations receiving the same remote FT8 transmission.
+    </p>
+
+    <p>
+      Station A has a very low local noise floor. Station B has strong electrical interference from nearby equipment. The remote signal may arrive at both antennas with similar strength, but the decoder at Station A may report a much more favourable signal-to-noise value.
+    </p>
+
+    <p>
+      Improving the noise environment can therefore improve digital reception without changing transmitter power at all.
+    </p>
+
+    <h2>What does a positive report mean?</h2>
+
+    <p>
+      A positive digital report indicates that the measured signal is above the noise according to the decoder's reporting convention.
+    </p>
+
+    <p>
+      For example, a report of +5 dB represents a substantially stronger signal relative to the noise than a report of −15 dB.
+    </p>
+
+    <p>
+      But a very strong report is not automatically evidence of a better antenna or a better station. It may simply reflect a shorter path, favourable propagation, lower local noise or higher received signal strength.
+    </p>
+
+    <h2>Can signal reports be used to study propagation?</h2>
+
+    <p>
+      Yes. This is one of the most useful aspects of digital amateur radio.
+    </p>
+
+    <p>
+      When many stations exchange digital reports, the resulting information can reveal which paths are currently supporting communication. Networks such as PSK Reporter can collect reception reports from participating stations and display where signals are being received.
+    </p>
+
+    <p>
+      Over time, these observations can help operators understand how band conditions change throughout the day, how propagation moves between bands and how different paths behave during changing solar and ionospheric conditions.
+    </p>
+
+    <h2>The report is part of a bigger picture</h2>
+
+    <p>
+      A single FT8 report should never be treated as a complete description of the radio path.
+    </p>
+
+    <p>
+      To understand what is happening, it is useful to consider the operating frequency, distance, antenna systems, transmitter power, local noise, propagation mode, time of day and current ionospheric conditions.
+    </p>
+
+    <p>
+      A −20 dB report from a distant station under difficult conditions can be far more interesting from a propagation perspective than a +10 dB report from a nearby station.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      Digital signal reports are powerful because they provide a standardized way to describe how a decoded signal compares with the surrounding noise within the digital receiver.
+    </p>
+
+    <p>
+      They are not direct measurements of transmitter power, antenna gain or absolute received field strength. They are measurements produced by a particular digital decoding system under particular conditions.
+    </p>
+
+    <p>
+      Once that distinction is understood, numbers such as −10 dB or −20 dB stop looking mysterious. They become useful pieces of information about the relationship between <strong>signal, noise, receiver conditions and propagation.</strong>
+    </p>
+
+    <p>
+      And that is precisely what makes digital modes so interesting: they turn individual contacts into small observations of the radio environment around us.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore FT8, weak signals and propagation</h3>
+      <p>
+        The CE4RWS technical books explore digital modes, FT8, signal reports, weak-signal communication, propagation, antennas and practical digital-radio operation in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
