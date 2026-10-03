@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Does SWR Really Tell Us? | CE4RWS</title>
+
+<meta name="description" content="A practical explanation of SWR, what it tells us about a radio system, and what it does not tell us about antenna performance.">
+
+<style>
+
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+a{
+  color:inherit;
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+}
+
+.brand-main{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:8px;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--yellow);
+}
+
+.hero{
+  background:var(--navy);
+  color:white;
+  padding:90px 7% 85px;
+}
+
+.hero-inner{
+  max-width:1000px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(48px,6vw,78px);
+  line-height:.95;
+  letter-spacing:-.05em;
+  margin:0;
+}
+
+.hero p{
+  max-width:760px;
+  margin:28px 0 0;
+  font-size:19px;
+  line-height:1.7;
+  color:#dce7f2;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:70px 7% 100px;
+}
+
+article{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:45px;
+  box-shadow:0 12px 30px rgba(9,39,66,.06);
+}
+
+article h2{
+  margin:40px 0 16px;
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.025em;
+}
+
+article h2:first-child{
+  margin-top:0;
+}
+
+article p{
+  margin:0 0 20px;
+  color:#3f5063;
+  font-size:17px;
+  line-height:1.8;
+}
+
+.highlight{
+  margin:30px 0;
+  padding:24px 28px;
+  border-left:5px solid var(--yellow);
+  background:#f7f9fc;
+  color:var(--ink);
+  font-size:18px;
+  line-height:1.7;
+}
+
+.article-meta{
+  margin-top:40px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  color:var(--cobalt);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.back{
+  display:inline-block;
+  margin-top:35px;
+  color:var(--cobalt);
+  text-decoration:none;
+  font-weight:800;
+}
+
+footer{
+  background:var(--navy);
+  color:#dce7f2;
+  padding:35px 7%;
+  text-align:center;
+  font-size:14px;
+}
+
+footer strong{
+  color:white;
+}
+
+@media(max-width:700px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  article{
+    padding:30px 24px;
+  }
+
+  .hero{
+    padding:65px 6%;
+  }
+
+  main{
+    padding:50px 6% 80px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <a class="brand" href="index.html">
+    <div class="brand-main">
+      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
+    </div>
+
+    <div class="brand-sub">
+      Amateur Radio · Exploration · Books · Technology
+    </div>
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#sobre-mi">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="index.html#libros">Books</a>
+    <a href="index.html#radio">Amateur Radio</a>
+    <a href="index.html#contacto">Contact</a>
+  </nav>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">
+      CE4RWS · ANTENNAS & RF
+    </div>
+
+    <h1>
+      What Does SWR<br>
+      Really Tell Us?
+    </h1>
+
+    <p>
+      Understanding standing wave ratio and what it actually tells us
+      about the relationship between a transmitter, feed line and load.
+    </p>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <article>
+
+    <h2>What Is SWR?</h2>
+
+    <p>
+      Standing Wave Ratio, or SWR, is one of the most familiar measurements
+      in amateur radio. It appears on antenna tuners, transceivers,
+      wattmeters and antenna analysers, and it is often treated as a quick
+      indication of whether an antenna is working properly.
+    </p>
+
+    <p>
+      But SWR does not directly measure how well an antenna radiates.
+      What it tells us is how well the load is matched to the transmission
+      line at a particular frequency.
+    </p>
+
+    <div class="highlight">
+      SWR is fundamentally a measurement of the relationship between
+      forward and reflected power on a transmission line. It is not a
+      direct measurement of antenna efficiency.
+    </div>
+
+
+    <h2>Why Does Reflected Power Exist?</h2>
+
+    <p>
+      When radio-frequency energy travels from a transmitter through a
+      feed line toward an antenna, the load presented by the antenna
+      determines how much of that energy is accepted by the load.
+    </p>
+
+    <p>
+      If the impedance of the load matches the characteristic impedance
+      of the transmission line, energy is transferred with minimal
+      reflection. In a typical amateur-radio station using 50-ohm coaxial
+      cable, a 50-ohm load represents the ideal condition for the line.
+    </p>
+
+    <p>
+      When the load impedance differs from the characteristic impedance,
+      part of the energy is reflected back toward the transmitter. The
+      resulting interaction between forward and reflected waves produces
+      the standing-wave pattern measured as SWR.
+    </p>
+
+
+    <h2>What Does 1:1 Mean?</h2>
+
+    <p>
+      An SWR of 1:1 represents a perfect match between the load and the
+      transmission line. In that condition, there is no reflected power
+      caused by an impedance mismatch at the measurement point.
+    </p>
+
+    <p>
+      As the SWR increases, the mismatch becomes greater and the reflected
+      component becomes larger. Values such as 1.5:1, 2:1 or 3:1 therefore
+      describe progressively greater mismatches between the line and the
+      load.
+    </p>
+
+    <p>
+      This is useful information because excessive mismatch can affect
+      transmitter operation, feed-line losses and the amount of power
+      delivered to the load.
+    </p>
+
+
+    <h2>SWR Depends on Frequency</h2>
+
+    <p>
+      An antenna does not normally present the same impedance at every
+      frequency. Its resistance and reactance change as the operating
+      frequency changes.
+    </p>
+
+    <p>
+      For this reason, an antenna can show a low SWR on one part of a band
+      and a considerably higher SWR somewhere else. This is normal behaviour
+      and is one reason why antenna measurements should always be considered
+      at the frequency where the station will actually operate.
+    </p>
+
+
+    <h2>Where Is SWR Measured?</h2>
+
+    <p>
+      The measurement point matters. SWR can be measured at the antenna
+      feed point, at the transmitter, or at another point along the
+      transmission line.
+    </p>
+
+    <p>
+      With a lossless transmission line, the SWR value remains the same
+      along the line even though voltage and current vary from point to
+      point. Real coaxial cable, however, has losses, and those losses can
+      affect the SWR observed at different points.
+    </p>
+
+    <p>
+      This is why an SWR reading at the radio does not necessarily tell us
+      exactly what the impedance is at the antenna feed point.
+    </p>
+
+
+    <h2>What SWR Does Not Tell Us</h2>
+
+    <p>
+      A low SWR does not automatically mean that an antenna is efficient.
+      An antenna can present a good match to a transmission line while still
+      losing a significant amount of energy through resistance, poor
+      construction, ground losses or other mechanisms.
+    </p>
+
+    <p>
+      Conversely, an antenna can have a higher SWR and still radiate
+      effectively. The important question is not simply whether the SWR
+      number is low, but what is causing the impedance condition and how
+      efficiently the available power is being converted into radiation.
+    </p>
+
+    <div class="highlight">
+      A good SWR tells us that the impedance relationship is favourable.
+      It does not, by itself, tell us how much of the transmitter's power
+      becomes useful radiation.
+    </div>
+
+
+    <h2>Why Antenna Tuners Can Be Misleading</h2>
+
+    <p>
+      An antenna tuner can transform the impedance presented to the
+      transmitter so that the transmitter sees a much better match.
+      The radio may then display an SWR close to 1:1.
+    </p>
+
+    <p>
+      That does not necessarily mean that the antenna itself has become
+      resonant or more efficient. The tuner has changed the impedance
+      relationship seen by the transmitter; it has not magically changed
+      the physical characteristics of the antenna.
+    </p>
+
+    <p>
+      This distinction is essential when evaluating an antenna system.
+      The SWR seen at the transmitter and the actual performance of the
+      antenna are related, but they are not the same measurement.
+    </p>
+
+
+    <h2>Reading SWR the Right Way</h2>
+
+    <p>
+      SWR is most useful when it is treated as one measurement within a
+      larger picture. Frequency, antenna impedance, feed-line losses,
+      installation height, ground conditions and radiation pattern all
+      influence the real performance of an antenna system.
+    </p>
+
+    <p>
+      Instead of asking only whether the SWR is good or bad, ask a more
+      useful question: what is the SWR telling me about the relationship
+      between my radio, transmission line and antenna at this frequency?
+    </p>
+
+    <p>
+      That approach turns SWR from a simple number on a display into a
+      practical diagnostic tool for understanding the entire RF system.
+    </p>
+
+
+    <div class="article-meta">
+      ANTENNAS & RF · SWR · CE4RWS
+    </div>
+
+  </article>
+
+
+  <a class="back" href="articles.html">
+    ← Back to Articles
+  </a>
+
+</main>
+
+
+<footer>
+
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+
+</footer>
+
+</body>
+</html>
