@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is an Unun and How Is It Different from a Balun? | CE4RWS</title>
+
+<meta name="description" content="What is an unun and how is it different from a balun? Understand unbalanced-to-unbalanced transformers, impedance transformation, common end-fed applications and practical RF considerations.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · ANTENNAS &amp; RF</div>
+
+    <h1>What Is an Unun and How Is It Different from a Balun?</h1>
+
+    <p class="hero-intro">
+      Baluns and ununs are often mentioned together, but they solve different RF problems. Understanding the distinction between balanced and unbalanced systems makes it much easier to understand why an unun is commonly used with antennas such as end-fed wires and other unbalanced antenna systems.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Unun</span>
+      <span class="tag">Antennas</span>
+      <span class="tag">RF</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      The term <strong>unun</strong> comes from “unbalanced to unbalanced.” It describes a transformer intended to interface two unbalanced RF systems, usually while also providing an impedance transformation.
+    </p>
+
+    <p>
+      The distinction becomes particularly useful when working with end-fed antennas, vertical antennas and other arrangements where the antenna system is treated as unbalanced.
+    </p>
+
+    <p>
+      An unun is therefore not simply a different name for a balun. The two devices may look similar physically, and both can be built using ferrite cores and wire, but their intended electrical functions are different.
+    </p>
+
+    <h2>Balanced and unbalanced systems</h2>
+
+    <p>
+      To understand the difference, it helps to start with the idea of balance.
+    </p>
+
+    <p>
+      A balanced antenna system has two conductors that are intended to carry equal and opposite currents with a symmetrical relationship to the surrounding environment. A centre-fed dipole is a familiar example.
+    </p>
+
+    <p>
+      A coaxial cable, on the other hand, is normally treated as an unbalanced transmission line. The centre conductor and shield have different electrical roles, and the shield is also capable of carrying common-mode current on its outer surface.
+    </p>
+
+    <p>
+      An unun is normally used when both sides of the transformer belong to unbalanced systems. A balun is associated with a balanced-to-unbalanced transition.
+    </p>
+
+    <div class="callout">
+      The simplest distinction is this: a balun deals with a balanced-to-unbalanced relationship, while an unun deals with an unbalanced-to-unbalanced relationship. The actual transformer design determines the impedance transformation and RF behaviour.
+    </div>
+
+    <h2>Why are ununs common with end-fed antennas?</h2>
+
+    <p>
+      End-fed antennas are often presented with a relatively high feed-point impedance. Depending on the antenna length, operating frequency and installation, the impedance can be very different from the 50 ohms expected by a typical amateur radio transceiver.
+    </p>
+
+    <p>
+      A transformer can be used to transform that higher impedance toward a value that is more suitable for the feed line and transmitter.
+    </p>
+
+    <p>
+      Common examples include transformer arrangements described as 9:1 or 49:1, although the actual transformation and suitability depend on the antenna system and the transformer design.
+    </p>
+
+    <p>
+      These numbers should not be treated as universal recipes. The impedance presented by an end-fed antenna changes with frequency, physical length, height, ground or counterpoise arrangement and surrounding environment.
+    </p>
+
+    <h2>What does a 9:1 unun do?</h2>
+
+    <p>
+      A 9:1 impedance transformer is intended to transform impedance by approximately a factor of nine under the conditions for which it was designed.
+    </p>
+
+    <p>
+      For example, an impedance of approximately 450 ohms could theoretically be transformed toward approximately 50 ohms with a suitable 9:1 transformer.
+    </p>
+
+    <p>
+      The important word is <em>approximately</em>. Real antennas do not present a fixed resistance at every frequency, and transformer losses, winding configuration and core behaviour all influence the actual result.
+    </p>
+
+    <p>
+      A 9:1 unun therefore does not magically turn any random wire into a perfect 50-ohm antenna. It is one component in an antenna system whose complete electrical behaviour must be considered.
+    </p>
+
+    <h2>What about a 49:1 transformer?</h2>
+
+    <p>
+      Another common transformer arrangement is approximately 49:1, often associated with end-fed half-wave antenna systems.
+    </p>
+
+    <p>
+      The basic idea is that a high feed-point impedance can be transformed toward approximately 50 ohms. If the antenna presents roughly 2,450 ohms under the intended operating conditions, a 49:1 transformation would bring that impedance close to 50 ohms.
+    </p>
+
+    <p>
+      Again, the transformer ratio does not guarantee that the antenna will present exactly that impedance. The actual antenna installation determines the impedance that the transformer sees.
+    </p>
+
+    <h2>Does an unun make an antenna resonant?</h2>
+
+    <p>
+      An impedance transformer should not automatically be described as making an antenna resonant.
+    </p>
+
+    <p>
+      Resonance is related to the reactive component of an antenna's impedance. A transformer can transform impedance, but it does not necessarily remove all reactance or make a fundamentally non-resonant antenna resonant.
+    </p>
+
+    <p>
+      Some complete antenna systems combine transformer action with antenna dimensions and matching arrangements so that the resulting system behaves well at one or more frequencies. But the transformer itself should not be confused with the antenna's resonant behaviour.
+    </p>
+
+    <h2>What about the counterpoise?</h2>
+
+    <p>
+      An unun does not eliminate the need for the rest of the RF system.
+    </p>
+
+    <p>
+      Many end-fed antenna arrangements require some form of return path or counterpoise. Depending on the design, this may involve a dedicated counterpoise wire, a radial system, the equipment ground, the feed line or a combination of these elements.
+    </p>
+
+    <p>
+      If common-mode current flows onto the outside of the coaxial shield, the feed line can become part of the radiating system. That can change the antenna's behaviour and make the results more dependent on how the coaxial cable is routed.
+    </p>
+
+    <p>
+      This is why an impedance transformer and a common-mode choke are not automatically the same thing.
+    </p>
+
+    <h2>Unun versus balun: similar hardware, different purpose</h2>
+
+    <p>
+      Both baluns and ununs can use ferrite cores, bifilar or other winding arrangements, and carefully selected wire. From the outside, two devices can look almost identical.
+    </p>
+
+    <p>
+      Their electrical purpose is what distinguishes them.
+    </p>
+
+    <p>
+      A 1:1 current balun can be used to control common-mode current between a coaxial feed line and a balanced antenna. An impedance-transforming balun can also provide a balanced-to-unbalanced transformation while changing impedance.
+    </p>
+
+    <p>
+      An unun is normally intended to transform impedance between two unbalanced portions of an RF system.
+    </p>
+
+    <h2>Why the transformer ratio matters</h2>
+
+    <p>
+      Transformer ratios are often misunderstood because the turns ratio and impedance ratio are not the same number.
+    </p>
+
+    <p>
+      For an ideal transformer, impedance transformation follows the square of the turns ratio. A turns ratio of 3:1 therefore corresponds to an impedance ratio of approximately 9:1.
+    </p>
+
+    <p>
+      Real RF transformers are more complicated. Core material, frequency, winding capacitance, leakage inductance, wire size and power level all influence the useful operating range.
+    </p>
+
+    <p>
+      A transformer that performs well on one HF band may not behave identically across the entire HF spectrum.
+    </p>
+
+    <h2>Losses matter too</h2>
+
+    <p>
+      An unun is not an ideal component. The ferrite core and windings have losses, and those losses increase under some combinations of frequency, power and impedance.
+    </p>
+
+    <p>
+      At higher power levels, excessive RF current or magnetic flux can cause the core to heat. A transformer that works perfectly at QRP power may therefore require a different design when used at significantly higher power.
+    </p>
+
+    <p>
+      Core selection, winding arrangement and thermal behaviour are part of the engineering of the transformer.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      An unun is best understood as an impedance-transforming component used between unbalanced RF systems. It can be extremely useful, but it does not replace the need to understand the antenna itself.
+    </p>
+
+    <p>
+      Before choosing an unun, it is worth asking what impedance the antenna is expected to present, over which frequencies it will operate, what return path is being used and how much RF power the transformer must handle.
+    </p>
+
+    <p>
+      A transformer ratio printed on a box is only the beginning of the analysis. The complete antenna system determines whether the arrangement will actually perform well.
+    </p>
+
+    <p>
+      Once the distinction between balun and unun is clear, many antenna systems become easier to understand. The transformer is no longer mysterious: it is simply one RF component designed to solve a specific impedance and system-interface problem.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore baluns, ununs and impedance transformation</h3>
+      <p>
+        The CE4RWS technical books explore baluns, ununs, transformer ratios, common-mode current, impedance matching, end-fed antennas and practical RF design in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
