@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Does Solar Flux Really Tell Us About HF Propagation? | CE4RWS</title>
+
+<meta name="description" content="What does solar flux really tell us about HF propagation? A practical explanation of the 10.7 cm solar flux index and what it can and cannot tell amateur radio operators.">
+
+<style>
+
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+a{
+  color:inherit;
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+}
+
+.brand-main{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:8px;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--yellow);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:white;
+  padding:85px 7% 90px;
+}
+
+.article-hero-inner{
+  max-width:1050px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.article-hero h1{
+  font-size:clamp(46px,6.5vw,78px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin:0;
+  max-width:1000px;
+}
+
+.article-intro{
+  max-width:780px;
+  margin:30px 0 0;
+  font-size:20px;
+  line-height:1.7;
+  color:#dce7f2;
+}
+
+.article-meta{
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.article-meta span{
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:75px 7% 100px;
+}
+
+.article-body{
+  font-size:18px;
+  line-height:1.85;
+  color:#26384d;
+}
+
+.article-body p{
+  margin:0 0 28px;
+}
+
+.article-body h2{
+  color:var(--ink);
+  font-size:32px;
+  line-height:1.15;
+  letter-spacing:-.025em;
+  margin:55px 0 20px;
+}
+
+.article-body strong{
+  color:var(--ink);
+}
+
+.highlight{
+  margin:42px 0;
+  padding:28px 30px;
+  border-left:5px solid var(--yellow);
+  background:white;
+  border-radius:0 14px 14px 0;
+  box-shadow:0 10px 28px rgba(9,39,66,.06);
+}
+
+.highlight p{
+  margin:0;
+}
+
+.back{
+  margin-top:65px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
+
+.back a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--cobalt);
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+.back a:hover{
+  color:var(--navy);
+}
+
+.deep{
+  margin-top:55px;
+  background:var(--navy);
+  color:white;
+  border-radius:18px;
+  padding:30px 32px;
+}
+
+.deep strong{
+  color:var(--yellow);
+  margin-right:8px;
+}
+
+.deep p{
+  display:inline;
+  color:#dce7f2;
+}
+
+footer{
+  background:var(--navy);
+  color:#dce7f2;
+  padding:35px 7%;
+  text-align:center;
+  font-size:14px;
+}
+
+footer strong{
+  color:white;
+}
+
+@media(max-width:800px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .article-hero{
+    padding:65px 6% 70px;
+  }
+
+  main{
+    padding:55px 6% 80px;
+  }
+
+  nav{
+    gap:16px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <a class="brand" href="index.html">
+
+    <div class="brand-main">
+      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
+    </div>
+
+    <div class="brand-sub">
+      Amateur Radio · Exploration · Books · Technology
+    </div>
+
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#sobre-mi">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="index.html#libros">Books</a>
+    <a href="index.html#radio">Amateur Radio</a>
+    <a href="index.html#contacto">Contact</a>
+  </nav>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">
+      CE4RWS · PROPAGATION & DX
+    </div>
+
+    <h1>
+      What Does Solar Flux Really Tell Us About HF Propagation?
+    </h1>
+
+    <p class="article-intro">
+      Solar flux is one of the most commonly quoted indicators in
+      amateur radio propagation reports. But what does it actually
+      measure, and how much can it tell us about the bands?
+    </p>
+
+    <div class="article-meta">
+      <span>Solar Flux</span>
+      <span>HF Propagation</span>
+      <span>Solar Activity</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <article class="article-body">
+
+    <p>
+      Amateur radio operators often look at the solar flux index when
+      deciding whether HF conditions may be favourable. A higher value
+      is generally associated with increased solar activity and can
+      coincide with better ionization of the upper atmosphere. But
+      solar flux is frequently treated as if it were a direct
+      measurement of propagation, and it is not.
+    </p>
+
+    <p>
+      The solar flux index is useful because it gives us information
+      about the level of solar radio emission at a wavelength of
+      10.7 centimetres, corresponding to approximately 2800 MHz. It
+      is widely used as a proxy for the level of solar activity that
+      influences the ionosphere.
+    </p>
+
+    <p>
+      The key is understanding what this number tells us, and what it
+      does not tell us.
+    </p>
+
+    <h2>
+      What is solar flux?
+    </h2>
+
+    <p>
+      Solar flux is a measurement of radio emission from the Sun at
+      10.7 centimetres. The value is normally expressed in solar flux
+      units, or sfu.
+    </p>
+
+    <p>
+      The measurement is made at ground-based observatories and is
+      particularly useful because it varies with solar activity and
+      provides a relatively stable indicator of the Sun's longer-term
+      activity level.
+    </p>
+
+    <p>
+      Radio amateurs commonly encounter the value as the
+      <strong>10.7 cm solar flux index</strong>, often abbreviated as
+      SFI or simply solar flux.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>The important point:</strong>
+        solar flux does not measure the strength of your HF signal.
+        It is an indicator of solar activity that can help us understand
+        the ionospheric environment.
+      </p>
+
+    </div>
+
+    <h2>
+      Why does solar flux matter to HF?
+    </h2>
+
+    <p>
+      HF propagation depends strongly on the ionosphere. The ionosphere
+      contains charged particles produced primarily by solar radiation,
+      and its state determines how radio waves interact with the upper
+      atmosphere.
+    </p>
+
+    <p>
+      When solar activity is higher, the solar radiation responsible for
+      ionization can also be stronger. This can increase ionization in
+      ionospheric regions that are important for HF propagation.
+    </p>
+
+    <p>
+      Greater ionization can allow some higher HF frequencies to remain
+      useful over longer paths. This is one reason why periods of higher
+      solar activity can be associated with better conditions on bands
+      such as 15 and 10 metres.
+    </p>
+
+    <p>
+      But that relationship is not automatic. Propagation depends on
+      much more than the solar flux value alone.
+    </p>
+
+    <h2>
+      A higher SFI does not guarantee better DX
+    </h2>
+
+    <p>
+      This is one of the most important distinctions for the operator.
+      A high solar flux value can indicate a more active Sun and a
+      potentially more strongly ionized ionosphere, but it does not
+      guarantee that a particular DX path will be open.
+    </p>
+
+    <p>
+      The path also depends on local time, latitude, season, frequency,
+      ionospheric conditions and geomagnetic activity. A high solar
+      flux value cannot tell us whether a specific station will be
+      audible from our location at a particular moment.
+    </p>
+
+    <p>
+      In other words, SFI describes part of the environment, not the
+      complete propagation result.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>Think of SFI as a background indicator.</strong>
+        It helps describe the level of solar activity that can influence
+        ionization, but it does not tell you whether your next contact
+        will be easy.
+      </p>
+
+    </div>
+
+    <h2>
+      Solar flux and the higher HF bands
+    </h2>
+
+    <p>
+      One of the most useful practical applications of SFI is helping
+      operators understand why higher HF bands can become more
+      interesting during periods of stronger solar activity.
+    </p>
+
+    <p>
+      Higher frequencies generally require sufficient ionization for
+      the ionosphere to support the desired propagation path. When the
+      ionospheric conditions are favourable, frequencies that might
+      otherwise be difficult to use can become productive.
+    </p>
+
+    <p>
+      This is why operators often become particularly interested in
+      15, 12 and 10 metres when solar activity is elevated.
+    </p>
+
+    <p>
+      However, the exact result depends on the path. One band may be
+      excellent toward one part of the world while another direction
+      remains poor.
+    </p>
+
+    <h2>
+      SFI is not the same as Kp
+    </h2>
+
+    <p>
+      Solar flux and the Kp index are sometimes mentioned together in
+      propagation reports, but they describe different things.
+    </p>
+
+    <p>
+      Solar flux is an indicator of solar activity associated with
+      ionization. Kp, on the other hand, is a measure of geomagnetic
+      disturbance. A high solar flux value can coexist with elevated
+      geomagnetic activity, and those two conditions can have very
+      different implications for HF propagation.
+    </p>
+
+    <p>
+      This is why looking at SFI alone can give an incomplete picture.
+      An operator interested in propagation should consider both the
+      general level of solar activity and the current state of the
+      Earth's geomagnetic environment.
+    </p>
+
+    <h2>
+      Solar flux changes more slowly than propagation
+    </h2>
+
+    <p>
+      Another useful distinction is timescale. Solar flux is valuable
+      as an indicator of broader solar activity, but HF propagation can
+      change much more quickly.
+    </p>
+
+    <p>
+      A band can open and close during the same day while the reported
+      solar flux value changes very little. The ionosphere responds to
+      many processes that occur on shorter timescales than the general
+      solar activity trend represented by SFI.
+    </p>
+
+    <p>
+      For this reason, an operator should never interpret a single SFI
+      number as a live description of the bands.
+    </p>
+
+    <h2>
+      What does a high solar flux value actually tell us?
+    </h2>
+
+    <p>
+      A higher solar flux generally tells us that the Sun is producing
+      stronger radio emission at the measured wavelength and that solar
+      activity is elevated relative to quieter conditions.
+    </p>
+
+    <p>
+      From an amateur radio perspective, this can be encouraging because
+      stronger solar activity is often associated with greater
+      ionization and improved opportunities on the higher HF bands.
+    </p>
+
+    <p>
+      But the correct interpretation is probabilistic rather than
+      absolute. A high value means that the background conditions may
+      be favourable for certain types of propagation. It does not mean
+      that every band will be open everywhere.
+    </p>
+
+    <h2>
+      What about a low solar flux?
+    </h2>
+
+    <p>
+      Lower solar flux generally indicates lower solar activity. During
+      such periods, higher HF bands may have fewer opportunities for
+      long-distance ionospheric propagation, especially when the
+      required frequency is above what the ionosphere can support.
+    </p>
+
+    <p>
+      This does not mean that HF radio becomes useless. Lower bands can
+      remain productive, and propagation through mechanisms such as
+      sporadic-E, grey-line effects and other ionospheric processes can
+      still create interesting openings.
+    </p>
+
+    <p>
+      Again, solar flux is only one part of the picture.
+    </p>
+
+    <h2>
+      A practical example
+    </h2>
+
+    <p>
+      Imagine that the reported solar flux is relatively high and an
+      operator is deciding whether to check 10 metres for DX.
+    </p>
+
+    <p>
+      The SFI value gives a reason to pay attention to the band. But
+      the operator still needs to consider the time of day, the
+      geographic direction, the current ionospheric conditions and
+      geomagnetic activity.
+    </p>
+
+    <p>
+      If the band is quiet, that does not necessarily mean that the
+      SFI was misleading. The solar flux may have provided favourable
+      background conditions, while the particular path simply was not
+      supported at that moment.
+    </p>
+
+    <h2>
+      The best use of SFI is in combination
+    </h2>
+
+    <p>
+      Solar flux becomes much more useful when combined with other
+      information. MUF can help indicate the upper frequency range
+      expected for a path. LUF can help explain lower-frequency
+      limitations caused by absorption and noise. Kp and other
+      geomagnetic indicators provide information about disturbances.
+    </p>
+
+    <p>
+      Actual observations from the station are equally important.
+      Listening across several bands often tells us more about what is
+      happening right now than any single propagation index.
+    </p>
+
+    <p>
+      The strongest operator is therefore not the one who memorizes a
+      particular SFI threshold, but the one who understands how the
+      different indicators fit together.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>The practical lesson:</strong>
+        use solar flux to understand the solar background, then combine
+        it with MUF, LUF, geomagnetic conditions, time, path and actual
+        band observations.
+      </p>
+
+    </div>
+
+    <h2>
+      Solar flux is a clue, not a prediction
+    </h2>
+
+    <p>
+      The great value of SFI is that it gives amateur radio operators
+      a simple way to follow changes in solar activity over time.
+      It helps us understand why the higher HF bands can behave
+      differently during periods of stronger or weaker solar activity.
+    </p>
+
+    <p>
+      But propagation is never controlled by one number. The ionosphere
+      is a constantly changing environment, and every radio path
+      interacts with it differently.
+    </p>
+
+    <p>
+      When SFI is treated as one clue among several, rather than as a
+      direct forecast of band conditions, it becomes a genuinely useful
+      tool for the amateur radio operator.
+    </p>
+
+    <div class="deep">
+
+      <strong>GO DEEPER</strong>
+
+      <p>
+        Explore the CE4RWS technical books for a deeper look at solar
+        activity, HF propagation, the ionosphere and practical radio
+        operation.
+      </p>
+
+    </div>
+
+    <div class="back">
+
+      <a href="articles.html">
+        ← Back to Articles
+      </a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer>
+
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+
+</footer>
+
+</body>
+</html>
