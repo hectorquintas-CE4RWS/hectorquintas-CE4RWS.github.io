@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is a Balun and When Should You Use One? | CE4RWS</title>
+
+<meta name="description" content="What is a balun and when should you use one in amateur radio? Understand balanced and unbalanced systems, common-mode current, impedance transformation and the difference between baluns and ununs.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · ANTENNAS &amp; RF</div>
+
+    <h1>What Is a Balun and When Should You Use One?</h1>
+
+    <p class="hero-intro">
+      Baluns are common in amateur radio, but the word is often used to describe several different devices and functions. Understanding what a balun actually does makes it much easier to choose the right transformer or common-mode solution for an antenna system.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Balun</span>
+      <span class="tag">Antennas</span>
+      <span class="tag">RF</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      The word <strong>balun</strong> comes from the expression “balanced to unbalanced.” In amateur radio, the term normally refers to a device used to interface a balanced antenna system with an unbalanced transmission line, or to perform a related RF transformation.
+    </p>
+
+    <p>
+      A typical example is a dipole fed with coaxial cable. The dipole is a balanced structure, while ordinary coaxial cable is an unbalanced transmission line. A suitable balun can help manage this transition and, depending on its design, can also provide impedance transformation or suppression of unwanted common-mode current.
+    </p>
+
+    <p>
+      The important point is that <strong>not every balun performs the same function</strong>. The type of balun matters.
+    </p>
+
+    <h2>Balanced and unbalanced systems</h2>
+
+    <p>
+      A balanced circuit has two conductors that are electrically symmetrical with respect to the surrounding environment. In an ideal balanced system, equal and opposite currents flow on the two conductors.
+    </p>
+
+    <p>
+      A coaxial cable is considered unbalanced because its shield normally forms the outer conductor while the centre conductor forms the inner conductor. The two conductors do not have the same relationship to the surrounding environment.
+    </p>
+
+    <p>
+      Connecting these two types of systems directly is possible, but it can allow unwanted current to flow on the outside of the coaxial shield.
+    </p>
+
+    <div class="callout">
+      A balun is not simply an “SWR fixer.” Its function depends on its design. It can provide balanced-to-unbalanced interfacing, impedance transformation, common-mode current control, or a combination of these functions.
+    </div>
+
+    <h2>What is common-mode current?</h2>
+
+    <p>
+      When a balanced antenna is fed directly with coaxial cable without appropriate current control, RF current can appear on the outside surface of the coaxial shield.
+    </p>
+
+    <p>
+      This is called common-mode current. It can cause the feed line itself to become part of the radiating system.
+    </p>
+
+    <p>
+      Once that happens, the actual antenna system may be different from what the operator intended. The radiation pattern can change, RF can appear in unwanted locations, and the behaviour of the antenna can become more sensitive to the physical routing of the coaxial cable.
+    </p>
+
+    <h2>A 1:1 current balun</h2>
+
+    <p>
+      One of the most useful devices for a dipole or other balanced antenna is a 1:1 current balun.
+    </p>
+
+    <p>
+      Its primary purpose is normally not to transform impedance. Instead, it provides a high impedance to common-mode current flowing on the outside of the coaxial shield while allowing the desired differential RF current to reach the balanced antenna.
+    </p>
+
+    <p>
+      This type of device is often implemented using ferrite material and an appropriate winding arrangement. The exact design depends on the frequency range, power level and desired common-mode impedance.
+    </p>
+
+    <p>
+      The practical benefit is that the coaxial feed line is less likely to become an unintended part of the antenna system.
+    </p>
+
+    <h2>What does an impedance-transforming balun do?</h2>
+
+    <p>
+      Some baluns perform impedance transformation as well as balanced-to-unbalanced conversion.
+    </p>
+
+    <p>
+      A common example is a transformer used to interface a balanced antenna with an impedance different from the characteristic impedance of the feed line. Ratios such as 1:2, 1:4 or 1:9 may be used depending on the desired impedance transformation and transformer configuration.
+    </p>
+
+    <p>
+      It is important to remember that transformer ratios are not simply arbitrary labels. The impedance transformation depends on the turns ratio according to the square of that ratio, while the actual behaviour also depends on the core material, winding arrangement, frequency and losses.
+    </p>
+
+    <h2>What is a 4:1 balun?</h2>
+
+    <p>
+      A 4:1 balun is commonly used when an impedance transformation of approximately four to one is required.
+    </p>
+
+    <p>
+      For example, a balanced antenna presenting approximately 200 ohms could be transformed toward approximately 50 ohms with a suitable 4:1 transformer arrangement.
+    </p>
+
+    <p>
+      But the number “4:1” describes the impedance transformation, not necessarily the complete behaviour of the antenna system. The actual impedance presented by an antenna varies with frequency, installation height, surroundings and other factors.
+    </p>
+
+    <h2>Balun versus choke</h2>
+
+    <p>
+      The terms balun and choke are sometimes used interchangeably, but they should not automatically be treated as identical.
+    </p>
+
+    <p>
+      A common-mode choke is primarily intended to suppress unwanted common-mode current. A current balun can perform a similar common-mode suppression function while also being part of a balanced-to-unbalanced interface.
+    </p>
+
+    <p>
+      In practical amateur radio installations, the terminology can overlap because many devices combine several functions. The important thing is to understand what electrical behaviour the device is designed to produce rather than relying only on the name printed on the enclosure.
+    </p>
+
+    <h2>What is an unun?</h2>
+
+    <p>
+      An <strong>unun</strong> means “unbalanced to unbalanced.” Unlike a balun, it is normally used to interface two unbalanced systems while providing an impedance transformation.
+    </p>
+
+    <p>
+      A common example is an unun used with a vertical or end-fed antenna system where the antenna and feed arrangement are treated as unbalanced.
+    </p>
+
+    <p>
+      The distinction is useful because an unun does not automatically provide the same balanced-to-unbalanced transition as a balun.
+    </p>
+
+    <h2>Why the wrong device can cause confusion</h2>
+
+    <p>
+      It is easy to assume that adding any transformer or ferrite device will improve an antenna system. In reality, the device must be appropriate for the antenna, frequency range, impedance and power level.
+    </p>
+
+    <p>
+      A transformer designed for impedance matching is not necessarily an effective common-mode choke. A choke designed for common-mode suppression is not necessarily intended to transform impedance.
+    </p>
+
+    <p>
+      Using the wrong device can therefore produce disappointing results even if the SWR appears acceptable.
+    </p>
+
+    <h2>Where should a balun be installed?</h2>
+
+    <p>
+      The best location depends on what the device is intended to accomplish.
+    </p>
+
+    <p>
+      When a balun is used to interface a balanced antenna with coaxial cable, it is commonly placed at the antenna feed point. This allows the balanced transition or common-mode control to occur before the coaxial cable runs away from the antenna.
+    </p>
+
+    <p>
+      A common-mode choke can also be useful at other points in a feed system, depending on where unwanted current is being controlled. The correct location is therefore determined by the RF problem being solved.
+    </p>
+
+    <h2>Why the feed line still matters</h2>
+
+    <p>
+      Even a well-designed balun cannot compensate for every problem in an antenna installation. The coaxial cable still has losses, the antenna still has its own impedance and radiation characteristics, and the surrounding environment can still influence the system.
+    </p>
+
+    <p>
+      The balun is one part of the complete RF system. Its purpose is to control a specific electrical relationship between the antenna, feed line and RF current.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      A balun is much more than a box containing ferrite and wire. It is an RF component designed to control how energy and current move between different parts of an antenna system.
+    </p>
+
+    <p>
+      Before choosing one, it is useful to ask three questions: <strong>Is the antenna balanced or unbalanced? What impedance transformation, if any, is required? And is common-mode current a problem that needs to be controlled?</strong>
+    </p>
+
+    <p>
+      Once those questions are answered, the choice between a 1:1 current balun, an impedance-transforming balun, a choke or an unun becomes much clearer.
+    </p>
+
+    <p>
+      The best RF accessory is not necessarily the one that produces the lowest SWR. It is the one that solves the actual electrical problem in the antenna system.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore baluns, ununs and antenna matching</h3>
+      <p>
+        The CE4RWS technical books explore balanced and unbalanced systems, baluns, ununs, common-mode current, impedance transformation, feed lines and practical antenna design in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
