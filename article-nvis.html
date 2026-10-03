@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is NVIS and When Can It Be Useful? | CE4RWS</title>
+
+<meta name="description" content="What is NVIS propagation and when can it be useful to amateur radio operators? A practical explanation of Near Vertical Incidence Skywave communication, antennas, frequency selection and regional HF coverage.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · PROPAGATION &amp; DX</div>
+
+    <h1>What Is NVIS and When Can It Be Useful?</h1>
+
+    <p class="hero-intro">
+      Not every HF communication requires a long-distance path. Sometimes the objective is to cover a regional area where conventional skywave propagation may leave gaps. This is where NVIS, or Near Vertical Incidence Skywave, can become a useful technique for amateur radio.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HF Propagation</span>
+      <span class="tag">NVIS</span>
+      <span class="tag">Antennas</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      HF amateur radio is often associated with DX: signals traveling hundreds or thousands of kilometres through the ionosphere to reach distant stations. But not every communication objective is about distance. In some situations, the goal is almost the opposite: reliable coverage across a regional area, including locations that may be relatively close to the transmitting station but difficult to reach with a conventional low-angle HF signal.
+    </p>
+
+    <p>
+      NVIS, or <strong>Near Vertical Incidence Skywave</strong>, is a propagation technique designed for this type of communication. Instead of concentrating radiation toward the horizon, the antenna system is designed to send a significant amount of energy almost vertically. The signal travels upward, interacts with the ionosphere and returns to Earth over a relatively short or medium regional distance.
+    </p>
+
+    <h2>How NVIS works</h2>
+
+    <p>
+      The basic idea is simple. An HF signal is launched at a high elevation angle, approaching the vertical direction. If the frequency is appropriate for the ionospheric conditions, the signal can be refracted back toward the Earth's surface. Because the radiation leaves the antenna at a steep angle, the resulting coverage pattern can extend over a broad regional area rather than concentrating primarily on the distant horizon.
+    </p>
+
+    <p>
+      This is particularly interesting because conventional HF propagation can sometimes produce a <em>skip zone</em>. A nearby station may not receive a strong signal because the first return point of a low-angle skywave is located much farther away. NVIS changes the geometry of the path by using high-angle radiation, allowing the signal to return much closer to the transmitting station.
+    </p>
+
+    <div class="callout">
+      NVIS is not a special kind of radio signal. It is primarily a matter of propagation geometry: the antenna system and operating frequency are used to favour high-angle radiation and an ionospheric path that returns the signal to the regional area.
+    </div>
+
+    <h2>Why antenna height matters</h2>
+
+    <p>
+      Antenna height is one of the most important practical aspects of NVIS operation. A horizontally polarized wire antenna installed relatively close to the ground can produce a strong high-angle radiation pattern. The exact behaviour depends on the antenna design, height above ground, surrounding terrain, ground conductivity and operating frequency.
+    </p>
+
+    <p>
+      This leads to an important principle in antenna engineering: there is no universally perfect antenna. An antenna that is excellent for long-distance DX is not necessarily the best antenna for regional coverage. The desired radiation pattern must match the communication objective.
+    </p>
+
+    <h2>Choosing the frequency</h2>
+
+    <p>
+      Frequency selection is critical because the ionosphere does not reflect every HF frequency in the same way. For NVIS, the operating frequency must generally be below the appropriate ionospheric critical frequency for the path. If the frequency is too high, the signal may pass through the ionospheric layer rather than being returned toward Earth.
+    </p>
+
+    <p>
+      This is why NVIS operation is strongly connected to ionospheric conditions. The usable frequency range changes with time of day, season, solar activity, geographic location and the state of the ionosphere. Lower HF bands can often be useful for NVIS, particularly during periods when the ionosphere supports those frequencies.
+    </p>
+
+    <h2>NVIS is especially interesting for regional communication</h2>
+
+    <p>
+      NVIS can be useful when stations need to communicate over regional distances rather than across continents. Examples can include emergency communication, field operations, rural communication, portable amateur radio and communication between stations separated by terrain that would make conventional VHF or UHF coverage difficult.
+    </p>
+
+    <p>
+      Mountains are a good example. VHF and UHF signals generally depend strongly on line-of-sight propagation, although diffraction and other mechanisms can extend coverage. HF NVIS, by contrast, can provide a different path: the signal travels upward and returns from the ionosphere, allowing communication over terrain that may be difficult for terrestrial line-of-sight systems.
+    </p>
+
+    <h2>NVIS is not simply “low antenna equals NVIS”</h2>
+
+    <p>
+      It is tempting to reduce NVIS to a simple rule: install a low horizontal wire and communication will automatically become NVIS. Reality is more complicated. Antenna height, dimensions, ground characteristics, frequency and the surrounding environment all influence the radiation pattern.
+    </p>
+
+    <p>
+      The objective is not simply to make an antenna physically low. The objective is to create a radiation pattern that places useful energy at high elevation angles while operating on a frequency that the ionosphere can return toward the desired coverage area.
+    </p>
+
+    <h2>The practical lesson for the radio amateur</h2>
+
+    <p>
+      NVIS is a good example of why antenna performance should always be evaluated in relation to the intended communication. An antenna does not have a single universal definition of “good” or “bad.” Its effectiveness depends on what the operator is trying to accomplish.
+    </p>
+
+    <p>
+      If the objective is long-distance DX, low-angle radiation can be extremely valuable. If the objective is reliable regional coverage, high-angle radiation may be much more useful. NVIS provides a practical way to exploit that difference.
+    </p>
+
+    <p>
+      Understanding NVIS also changes the way we think about HF antennas. Instead of asking only how much power an antenna can radiate or what SWR it produces, we can ask a more useful question: <strong>where is the antenna actually sending the energy?</strong>
+    </p>
+
+    <p>
+      That question connects antenna design directly with propagation, and it is one of the most important ideas in practical amateur radio.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore the technology behind amateur radio</h3>
+      <p>
+        Antennas, propagation, RF systems and practical station design are explored in greater depth throughout the CE4RWS technical books and training manuals.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
