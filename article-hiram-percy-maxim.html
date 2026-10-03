@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Who Was Hiram Percy Maxim? | CE4RWS</title>
+
+<meta name="description" content="The story of Hiram Percy Maxim, co-founder of the ARRL and one of the figures who helped organize early amateur radio and its relay system.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:900px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>Who Was Hiram Percy Maxim?</h1>
+
+    <p class="intro">
+      The inventor and radio amateur who helped transform a collection of independent experimenters into an organized network capable of moving messages across long distances.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">ARRL</span>
+      <span class="tag">Amateur Radio</span>
+      <span class="tag">Relay</span>
+      <span class="tag">DX</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>An Inventor Who Became a Radio Amateur</h2>
+
+    <p>
+      Hiram Percy Maxim was not originally known because of amateur radio. He was an inventor, engineer and industrialist whose career was already well established when radio captured his attention.
+    </p>
+
+    <p>
+      His introduction to amateur radio came through his son, Hiram Hamilton Maxim. The younger Maxim became interested in wireless experimentation, and his enthusiasm eventually drew his father into the rapidly developing world of radio. By the early 1910s, Hiram Percy Maxim was building and operating his own station and becoming deeply involved in the amateur community. The ARRL historical record identifies Maxim as a prominent Hartford inventor and industrialist who became an important figure in early amateur radio. :chatgpt-content-reference{index="1"}
+    </p>
+
+    <p>
+      What made Maxim particularly important was not simply that he operated a radio station. He began to see a problem that was larger than any individual station: <strong>how could amateur radio operators work together to move messages farther and more reliably?</strong>
+    </p>
+
+    <h2>The Message That Changed Everything</h2>
+
+    <p>
+      In April 1914, Maxim wanted to communicate from Hartford, Connecticut, to Springfield, Massachusetts. The two stations could not establish the desired communication directly.
+    </p>
+
+    <p>
+      Instead of abandoning the attempt, Maxim contacted another amateur station in Windsor Locks, Connecticut, located between the two cities. That operator received the message and relayed it onward to Springfield.
+    </p>
+
+    <p>
+      The idea was simple, but its implications were much larger. If one intermediate station could extend the effective range of a message, then a chain of cooperating stations could potentially move traffic far beyond the range of any individual station.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The important idea was the network.</strong> A radio station did not have to reach the final destination directly. Other amateurs could become part of the communication path.
+      </p>
+    </div>
+
+    <h2>The Birth of the American Radio Relay League</h2>
+
+    <p>
+      Maxim presented the idea to the Radio Club of Hartford in April 1914. The club agreed to support the project, and Maxim chose the name <strong>American Radio Relay League</strong>.
+    </p>
+
+    <p>
+      The organization was built around a practical purpose: coordinating amateur stations so that messages could be relayed efficiently across longer distances. ARRL's own historical material dates its founding to 1914 and identifies Hiram Percy Maxim as its founder, together with Clarence Tuska. :chatgpt-content-reference{index="2"}
+    </p>
+
+    <p>
+      This was an important change in the character of amateur radio. Operators were still individual experimenters, but they were beginning to function as part of a larger technical community.
+    </p>
+
+    <p>
+      The relay system became an early form of organized amateur-radio traffic handling. Stations were assigned roles within routes, and operators developed procedures for passing messages from one station to another.
+    </p>
+
+    <h2>From Local Stations to a National Network</h2>
+
+    <p>
+      The system grew surprisingly quickly. By 1915, hundreds of stations were involved in the relay network, creating a communication structure that could move messages much farther than a single amateur station could normally manage.
+    </p>
+
+    <p>
+      ARRL historical material describes the early network as a nationwide system designed specifically to relay messages between stations. Maxim's home station also became an important point for distributing information to the growing amateur community. :chatgpt-content-reference{index="3"}
+    </p>
+
+    <p>
+      This was especially significant in an era when radio equipment was comparatively primitive. Spark transmitters, early receivers and relatively crude antennas imposed severe limitations. Organization could compensate, at least partly, for those technical limitations.
+    </p>
+
+    <p>
+      A weak station that could not reach a distant destination directly might still contribute to a successful communication through a sequence of intermediate stations.
+    </p>
+
+    <h2>Why QST Became Important</h2>
+
+    <p>
+      A growing network also created another problem: how could all of these operators share information?
+    </p>
+
+    <p>
+      The answer was publication.
+    </p>
+
+    <p>
+      In 1915, Maxim and Clarence Tuska helped establish <strong>QST</strong>, initially as a way to communicate information to the expanding ARRL network. The first issue appeared in December 1915. :chatgpt-content-reference{index="4"}
+    </p>
+
+    <p>
+      QST eventually became much more than a communication tool. It became a technical and cultural record of amateur radio, carrying construction information, operating news, technical developments, regulatory matters and reports from amateurs around the country.
+    </p>
+
+    <p>
+      In that sense, Maxim's contribution was not limited to creating a relay organization. He helped establish a mechanism through which radio amateurs could share knowledge.
+    </p>
+
+    <h2>The Relay System and the Spirit of Experimentation</h2>
+
+    <p>
+      The early ARRL network was not simply an administrative structure. It was a practical demonstration of what amateur radio could accomplish through cooperation.
+    </p>
+
+    <p>
+      Operators experimented with equipment, antennas, frequencies and procedures while simultaneously developing a culture of cooperation. The technical and social sides of amateur radio evolved together.
+    </p>
+
+    <p>
+      This would become particularly important after the First World War, when amateur radio returned to the air and technological advances made longer-distance communication increasingly practical.
+    </p>
+
+    <p>
+      By the early 1920s, the relay network had already demonstrated impressive distances. One notable example occurred in 1921, when a message was sent from Maxim's station in Connecticut to California and a reply was received in only about six and a half minutes round trip. :chatgpt-content-reference{index="5"}
+    </p>
+
+    <h2>From Relay to DX</h2>
+
+    <p>
+      The story of Maxim and the ARRL also connects directly with another transformation in amateur radio: the development of DX communication.
+    </p>
+
+    <p>
+      During the 1920s, amateurs began testing shorter wavelengths and increasingly capable equipment. The transatlantic tests of 1921 demonstrated that low-power amateur signals could cross the Atlantic, and by 1923 two-way transatlantic amateur communication had been achieved. :chatgpt-content-reference{index="6"}
+    </p>
+
+    <p>
+      The relay system had helped amateurs think in terms of networks and long-distance communication. Short-wave experimentation then showed that a single station could sometimes achieve extraordinary distances without a chain of intermediate stations.
+    </p>
+
+    <p>
+      These developments were different, but they belonged to the same experimental culture.
+    </p>
+
+    <h2>More Than an Organization</h2>
+
+    <p>
+      Hiram Percy Maxim died in 1936, but the organization he helped create continued to develop. ARRL eventually became one of the major institutional voices of amateur radio in the United States and an important participant in international amateur-radio affairs. :chatgpt-content-reference{index="7"}
+    </p>
+
+    <p>
+      Maxim's historical importance therefore goes beyond the founding of an association. He helped demonstrate an idea that remains fundamental to amateur radio today: <strong>individual experimenters can achieve much more when they share knowledge and cooperate.</strong>
+    </p>
+
+    <p>
+      Modern amateur radio looks completely different from the world of spark transmitters and early relay stations. We have transceivers with sophisticated digital signal processing, computer logging, satellite communication, weak-signal modes and worldwide propagation reporting.
+    </p>
+
+    <p>
+      Yet the basic principle is remarkably familiar.
+    </p>
+
+    <p>
+      One amateur discovers something. Another tests it. Someone else documents it. The information is shared, improved and eventually becomes part of the collective knowledge of the service.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>That may be Hiram Percy Maxim's most enduring legacy:</strong> amateur radio is not only about making contacts. It is also about building knowledge together.
+      </p>
+    </div>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>Explore the history of amateur radio</h3>
+
+      <p>
+        The creation of the ARRL was only one step in the transformation of amateur radio. The development of short-wave communication, international organizations, new modes and new technologies would soon take the experiment much further.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
