@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Birth of Packet Radio | CE4RWS</title>
+
+<meta name="description" content="How amateur radio entered the digital age through packet radio, TAPR, TNCs and the AX.25 protocol.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:920px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The Birth of Packet Radio</h1>
+
+    <p class="intro">
+      How amateur radio learned to divide information into digital packets, creating a new way of communicating and opening the door to amateur computer networking.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">Packet Radio</span>
+      <span class="tag">AX.25</span>
+      <span class="tag">Digital Radio</span>
+      <span class="tag">TAPR</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>When Computers Met Amateur Radio</h2>
+
+    <p>
+      During the 1970s, another revolution was taking place alongside the development of solid-state electronics and amateur satellites.
+    </p>
+
+    <p>
+      Computers were becoming smaller, more accessible and increasingly useful. At the same time, radio amateurs were experimenting with ways to connect computers through radio.
+    </p>
+
+    <p>
+      The question was simple:
+    </p>
+
+    <p>
+      <strong>Could a radio station send computer data as reliably as it could send voice or Morse code?</strong>
+    </p>
+
+    <p>
+      The answer would eventually be yes. But achieving it required a different way of thinking about radio communication.
+    </p>
+
+    <p>
+      Instead of treating a transmission as one continuous message, digital information could be divided into small blocks of data called packets.
+    </p>
+
+    <h2>What Is a Packet?</h2>
+
+    <p>
+      A packet is a structured block of digital information.
+    </p>
+
+    <p>
+      Rather than transmitting an entire message as one uninterrupted stream, a computer can divide the information into smaller units. Each packet can contain addressing information, the actual data and error-checking information.
+    </p>
+
+    <p>
+      The receiving station examines the packet and determines whether it was received correctly.
+    </p>
+
+    <p>
+      If something went wrong, the system can request that the information be transmitted again.
+    </p>
+
+    <p>
+      This approach is particularly useful in radio because the radio channel is not perfect. Noise, interference, fading and other problems can corrupt individual bits.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Packet radio changed the question from "Did you hear the message?" to "Did the computer receive the data correctly?"</strong>
+      </p>
+    </div>
+
+    <h2>The Birth of TAPR</h2>
+
+    <p>
+      One of the most important organizations in the early development of amateur packet radio was the <strong>Tucson Amateur Packet Radio Corporation</strong>, better known as TAPR.
+    </p>
+
+    <p>
+      The project grew from discussions in Tucson in 1981 about developing a Terminal Node Controller, or TNC, that could connect an amateur radio station to a computer at reasonable cost. TAPR was formally founded in 1982. ([tapr.org](https://tapr.org/organization/))
+    </p>
+
+    <p>
+      The idea was remarkably practical.
+    </p>
+
+    <p>
+      Instead of requiring every computer to understand the details of radio modulation, packet framing and error checking, a dedicated controller could handle those tasks.
+    </p>
+
+    <p>
+      The computer would deal with data.
+    </p>
+
+    <p>
+      The TNC would deal with the radio.
+    </p>
+
+    <h2>The TNC</h2>
+
+    <p>
+      <strong>TNC</strong> stands for <strong>Terminal Node Controller</strong>.
+    </p>
+
+    <p>
+      In the early packet-radio station, the TNC was the bridge between the computer and the transceiver.
+    </p>
+
+    <p>
+      It could receive digital information from the computer, convert it into the appropriate packet format and control the radio transmission. In the opposite direction, it could receive packets from the radio and deliver the recovered data to the computer.
+    </p>
+
+    <p>
+      The concept was revolutionary for amateur radio because it made the computer an active part of the station.
+    </p>
+
+    <p>
+      The radio was no longer simply an audio device connected to a microphone or speaker.
+    </p>
+
+    <p>
+      It had become part of a digital communication system.
+    </p>
+
+    <h2>The First TAPR Packet Contact</h2>
+
+    <p>
+      On June 25, 1982, Lyle Johnson, WA7GXD, successfully initiated an amateur packet-radio contact using TAPR hardware and software. Den Connors, KD2S, received the transmission at the other end of the test setup. The experiment took place on 146.55 MHz in the two-meter amateur band, using plain-text ASCII messages. ([tapr.org](https://tapr.org/history/))
+    </p>
+
+    <p>
+      The event was modest in physical scale.
+    </p>
+
+    <p>
+      Two stations were experimenting with computers and radios on VHF.
+    </p>
+
+    <p>
+      But technically, something important had happened.
+    </p>
+
+    <p>
+      Amateur radio had demonstrated a practical method for moving computer data through a radio channel.
+    </p>
+
+    <h2>AX.25</h2>
+
+    <p>
+      Packet radio needed more than a modem and a computer. It needed a protocol that defined how stations would organize and exchange packets.
+    </p>
+
+    <p>
+      The result was <strong>AX.25</strong>.
+    </p>
+
+    <p>
+      AX.25 was derived from the X.25 family of packet protocols but adapted to the particular environment of amateur radio. One important feature was the use of amateur call signs in the addressing structure. ([tapr.org](https://web.tapr.org/meetings/CNC_1984/CNC1984-ThoughtsAX.25LevelTwo-WA7GXD.pdf))
+    </p>
+
+    <p>
+      Unlike many centralized communication systems, amateur packet networks were designed around the idea that stations could communicate directly and participate in a distributed network.
+    </p>
+
+    <p>
+      There did not have to be a single central computer controlling the entire system.
+    </p>
+
+    <p>
+      This was particularly well suited to amateur radio.
+    </p>
+
+    <h2>1200 Baud and the Two-Meter Band</h2>
+
+    <p>
+      One of the most recognizable characteristics of early packet radio was its use of <strong>1200 baud</strong> on VHF, especially around 144 MHz.
+    </p>
+
+    <p>
+      The relatively modest data rate reflected the limitations of the radio channel and the technology available at the time.
+    </p>
+
+    <p>
+      Many systems used AFSK techniques derived from Bell 202 modem technology. The approach was inexpensive and could work through the audio path of conventional FM transceivers.
+    </p>
+
+    <p>
+      It was not fast by computer standards.
+    </p>
+
+    <p>
+      But speed was not the only objective.
+    </p>
+
+    <p>
+      The important achievement was reliable digital communication using ordinary amateur-radio equipment.
+    </p>
+
+    <h2>Packet Networks</h2>
+
+    <p>
+      Once stations could exchange packets, the next logical step was to connect more than two stations.
+    </p>
+
+    <p>
+      Packet radio therefore evolved from simple point-to-point communication into networking.
+    </p>
+
+    <p>
+      Stations could act as nodes and forward packets toward other stations. This made it possible to create networks covering larger geographic areas.
+    </p>
+
+    <p>
+      The concept was particularly attractive because the network did not have to depend on a single transmitter or receiver.
+    </p>
+
+    <p>
+      A packet could move through several stations to reach its destination.
+    </p>
+
+    <p>
+      Amateur radio was beginning to look less like a collection of individual stations and more like a distributed digital network.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>This was one of the most important conceptual changes in amateur radio during the computer age:</strong> the station could become a node in a network rather than simply an endpoint.
+      </p>
+    </div>
+
+    <h2>The Rise of the Amateur BBS</h2>
+
+    <p>
+      Packet networks soon supported systems that looked surprisingly familiar to anyone who had used early computer networks.
+    </p>
+
+    <p>
+      Amateur operators created bulletin board systems, or <strong>BBSs</strong>, that allowed users to leave messages, exchange files and access information through radio.
+    </p>
+
+    <p>
+      Because the systems were connected through packet links, information could travel between different stations and regions.
+    </p>
+
+    <p>
+      For many operators, packet radio became their first practical experience of computer networking.
+    </p>
+
+    <p>
+      Long before today's smartphones and broadband connections, an amateur with a VHF radio, TNC and computer could participate in a digital network using radio as the transport medium.
+    </p>
+
+    <h2>Packet Radio and Amateur Satellites</h2>
+
+    <p>
+      The development of packet radio also intersected with the amateur satellite movement.
+    </p>
+
+    <p>
+      Digital communication was particularly attractive for satellites because computers could automatically handle received data, telemetry and network traffic.
+    </p>
+
+    <p>
+      Later amateur satellites incorporated digital communication systems and spacecraft networking. Tom Clark, K3IO, was an important figure in both the packet-radio and amateur-satellite communities and helped develop AX.25 and later digital systems used in amateur spacecraft. ([arrl.org](https://www.arrl.org/news/past-amsat-president-and-director-and-amateur-satellite-pioneer-tom-clark-k3io-sk))
+    </p>
+
+    <p>
+      The same basic idea was appearing in two environments at once: radio stations on Earth were becoming network nodes, and spacecraft could become network nodes in orbit.
+    </p>
+
+    <h2>From Hardware to Software</h2>
+
+    <p>
+      Early packet operation depended heavily on dedicated hardware.
+    </p>
+
+    <p>
+      The TNC contained processors, memory, interfaces and modem circuitry. Building or purchasing one represented a significant investment for an amateur operator.
+    </p>
+
+    <p>
+      But computers were becoming more powerful.
+    </p>
+
+    <p>
+      Functions that had once required specialized hardware could increasingly be performed by software.
+    </p>
+
+    <p>
+      This transition would become extremely important.
+    </p>
+
+    <p>
+      The TNC was an early example of a device that translated between the digital world of the computer and the analog world of radio. Later generations of amateur-radio technology would move more and more of that processing into software.
+    </p>
+
+    <h2>A New Definition of the Amateur Station</h2>
+
+    <p>
+      Packet radio changed the physical appearance of the amateur station.
+    </p>
+
+    <p>
+      The traditional station consisted mainly of a transceiver, power supply, microphone, key and antenna.
+    </p>
+
+    <p>
+      The packet station added a computer and a digital interface between the computer and the radio.
+    </p>
+
+    <p>
+      This was more than an equipment change.
+    </p>
+
+    <p>
+      It represented a change in the way radio amateurs thought about communication.
+    </p>
+
+    <p>
+      The radio was becoming a communications platform capable of carrying different kinds of information.
+    </p>
+
+    <p>
+      Voice was no longer the only important payload.
+    </p>
+
+    <p>
+      Data had become a first-class amateur-radio mode.
+    </p>
+
+    <h2>The Road Toward Modern Digital Radio</h2>
+
+    <p>
+      By the mid-1980s, packet radio had become an important part of amateur radio. The technology continued to evolve, with faster TNCs, improved modems, networking software and increasingly sophisticated systems. ([arrl.org](https://www.arrl.org/arrlletter?issue=1999-09-17))
+    </p>
+
+    <p>
+      Later developments would take digital radio in many different directions.
+    </p>
+
+    <p>
+      APRS would combine packet radio with position and telemetry information. Digital communication would expand onto HF. Software-defined radio would move signal processing increasingly into computers. And eventually, highly optimized weak-signal modes such as FT8 would demonstrate just how much information could be extracted from extremely weak radio signals.
+    </p>
+
+    <p>
+      None of these developments appeared from nowhere.
+    </p>
+
+    <p>
+      They belong to a much longer history in which amateur radio repeatedly adapted computers to the radio channel.
+    </p>
+
+    <h2>The Lasting Importance of Packet Radio</h2>
+
+    <p>
+      Packet radio is sometimes remembered as an old technology, especially when compared with today's high-speed Internet connections.
+    </p>
+
+    <p>
+      That comparison misses its historical importance.
+    </p>
+
+    <p>
+      Packet radio demonstrated that amateur operators could design and operate distributed digital networks using radio as the transport medium.
+    </p>
+
+    <p>
+      It brought computers directly into the amateur station and created a culture of experimentation around protocols, networking, modems, software and digital signal processing.
+    </p>
+
+    <p>
+      More importantly, it reinforced something that had been present throughout amateur-radio history.
+    </p>
+
+    <p>
+      When a new technology appeared, radio amateurs did not simply wait for someone else to tell them how to use it.
+    </p>
+
+    <p>
+      They built their own version.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Packet radio was not the end of analog amateur radio.</strong> It was the beginning of a new idea: that the amateur station could be both a radio and a computer network node.
+      </p>
+    </div>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From packet radio to modern digital communication</h3>
+
+      <p>
+        Packet radio introduced a generation of amateurs to digital protocols, computer networking and software-controlled radio. The same experimental spirit would later lead toward APRS, DSP, SDR and today's digital modes.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
