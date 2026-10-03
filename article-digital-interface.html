@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is a Digital Radio Interface and Why Is It Important? | CE4RWS</title>
+
+<meta name="description" content="What is a digital radio interface and why is it important? Understand USB, audio input and output, CAT control, PTT, audio levels and the connection between a computer and amateur radio transceiver.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · DIGITAL RADIO</div>
+
+    <h1>What Is a Digital Radio Interface and Why Is It Important?</h1>
+
+    <p class="hero-intro">
+      A digital radio interface is the bridge between the computer and the transceiver. Understanding its audio, control and PTT connections makes digital modes much easier to configure and troubleshoot.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Digital Interface</span>
+      <span class="tag">USB</span>
+      <span class="tag">CAT</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      Digital amateur radio depends on a reliable connection between the computer and the transceiver. That connection may appear simple when a modern radio uses a single USB cable, but several different functions can be travelling through that connection.
+    </p>
+
+    <p>
+      Depending on the radio and interface, the computer may exchange receive audio, transmit audio, CAT control information and PTT commands with the transceiver.
+    </p>
+
+    <p>
+      Understanding these functions is important because a digital station can fail in several different ways. The computer may receive audio correctly but fail to control the radio. It may control the frequency correctly but fail to deliver transmit audio. Or the software may generate a digital signal while the radio never actually produces RF.
+    </p>
+
+    <div class="callout">
+      A digital interface is not just a cable. It is the connection that allows the computer's audio and control systems to interact correctly with the transceiver.
+    </div>
+
+    <h2>What does a digital interface actually connect?</h2>
+
+    <p>
+      A typical digital-radio interface can be understood as several independent functions working together.
+    </p>
+
+    <p>
+      The <strong>receive audio path</strong> carries audio from the radio to the computer. Digital software analyses this audio and searches for signals.
+    </p>
+
+    <p>
+      The <strong>transmit audio path</strong> carries the digitally generated audio from the computer to the radio.
+    </p>
+
+    <p>
+      The <strong>CAT control path</strong> allows software to communicate with the transceiver and read or change parameters such as frequency and operating mode.
+    </p>
+
+    <p>
+      The <strong>PTT path</strong> controls when the radio changes from receive to transmit.
+    </p>
+
+    <p>
+      Some modern radios combine all of these functions through USB. Older equipment may require separate audio, CAT and PTT connections.
+    </p>
+
+    <h2>USB does not always mean the same thing</h2>
+
+    <p>
+      One of the most common sources of confusion is assuming that every USB connection behaves in exactly the same way.
+    </p>
+
+    <p>
+      Some radios expose a USB audio interface to the operating system. Others provide serial CAT control. Some provide both through a single physical USB connection.
+    </p>
+
+    <p>
+      An external digital interface may also appear as one or more audio devices and a serial control port.
+    </p>
+
+    <p>
+      The physical connector is therefore only part of the story. What matters is which logical devices the computer sees after the interface is connected.
+    </p>
+
+    <h2>The receive audio path</h2>
+
+    <p>
+      During reception, the radio converts the received RF signal into an audio signal suitable for the computer interface.
+    </p>
+
+    <p>
+      The operating system then presents that audio device to the digital software. WSJT-X, for example, uses the selected input device to receive the audio spectrum that it will analyse for FT8 or another supported mode.
+    </p>
+
+    <p>
+      If the wrong input device is selected, the radio may be receiving perfectly while the digital software receives silence or audio from an entirely different source.
+    </p>
+
+    <p>
+      This is why selecting the correct input device is one of the first steps in troubleshooting a digital station.
+    </p>
+
+    <h2>The transmit audio path</h2>
+
+    <p>
+      During transmission, the process works in the opposite direction.
+    </p>
+
+    <p>
+      The digital software generates an audio waveform. The computer sends that waveform to the selected output device, and the interface delivers it to the radio.
+    </p>
+
+    <p>
+      The transceiver then uses the audio to generate the RF transmission.
+    </p>
+
+    <p>
+      If the software indicates that it is transmitting but the radio produces no RF, the problem may exist anywhere along this chain.
+    </p>
+
+    <p>
+      The software may be generating audio correctly while the operating system is sending it to the wrong output device, or the interface may be delivering audio correctly while the radio is not being placed into transmit.
+    </p>
+
+    <h2>Why PTT is separate from audio</h2>
+
+    <p>
+      Audio and PTT perform different functions.
+    </p>
+
+    <p>
+      The audio signal contains the information that will modulate the transmitter. PTT tells the radio when it should switch from receive to transmit.
+    </p>
+
+    <p>
+      A station can therefore have perfectly good audio routing while PTT is not working.
+    </p>
+
+    <p>
+      In that situation, the software may generate the digital waveform, but the transceiver remains in receive mode.
+    </p>
+
+    <p>
+      Conversely, the radio may enter transmit mode while receiving no useful audio from the computer.
+    </p>
+
+    <h2>What does CAT control do?</h2>
+
+    <p>
+      CAT allows the computer to communicate with the transceiver's control system.
+    </p>
+
+    <p>
+      Depending on the radio, software may be able to read the current frequency, change frequency, select modes, control split operation, activate PTT and access other functions.
+    </p>
+
+    <p>
+      This makes digital operation much more convenient because the software and radio can remain synchronized.
+    </p>
+
+    <p>
+      If CAT is configured incorrectly, the software may display a frequency different from the one actually selected on the radio.
+    </p>
+
+    <h2>Why audio levels matter</h2>
+
+    <p>
+      The transmit audio level must be high enough to drive the radio correctly but not so high that it causes excessive modulation or distortion.
+    </p>
+
+    <p>
+      Increasing computer volume until the radio produces maximum power is not necessarily the correct procedure. The goal is a clean and appropriate digital signal, not simply the highest possible audio level.
+    </p>
+
+    <p>
+      Excessive audio can cause distortion, unwanted occupied bandwidth and poor-quality transmission.
+    </p>
+
+    <p>
+      The correct level depends on the radio, interface and digital mode being used.
+    </p>
+
+    <h2>Why ALC matters in digital operation</h2>
+
+    <p>
+      Automatic Level Control, or ALC, is designed to prevent excessive drive from overloading the transmitter's modulation stages.
+    </p>
+
+    <p>
+      In many digital modes, excessive ALC activity can indicate that the audio drive is too high.
+    </p>
+
+    <p>
+      The exact desired indication depends on the transceiver and operating mode, so there is no universal numerical ALC value that applies to every radio.
+    </p>
+
+    <p>
+      The practical objective is to configure the audio chain so that the transmitter produces a clean digital waveform without unnecessary processing or compression.
+    </p>
+
+    <h2>Why sample rate can matter</h2>
+
+    <p>
+      Computer audio systems operate using defined sample rates. Digital-radio software and interfaces must agree on compatible audio settings.
+    </p>
+
+    <p>
+      A mismatch does not always produce an obvious failure. In some situations the software may continue to operate but the resulting audio can behave unexpectedly.
+    </p>
+
+    <p>
+      For reliable operation, the audio input and output devices should be configured consistently with the requirements of the radio software and interface.
+    </p>
+
+    <h2>External sound cards and multiple audio devices</h2>
+
+    <p>
+      Modern computers can have several audio devices available at the same time: internal speakers, microphones, USB audio interfaces, monitors, headsets and radio interfaces.
+    </p>
+
+    <p>
+      This can create confusion because the operating system may automatically select a different device when hardware is connected or disconnected.
+    </p>
+
+    <p>
+      A digital-radio application can therefore appear correctly configured while actually sending audio to the computer's speakers instead of the radio interface.
+    </p>
+
+    <p>
+      Checking the selected input and output devices inside the digital-radio software is often more reliable than assuming the operating system's default device is correct.
+    </p>
+
+    <h2>How to troubleshoot the signal path</h2>
+
+    <p>
+      The most effective approach is to test the system one stage at a time.
+    </p>
+
+    <p>
+      On reception, confirm that the radio is receiving a signal, that the interface is delivering audio to the computer, that the operating system sees the correct input device and that the digital software displays the expected spectrum.
+    </p>
+
+    <p>
+      On transmission, confirm that the software generates audio, that the correct output device is selected, that the radio enters transmit mode and that RF power is actually being produced.
+    </p>
+
+    <p>
+      If one stage fails, there is little value in changing settings in unrelated parts of the system.
+    </p>
+
+    <h2>Why a simple signal path is easier to maintain</h2>
+
+    <p>
+      Every additional device, adapter or software layer introduces another possible point of failure.
+    </p>
+
+    <p>
+      A modern transceiver with integrated USB audio and CAT can simplify the station considerably. An external interface can be equally effective when correctly configured, especially with older radios that do not provide integrated computer audio.
+    </p>
+
+    <p>
+      The important principle is not the number of cables. It is having a clearly understood signal path from the antenna to the software and back again.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      A digital radio interface is the bridge between two very different systems: the RF world of the transceiver and the digital world of the computer.
+    </p>
+
+    <p>
+      Once the operator understands the separate roles of <strong>audio input, audio output, CAT and PTT</strong>, digital-radio troubleshooting becomes much more systematic.
+    </p>
+
+    <p>
+      Instead of asking why “FT8 is not working,” it becomes possible to ask a much more useful question: <strong>where in the signal path is the connection failing?</strong>
+    </p>
+
+    <p>
+      That change in perspective is one of the most valuable skills in computer-controlled amateur radio.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore digital interfaces and station integration</h3>
+      <p>
+        The CE4RWS technical books explore digital-radio interfaces, USB audio, CAT control, PTT, audio levels, computer integration and practical FT8 station configuration in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
