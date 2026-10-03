@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is RTTY and How Does It Work? | CE4RWS</title>
+
+<meta name="description" content="What is RTTY and how does it work? Understand the history, principles, tones, bandwidth, radio interfaces and practical operation of radio teletype in amateur radio.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · DIGITAL RADIO</div>
+
+    <h1>What Is RTTY and How Does It Work?</h1>
+
+    <p class="hero-intro">
+      RTTY is one of the classic digital modes of amateur radio. Long before modern weak-signal software, radio amateurs were already sending text over HF using frequency-shift keying, dedicated terminals and computer interfaces.
+    </p>
+
+    <div class="tags">
+      <span class="tag">RTTY</span>
+      <span class="tag">Digital Radio</span>
+      <span class="tag">HF</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      RTTY, or <strong>Radio Teletype</strong>, is one of the oldest digital communication modes still encountered in amateur radio. Its basic purpose is simple: transmit text over a radio link using digitally controlled changes in the transmitted signal.
+    </p>
+
+    <p>
+      Unlike modern modes such as FT8, RTTY was designed primarily for interactive text communication. Operators can type messages and see received characters appear on the screen as they are decoded.
+    </p>
+
+    <p>
+      The technology may be older, but the underlying principles remain important because RTTY provides a clear introduction to digital modulation, frequency-shift keying, audio interfaces and computer-controlled radio.
+    </p>
+
+    <div class="callout">
+      RTTY is a digital mode based on frequency-shift keying. Instead of transmitting characters as voice audio, the transmitter switches between two defined audio tones representing digital states.
+    </div>
+
+    <h2>What does RTTY actually transmit?</h2>
+
+    <p>
+      At its most basic level, RTTY represents digital information using two different frequencies.
+    </p>
+
+    <p>
+      One frequency represents one binary state and the other represents the opposite state. The receiver detects which frequency is present and reconstructs the transmitted characters.
+    </p>
+
+    <p>
+      The two frequencies are commonly described as the <strong>mark</strong> and <strong>space</strong> tones.
+    </p>
+
+    <p>
+      The difference between those two frequencies is called the <strong>shift</strong>.
+    </p>
+
+    <h2>What are mark, space and shift?</h2>
+
+    <p>
+      The mark and space tones are the two audio frequencies used by the system to represent the digital information.
+    </p>
+
+    <p>
+      The difference between them is the shift. Traditional amateur-radio RTTY commonly uses a relatively narrow shift, although other configurations exist.
+    </p>
+
+    <p>
+      The exact audio frequencies are determined by the operating configuration and the relationship between the radio's carrier frequency and the audio generated by the computer or interface.
+    </p>
+
+    <p>
+      Understanding this is important because an incorrect shift or incorrect audio configuration can make a signal impossible to decode correctly.
+    </p>
+
+    <h2>Why is RTTY called a frequency-shift mode?</h2>
+
+    <p>
+      In frequency-shift keying, the transmitted signal changes between two frequencies rather than changing continuously in amplitude to represent the information.
+    </p>
+
+    <p>
+      The receiver detects those changes and converts them back into digital states.
+    </p>
+
+    <p>
+      This is why RTTY is fundamentally different from simply sending ordinary computer audio through a transmitter.
+    </p>
+
+    <p>
+      The audio tones are carrying structured digital information.
+    </p>
+
+    <h2>How did RTTY work before computers?</h2>
+
+    <p>
+      RTTY has a long history that predates the modern personal computer.
+    </p>
+
+    <p>
+      Dedicated electromechanical teleprinters were once used to transmit and receive characters over radio links. These machines converted electrical signals into printed text and allowed operators to exchange written information without voice communication.
+    </p>
+
+    <p>
+      Later, computers replaced much of the dedicated hardware. Software could generate the required tones, decode received signals and display the resulting characters on a screen.
+    </p>
+
+    <p>
+      The basic communication principle remained remarkably similar.
+    </p>
+
+    <h2>How does modern computer RTTY work?</h2>
+
+    <p>
+      A modern RTTY station can be much simpler than the equipment used historically.
+    </p>
+
+    <p>
+      The computer runs RTTY software such as an appropriate digital-mode application. The software generates the audio tones for transmission and analyses received audio for decoding.
+    </p>
+
+    <p>
+      The computer communicates with the transceiver through an audio interface, USB connection or external digital interface, depending on the equipment.
+    </p>
+
+    <p>
+      CAT control may also be used to control the radio's frequency and operating mode.
+    </p>
+
+    <h2>What is the role of the audio interface?</h2>
+
+    <p>
+      The audio interface connects the computer's digital processing system with the transceiver's audio system.
+    </p>
+
+    <p>
+      During reception, audio from the radio is delivered to the computer, where the software searches for the mark and space tones.
+    </p>
+
+    <p>
+      During transmission, the computer generates the required tones and sends them toward the radio.
+    </p>
+
+    <p>
+      The transmitter then converts the audio into an RF signal and sends it through the antenna.
+    </p>
+
+    <p>
+      The principle is similar to other computer-based digital modes, even though the modulation and decoding methods are different.
+    </p>
+
+    <h2>Why does RTTY require careful tuning?</h2>
+
+    <p>
+      RTTY decoding depends on the receiver being correctly aligned with the transmitted signal.
+    </p>
+
+    <p>
+      The decoder expects the mark and space tones to appear at the appropriate frequencies. If the receiver is tuned incorrectly, the software may detect tones but fail to reconstruct the characters correctly.
+    </p>
+
+    <p>
+      The same principle applies when transmitting. The generated audio must correspond correctly to the intended RF configuration.
+    </p>
+
+    <p>
+      This is why the waterfall and tuning indicators in RTTY software are useful practical tools.
+    </p>
+
+    <h2>Why does RTTY occupy more bandwidth than some modern modes?</h2>
+
+    <p>
+      The occupied bandwidth depends on the shift, baud rate, filtering and the characteristics of the transmitted signal.
+    </p>
+
+    <p>
+      RTTY generally requires more bandwidth than very narrow weak-signal modes such as FT8.
+    </p>
+
+    <p>
+      This is partly a consequence of its design. RTTY is intended for continuous character transmission and interactive text communication rather than short highly structured exchanges.
+    </p>
+
+    <h2>Why is baud rate important?</h2>
+
+    <p>
+      Baud describes the rate at which symbols are transmitted.
+    </p>
+
+    <p>
+      In traditional RTTY systems, the baud rate and character encoding are part of the configuration that determines how quickly information can be exchanged.
+    </p>
+
+    <p>
+      A transmitter and receiver must use compatible settings for reliable decoding.
+    </p>
+
+    <p>
+      This is another reason why RTTY can fail even when the signal appears clearly on the waterfall: the signal can be present while the decoder configuration is incorrect.
+    </p>
+
+    <h2>Why do operators still use RTTY?</h2>
+
+    <p>
+      RTTY remains an important part of amateur-radio digital operation, particularly in contesting and on HF.
+    </p>
+
+    <p>
+      It provides direct keyboard-to-keyboard communication and has a long-established operating tradition.
+    </p>
+
+    <p>
+      For many operators, its appeal also comes from understanding and operating a classic digital mode that played an important role in the development of amateur-radio data communications.
+    </p>
+
+    <h2>RTTY and modern digital modes are not the same</h2>
+
+    <p>
+      It is tempting to group every computer-based mode under the same category, but RTTY and FT8 are designed for very different purposes.
+    </p>
+
+    <p>
+      RTTY is primarily an interactive text mode. FT8 is optimized for short structured exchanges under weak-signal conditions.
+    </p>
+
+    <p>
+      Their modulation, decoding, message structure, bandwidth and operating procedures are therefore different.
+    </p>
+
+    <p>
+      Understanding these differences helps explain why one mode may be useful in a particular situation while another is better suited to a completely different objective.
+    </p>
+
+    <h2>What about AFSK and FSK?</h2>
+
+    <p>
+      RTTY can be generated and transmitted using different methods depending on the transceiver and station configuration.
+    </p>
+
+    <p>
+      In an AFSK configuration, the computer generates audio tones and the radio uses those tones as the modulation input.
+    </p>
+
+    <p>
+      In an FSK configuration, the transceiver's RTTY circuitry directly controls the frequency shift.
+    </p>
+
+    <p>
+      Both approaches can be used successfully when properly configured, but they require different station settings and signal paths.
+    </p>
+
+    <h2>Why audio levels matter in RTTY</h2>
+
+    <p>
+      As with other digital modes, excessive audio drive can cause distortion and unwanted occupied bandwidth.
+    </p>
+
+    <p>
+      The goal is a clean transmitted signal with the correct modulation characteristics, not simply maximum transmitter output.
+    </p>
+
+    <p>
+      A poorly adjusted digital transmitter can interfere with adjacent frequencies and make its own signal harder to decode.
+    </p>
+
+    <p>
+      Good RTTY operation therefore depends on both correct software settings and responsible transmitter adjustment.
+    </p>
+
+    <h2>RTTY as a lesson in digital radio</h2>
+
+    <p>
+      RTTY is particularly valuable as an educational mode because its basic operation can be understood without treating the software as a black box.
+    </p>
+
+    <p>
+      The operator can follow the entire chain: characters become digital information, digital information controls mark and space tones, the tones modulate the transmitter, the RF signal travels through the propagation path and the receiving software reconstructs the original characters.
+    </p>
+
+    <p>
+      That makes RTTY a useful bridge between traditional radio engineering and modern computer-based digital communication.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      RTTY may be an older digital mode, but its principles remain highly relevant.
+    </p>
+
+    <p>
+      It demonstrates how information can be converted into digital states, represented by frequency changes, transmitted through an RF system and reconstructed by a receiving station.
+    </p>
+
+    <p>
+      Understanding RTTY also makes it easier to understand the broader evolution of amateur-radio digital modes, from electromechanical teleprinters to modern software-defined weak-signal systems.
+    </p>
+
+    <p>
+      The technology has changed dramatically. The fundamental challenge remains the same: <strong>move information reliably from one station to another using a radio channel.</strong>
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore RTTY and digital-radio operation</h3>
+      <p>
+        The CE4RWS technical books explore RTTY, digital modes, interfaces, signal processing, HF operation and the evolution of computer-assisted amateur radio in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
