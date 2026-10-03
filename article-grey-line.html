@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Why Does the Grey Line Matter in HF Propagation? | CE4RWS</title>
+
+<meta name="description" content="Why does the grey line matter in HF propagation? A practical explanation of the transition between day and night and why it can sometimes create useful HF paths.">
+
+<style>
+
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+a{
+  color:inherit;
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+}
+
+.brand-main{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:8px;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--yellow);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:white;
+  padding:85px 7% 90px;
+}
+
+.article-hero-inner{
+  max-width:1050px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.article-hero h1{
+  font-size:clamp(46px,6.5vw,78px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin:0;
+  max-width:1000px;
+}
+
+.article-intro{
+  max-width:780px;
+  margin:30px 0 0;
+  font-size:20px;
+  line-height:1.7;
+  color:#dce7f2;
+}
+
+.article-meta{
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.article-meta span{
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:75px 7% 100px;
+}
+
+.article-body{
+  font-size:18px;
+  line-height:1.85;
+  color:#26384d;
+}
+
+.article-body p{
+  margin:0 0 28px;
+}
+
+.article-body h2{
+  color:var(--ink);
+  font-size:32px;
+  line-height:1.15;
+  letter-spacing:-.025em;
+  margin:55px 0 20px;
+}
+
+.article-body strong{
+  color:var(--ink);
+}
+
+.highlight{
+  margin:42px 0;
+  padding:28px 30px;
+  border-left:5px solid var(--yellow);
+  background:white;
+  border-radius:0 14px 14px 0;
+  box-shadow:0 10px 28px rgba(9,39,66,.06);
+}
+
+.highlight p{
+  margin:0;
+}
+
+.back{
+  margin-top:65px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
+
+.back a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--cobalt);
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+.back a:hover{
+  color:var(--navy);
+}
+
+.deep{
+  margin-top:55px;
+  background:var(--navy);
+  color:white;
+  border-radius:18px;
+  padding:30px 32px;
+}
+
+.deep strong{
+  color:var(--yellow);
+  margin-right:8px;
+}
+
+.deep p{
+  display:inline;
+  color:#dce7f2;
+}
+
+footer{
+  background:var(--navy);
+  color:#dce7f2;
+  padding:35px 7%;
+  text-align:center;
+  font-size:14px;
+}
+
+footer strong{
+  color:white;
+}
+
+@media(max-width:800px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .article-hero{
+    padding:65px 6% 70px;
+  }
+
+  main{
+    padding:55px 6% 80px;
+  }
+
+  nav{
+    gap:16px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <a class="brand" href="index.html">
+
+    <div class="brand-main">
+      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
+    </div>
+
+    <div class="brand-sub">
+      Amateur Radio · Exploration · Books · Technology
+    </div>
+
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#sobre-mi">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="index.html#libros">Books</a>
+    <a href="index.html#radio">Amateur Radio</a>
+    <a href="index.html#contacto">Contact</a>
+  </nav>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">
+      CE4RWS · PROPAGATION & DX
+    </div>
+
+    <h1>
+      Why Does the Grey Line Matter in HF Propagation?
+    </h1>
+
+    <p class="article-intro">
+      The grey line is the region around the boundary between daylight
+      and darkness on Earth. Under the right conditions, this changing
+      ionospheric environment can create useful opportunities for
+      long-distance HF communication.
+    </p>
+
+    <div class="article-meta">
+      <span>Grey Line</span>
+      <span>HF Propagation</span>
+      <span>DX</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <article class="article-body">
+
+    <p>
+      Many amateur radio operators have noticed that certain HF paths
+      can become surprisingly active around sunrise or sunset. A band
+      that seemed quiet a short time earlier may suddenly produce
+      signals from distant stations. This behaviour is often associated
+      with what radio amateurs call the grey line.
+    </p>
+
+    <p>
+      The grey line is not a physical line in the atmosphere. It is a
+      convenient way of describing the region around the boundary
+      between the illuminated and dark sides of the Earth, commonly
+      called the terminator. Around this transition, the ionosphere is
+      changing rapidly, and those changes can sometimes create useful
+      propagation conditions.
+    </p>
+
+    <h2>
+      What is the grey line?
+    </h2>
+
+    <p>
+      The Earth is continuously divided between regions experiencing
+      daylight and regions experiencing darkness. The boundary between
+      them moves across the planet as the Earth rotates. When viewed on
+      a map, this boundary separates the day side from the night side.
+    </p>
+
+    <p>
+      Radio amateurs often refer to the area around this boundary as
+      the grey line because it represents the transition between
+      daylight and darkness. The term is especially useful when
+      discussing HF propagation near sunrise and sunset.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>The important point:</strong>
+        the grey line is not a special radio channel or a physical
+        atmospheric layer. It is a region where the ionospheric
+        conditions are changing as illumination changes.
+      </p>
+
+    </div>
+
+    <h2>
+      Why does the transition matter?
+    </h2>
+
+    <p>
+      Solar radiation has a major influence on the ionosphere. During
+      daylight, different ionospheric regions are continuously affected
+      by solar ultraviolet and X-ray radiation. After sunset, the
+      ionization and recombination processes change as the solar input
+      disappears.
+    </p>
+
+    <p>
+      These changes do not occur everywhere at exactly the same time.
+      The boundary between day and night therefore creates a moving
+      transition in the ionospheric environment.
+    </p>
+
+    <p>
+      For HF radio, this matters because propagation depends strongly
+      on the state of the ionosphere. Changes in ionization and
+      absorption can alter the way signals travel over long distances.
+    </p>
+
+    <h2>
+      Why can the grey line sometimes favour DX?
+    </h2>
+
+    <p>
+      One important factor is absorption, particularly in the lower
+      ionospheric regions. During daylight, these regions can contribute
+      significantly to the absorption of HF signals. After sunset, the
+      ionospheric environment changes and some of that absorption can
+      decrease.
+    </p>
+
+    <p>
+      If the geometry of a desired radio path is favourable, a signal
+      travelling through or near the day-night transition can therefore
+      encounter conditions that are useful for long-distance
+      communication.
+    </p>
+
+    <p>
+      This is one reason why some operators pay particular attention to
+      sunrise and sunset when looking for difficult DX paths.
+    </p>
+
+    <h2>
+      It is not simply a matter of being near sunset
+    </h2>
+
+    <p>
+      It is tempting to think that every sunrise or sunset automatically
+      creates excellent propagation. That is not the case.
+    </p>
+
+    <p>
+      The actual result depends on the frequency, the geographic path,
+      the season, solar activity, geomagnetic conditions, ionospheric
+      structure and the locations of both stations.
+    </p>
+
+    <p>
+      A grey-line opportunity for one path may occur at a different
+      time from an opportunity for another path. The moving boundary
+      must interact with the desired propagation path in a useful way.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>Think of the grey line as an opportunity, not a guarantee.</strong>
+        It can improve the conditions for some paths, but it does not
+        automatically make every band or every direction better.
+      </p>
+
+    </div>
+
+    <h2>
+      Sunrise and sunset are especially interesting
+    </h2>
+
+    <p>
+      From the operator's perspective, two periods are particularly
+      interesting: local sunrise and local sunset. At sunrise, the
+      receiving or transmitting station may be moving from darkness
+      into daylight. At sunset, the process happens in the opposite
+      direction.
+    </p>
+
+    <p>
+      These transitions can produce noticeable changes in the
+      propagation of signals. A path that is weak may become stronger,
+      while another path may weaken as conditions change.
+    </p>
+
+    <p>
+      This is why an operator who is chasing a difficult DX station
+      may watch its sunrise and sunset times rather than relying only
+      on a general band prediction.
+    </p>
+
+    <h2>
+      The path matters more than the map alone
+    </h2>
+
+    <p>
+      A grey-line map can be visually impressive, but the map itself
+      does not tell us everything we need to know. What matters is the
+      relationship between the day-night boundary and the actual
+      propagation path between the two stations.
+    </p>
+
+    <p>
+      For example, if the desired path follows a region near the
+      terminator, the changing ionospheric conditions may be relevant.
+      If the path lies entirely within daylight or darkness, the same
+      grey-line effect may be much less important.
+    </p>
+
+    <p>
+      This is why propagation should always be considered as a
+      combination of geography, time, frequency and ionospheric
+      conditions rather than as a single indicator.
+    </p>
+
+    <h2>
+      Which bands can benefit?
+    </h2>
+
+    <p>
+      Grey-line propagation is often discussed in connection with the
+      lower and middle HF bands, but there is no universal frequency
+      that is always favoured.
+    </p>
+
+    <p>
+      The useful frequency depends on the state of the ionosphere and
+      the particular path. A frequency that produces an excellent
+      result on one evening may not provide the same result on another
+      day.
+    </p>
+
+    <p>
+      This is another reason why experienced operators move between
+      bands and observe what is actually happening instead of assuming
+      that one frequency will always be optimal.
+    </p>
+
+    <h2>
+      A practical DX example
+    </h2>
+
+    <p>
+      Imagine a station in South America watching for a difficult
+      European path. During the afternoon, the path may be weak or
+      buried in noise. As sunset approaches at one end of the path,
+      propagation conditions begin to change.
+    </p>
+
+    <p>
+      The operator continues listening and notices that signals from
+      the desired direction become easier to copy. A contact that was
+      previously difficult may suddenly become possible.
+    </p>
+
+    <p>
+      The important lesson is not that sunset magically creates DX.
+      Rather, the changing relationship between solar illumination,
+      ionospheric conditions and the propagation path can create a
+      temporary improvement in the conditions required for the contact.
+    </p>
+
+    <h2>
+      The grey line is a timing tool
+    </h2>
+
+    <p>
+      For the amateur radio operator, one of the most useful ways to
+      think about the grey line is as a timing tool. It tells us when
+      it may be worth paying particular attention to a path.
+    </p>
+
+    <p>
+      Instead of monitoring a band continuously, an operator can check
+      sunrise and sunset times for both locations and then listen during
+      the relevant transition periods.
+    </p>
+
+    <p>
+      This does not replace actual listening or propagation data. It
+      simply gives the operator another piece of information that can
+      help identify potentially interesting moments for DX.
+    </p>
+
+    <h2>
+      The grey line is part of a larger propagation picture
+    </h2>
+
+    <p>
+      Grey-line propagation becomes much easier to understand when it
+      is considered together with other concepts such as MUF, LUF,
+      solar activity, geomagnetic conditions and the behaviour of the
+      ionosphere.
+    </p>
+
+    <p>
+      The value of the grey line is therefore not that it explains
+      every unusual HF opening. Its value is that it helps us recognize
+      how strongly time and solar illumination can influence a radio
+      path.
+    </p>
+
+    <p>
+      Sometimes the difference between hearing nothing and working a
+      distant station is not a change in equipment at all. It is simply
+      a change in the propagation environment.
+    </p>
+
+    <div class="deep">
+
+      <strong>GO DEEPER</strong>
+
+      <p>
+        Explore the CE4RWS technical books for a deeper look at HF
+        propagation, the ionosphere, antennas and practical radio
+        operation.
+      </p>
+
+    </div>
+
+    <div class="back">
+
+      <a href="articles.html">
+        ← Back to Articles
+      </a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer>
+
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+
+</footer>
+
+</body>
+</html>
