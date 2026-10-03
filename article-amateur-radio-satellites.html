@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Birth of Amateur Radio Satellites | CE4RWS</title>
+
+<meta name="description" content="How amateur radio entered the space age through Project OSCAR, the launch of OSCAR I and the development of amateur radio satellites.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:920px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The Birth of Amateur Radio Satellites</h1>
+
+    <p class="intro">
+      How radio amateurs moved from communicating across the Earth to placing their own radio equipment in orbit, opening a completely new chapter in amateur radio.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">Satellites</span>
+      <span class="tag">OSCAR</span>
+      <span class="tag">Space</span>
+      <span class="tag">Amateur Radio</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>Amateur Radio Looks Toward Space</h2>
+
+    <p>
+      By the end of the 1950s, amateur radio had already demonstrated that relatively small stations could communicate across oceans. Short-wave propagation had opened the world, and solid-state electronics were beginning to make equipment smaller and more practical.
+    </p>
+
+    <p>
+      Then something happened that changed the scale of the experiment completely.
+    </p>
+
+    <p>
+      Radio amateurs began thinking about putting their own equipment into orbit.
+    </p>
+
+    <p>
+      The idea emerged only a few years after the launch of Sputnik 1 in October 1957. Amateur experimenters recognized that a satellite could provide something no terrestrial antenna or ionospheric reflection could provide: a radio platform moving above the Earth that could receive and retransmit signals over a large geographic area.
+    </p>
+
+    <p>
+      What initially sounded like an extraordinary idea became the objective of <strong>Project OSCAR</strong>.
+    </p>
+
+    <h2>The Meaning of OSCAR</h2>
+
+    <p>
+      OSCAR stands for <strong>Orbiting Satellite Carrying Amateur Radio</strong>.
+    </p>
+
+    <p>
+      Project OSCAR was formed by radio amateurs on the west coast of the United States with the goal of building and launching an amateur satellite. The project demonstrated something characteristic of amateur radio: sophisticated engineering could be attempted by small groups of technically skilled volunteers working with limited resources. ([amsat.org](https://www.amsat.org/amsat-history/))
+    </p>
+
+    <p>
+      The project was not attempting to compete with the enormous government space programs of the period. Instead, amateurs were looking for a way to place a very small and relatively simple radio payload into space as a secondary payload.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The ambition was extraordinary, but the philosophy was familiar.</strong> Build the equipment, solve the engineering problems and find a way to make the experiment work with the resources available.
+      </p>
+    </div>
+
+    <h2>OSCAR I</h2>
+
+    <p>
+      On December 12, 1961, the first amateur radio satellite was launched from Vandenberg Air Force Base in California.
+    </p>
+
+    <p>
+      It was <strong>OSCAR I</strong>.
+    </p>
+
+    <p>
+      The spacecraft was tiny by modern standards. It weighed approximately 10 pounds and carried a small beacon transmitter. It was designed and built by amateur radio operators working through Project OSCAR. ([amsat.org](https://www.amsat.org/amsat-history/))
+    </p>
+
+    <p>
+      OSCAR I did not carry a sophisticated voice transponder. Its principal payload was a beacon that transmitted a simple signal and also provided information that could be used for scientific and propagation observations.
+    </p>
+
+    <p>
+      The satellite transmitted the famous message <strong>"HI"</strong> in Morse code.
+    </p>
+
+    <p>
+      The message was extraordinarily simple.
+    </p>
+
+    <p>
+      Its significance was not.
+    </p>
+
+    <h2>A Satellite Built by Radio Amateurs</h2>
+
+    <p>
+      One of the most remarkable aspects of OSCAR I was the way it was constructed.
+    </p>
+
+    <p>
+      AMSAT's historical record describes the spacecraft as having been built in the basements and garages of the Project OSCAR team. The project used a secondary-payload opportunity rather than requiring an entire launch vehicle for the amateur spacecraft. ([amsat.org](https://www.amsat.org/amsat-history/))
+    </p>
+
+    <p>
+      The satellite therefore demonstrated two things at the same time.
+    </p>
+
+    <p>
+      First, amateur radio could participate in space communications.
+    </p>
+
+    <p>
+      Second, small and relatively inexpensive spacecraft could perform useful technical experiments in orbit.
+    </p>
+
+    <p>
+      That second idea would become increasingly important in the decades that followed.
+    </p>
+
+    <h2>Listening to a Satellite</h2>
+
+    <p>
+      The response from the amateur community was remarkable.
+    </p>
+
+    <p>
+      More than 570 amateurs in 28 countries submitted observations of OSCAR I to the Project OSCAR data center. The satellite remained in orbit for only about 22 days before re-entering the atmosphere, but its short mission had already demonstrated the feasibility of amateur satellites. ([amsat.org](https://www.amsat.org/amsat-history/))
+    </p>
+
+    <p>
+      Operators were no longer simply listening for signals reflected by the ionosphere. They were receiving a transmitter that was physically moving through space above the Earth.
+    </p>
+
+    <p>
+      This introduced a completely new set of operating and engineering problems.
+    </p>
+
+    <h2>The Radio Had Started Moving</h2>
+
+    <p>
+      A terrestrial amateur station generally operates from a fixed location. A satellite does not.
+    </p>
+
+    <p>
+      As it moves across the sky, the distance between the satellite and the ground station changes continuously. The radio signal can therefore experience changes in frequency caused by the Doppler effect.
+    </p>
+
+    <p>
+      The satellite also rises above the horizon, reaches its maximum elevation and then disappears again. The window available for communication during each pass can be relatively short.
+    </p>
+
+    <p>
+      Amateur satellite operation therefore required operators to think about orbital mechanics, antenna pointing, Doppler correction, acquisition of signal and tracking.
+    </p>
+
+    <p>
+      Amateur radio had entered a completely new technical environment.
+    </p>
+
+    <h2>From Beacons to Transponders</h2>
+
+    <p>
+      OSCAR I was primarily a beacon satellite. Later amateur satellites became considerably more capable.
+    </p>
+
+    <p>
+      Instead of simply transmitting their own signals, satellites could carry <strong>transponders</strong>.
+    </p>
+
+    <p>
+      A transponder receives signals from stations on one frequency range and retransmits them on another. In this way, the satellite becomes a radio relay in space.
+    </p>
+
+    <p>
+      This transformed the concept of satellite amateur radio.
+    </p>
+
+    <p>
+      The satellite was no longer merely an object transmitting telemetry or a beacon. It could become an active part of a two-way communication path.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The satellite became an amateur-radio repeater in space.</strong> Stations that could not communicate directly could potentially reach one another through the satellite.
+      </p>
+    </div>
+
+    <h2>The Birth of AMSAT</h2>
+
+    <p>
+      The success of Project OSCAR inspired further work and eventually led to the creation of the <strong>Radio Amateur Satellite Corporation, AMSAT</strong>.
+    </p>
+
+    <p>
+      AMSAT was formally established in Washington, D.C., in 1969 as an educational organization with the goal of continuing and expanding the work begun by Project OSCAR. ([amsat.org](https://www.amsat.org/about-amsat/))
+    </p>
+
+    <p>
+      Its activities helped turn amateur satellite work into an increasingly international effort.
+    </p>
+
+    <p>
+      Engineers, radio amateurs, universities and volunteers from different countries contributed to spacecraft design, construction, testing and operation.
+    </p>
+
+    <p>
+      The amateur-satellite movement became an excellent example of international technical cooperation.
+    </p>
+
+    <h2>Small Satellites, Big Ideas</h2>
+
+    <p>
+      The satellites themselves became increasingly sophisticated.
+    </p>
+
+    <p>
+      Early spacecraft were small and short-lived. Later satellites carried more capable transponders, better power systems, improved antennas and increasingly sophisticated control systems.
+    </p>
+
+    <p>
+      Some were designed for low Earth orbit, while others used much more ambitious orbital configurations to provide longer communication windows and wider coverage.
+    </p>
+
+    <p>
+      AMSAT's later programs included satellites designed for more advanced communications, including highly elliptical orbits intended to provide longer-range and more reliable satellite communication. ([amsat.org](https://www.amsat.org/amsat/ftp/press-releases/p3dhist1.pdf))
+    </p>
+
+    <h2>Space Became Part of Amateur Radio</h2>
+
+    <p>
+      The significance of amateur satellites goes beyond the number of contacts made through them.
+    </p>
+
+    <p>
+      They changed the definition of what an amateur station could be.
+    </p>
+
+    <p>
+      A radio amateur no longer had to think only about antennas on the ground and propagation through the atmosphere. The communication path could include a spacecraft traveling hundreds or thousands of kilometres above the Earth.
+    </p>
+
+    <p>
+      This required a new combination of knowledge: radio engineering, orbital mechanics, antenna systems, tracking and operating technique.
+    </p>
+
+    <p>
+      In other words, satellite radio was perfectly aligned with the experimental character of amateur radio.
+    </p>
+
+    <h2>The Legacy of OSCAR</h2>
+
+    <p>
+      Since OSCAR I, amateur radio satellites have continued to evolve. AMSAT states that its volunteers and related organizations have developed more than 60 OSCAR satellites and pioneered technologies ranging from voice transponders to digital store-and-forward communication. ([amsat.org](https://www.amsat.org/amsat-history/))
+    </p>
+
+    <p>
+      The technology developed through amateur satellite projects also contributed to the broader development of small spacecraft and satellite communications.
+    </p>
+
+    <p>
+      The philosophy remained remarkably consistent: build something useful with limited resources, launch it if possible, operate it and learn from the results.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>OSCAR did not simply put amateur radio into space.</strong> It demonstrated that amateur radio could become a participant in space technology itself.
+      </p>
+    </div>
+
+    <h2>From OSCAR to Today's Satellite Stations</h2>
+
+    <p>
+      Modern amateur satellite operation can look very different from the pioneering work of the 1960s.
+    </p>
+
+    <p>
+      Today, operators can use computerized tracking, directional antennas, automatic Doppler correction and sophisticated software to predict and manage satellite passes.
+    </p>
+
+    <p>
+      Some satellites support analog voice, while others support digital communication, telemetry, experiments and other specialized functions.
+    </p>
+
+    <p>
+      Yet the basic idea has not changed.
+    </p>
+
+    <p>
+      A group of amateurs built a small radio transmitter, placed it in orbit and listened for its signal.
+    </p>
+
+    <p>
+      That simple experiment opened an entirely new dimension of amateur radio.
+    </p>
+
+    <p>
+      The path from OSCAR I to modern amateur satellites is another example of the central idea running through the entire history of the service:
+    </p>
+
+    <p>
+      <strong>amateur radio does not simply use technology. It experiments with technology.</strong>
+    </p>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From OSCAR to modern satellite radio</h3>
+
+      <p>
+        Amateur satellites opened the door to a new generation of radio experiments involving orbital mechanics, Doppler shift, transponders, digital communication and spacecraft engineering.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
