@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is FT8 and Why Has It Become So Important in Amateur Radio? | CE4RWS</title>
+
+<meta name="description" content="What is FT8 and why has it become so important in amateur radio? Understand weak-signal digital communication, structured messages, signal reports, timing and practical FT8 operation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · DIGITAL RADIO</div>
+
+    <h1>What Is FT8 and Why Has It Become So Important in Amateur Radio?</h1>
+
+    <p class="hero-intro">
+      FT8 has changed the way many radio amateurs approach weak-signal communication and DX. It combines structured digital messages, precise timing and strong error-correction techniques to make contacts possible when conventional modes may struggle.
+    </p>
+
+    <div class="tags">
+      <span class="tag">FT8</span>
+      <span class="tag">Digital Radio</span>
+      <span class="tag">Weak Signal</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      FT8 is a digital communication mode designed for amateur radio weak-signal work. It was developed by Joe Taylor, K1JT, and Steve Franke, K9AN, as part of the family of digital modes associated with the WSJT-X software.
+    </p>
+
+    <p>
+      Its popularity comes from a very practical combination: FT8 can exchange highly structured information using signals that may be difficult to copy by ear, while requiring relatively little transmitted power and modest bandwidth.
+    </p>
+
+    <p>
+      But FT8 is not simply a way of replacing voice communication with text. It is a system designed around a specific type of radio communication: short, highly structured and carefully timed exchanges between stations.
+    </p>
+
+    <div class="callout">
+      FT8 is optimized for weak-signal communication, not conversation. Its strength comes from structured messages, precise timing, narrow bandwidth and digital signal processing.
+    </div>
+
+    <h2>How does FT8 work?</h2>
+
+    <p>
+      FT8 divides communication into short transmission and reception periods. Stations transmit brief structured messages and listen for responses during precisely defined time intervals.
+    </p>
+
+    <p>
+      This timing allows the receiving software to know when to expect a signal and where to look for it. The software can then analyse the received audio and attempt to decode signals that may be extremely difficult to identify by ear.
+    </p>
+
+    <p>
+      The complete exchange is therefore a combination of radio transmission, accurate computer timing and digital signal processing.
+    </p>
+
+    <h2>Why is accurate time so important?</h2>
+
+    <p>
+      One of the first things a new FT8 operator discovers is that computer time matters.
+    </p>
+
+    <p>
+      Because stations transmit during defined time windows, a computer clock that is significantly wrong can cause a station to transmit outside the expected period. The other station may then fail to decode the transmission or may not respond correctly.
+    </p>
+
+    <p>
+      This is why reliable time synchronization is an essential part of an FT8 station.
+    </p>
+
+    <h2>Why can FT8 decode weak signals?</h2>
+
+    <p>
+      FT8 uses digital signal processing and forward error correction to extract structured information from signals that may be very weak relative to the noise.
+    </p>
+
+    <p>
+      The software does not need to reproduce a human voice or a continuous conversation. It only needs to determine whether a valid structured message is present and decode its contents.
+    </p>
+
+    <p>
+      This makes the mode particularly effective for situations where the available signal-to-noise ratio is limited.
+    </p>
+
+    <h2>What does an FT8 contact actually contain?</h2>
+
+    <p>
+      A typical FT8 exchange is highly structured. It can communicate information such as callsigns, grid locators and signal reports through a sequence of predefined messages.
+    </p>
+
+    <p>
+      A basic contact may therefore contain several short exchanges between the two stations rather than a free-form conversation.
+    </p>
+
+    <p>
+      This structure is one of the reasons FT8 can operate efficiently in a narrow bandwidth while still exchanging the essential information required to establish a contact.
+    </p>
+
+    <h2>What does an FT8 signal report mean?</h2>
+
+    <p>
+      FT8 signal reports are expressed in decibels and are related to the strength of the decoded signal relative to the noise within the measurement system.
+    </p>
+
+    <p>
+      A report such as <strong>−10 dB</strong> does not mean that the transmitter is producing negative power. It is a signal-to-noise measurement used by the digital decoding system.
+    </p>
+
+    <p>
+      A more negative value therefore represents a weaker decoded signal under the measurement convention used by FT8.
+    </p>
+
+    <p>
+      These reports are useful for comparing reception conditions, but they should not be interpreted as a universal measurement of transmitter power, antenna gain or overall station quality.
+    </p>
+
+    <h2>Why does FT8 use such a narrow bandwidth?</h2>
+
+    <p>
+      FT8 occupies a relatively narrow audio bandwidth compared with many conventional amateur radio modes.
+    </p>
+
+    <p>
+      Concentrating the transmitted information into a narrow signal helps the receiver focus its processing on a small portion of the spectrum. This is particularly useful when the overall band contains many signals and a significant amount of noise.
+    </p>
+
+    <p>
+      The narrow bandwidth also makes it possible for many FT8 signals to coexist within a wider section of an amateur band.
+    </p>
+
+    <h2>Why do operators use low power?</h2>
+
+    <p>
+      FT8 can produce successful contacts at power levels that would be difficult to use with some conventional modes under the same propagation conditions.
+    </p>
+
+    <p>
+      This does not mean that power is irrelevant. Antenna efficiency, propagation, noise level, frequency selection and station location remain fundamental.
+    </p>
+
+    <p>
+      The important point is that digital weak-signal techniques can make very efficient use of limited signal-to-noise conditions.
+    </p>
+
+    <h2>FT8 is not a magic mode</h2>
+
+    <p>
+      It is easy to think that FT8 can decode anything. It cannot.
+    </p>
+
+    <p>
+      If the propagation path is poor, the antenna is inefficient, the receiver is overloaded, the frequency is wrong or the signal is buried too deeply in interference, decoding may still fail.
+    </p>
+
+    <p>
+      Digital processing improves the ability to extract information from difficult signals, but it does not eliminate the physical limits imposed by radio propagation and the signal environment.
+    </p>
+
+    <h2>What makes an FT8 station work well?</h2>
+
+    <p>
+      A successful FT8 station depends on several elements working together.
+    </p>
+
+    <p>
+      The radio must provide stable frequency control and reliable computer interfacing. The computer must maintain accurate time. The audio chain must be configured correctly, and the transmitter must operate without excessive distortion.
+    </p>
+
+    <p>
+      The antenna and feed system remain just as important as they are in any other HF mode. Propagation determines whether the path between the two stations is favourable, while local noise can determine whether a weak signal can actually be decoded.
+    </p>
+
+    <p>
+      FT8 does not replace good RF engineering. It makes good RF engineering more valuable.
+    </p>
+
+    <h2>Why FT8 changed amateur radio</h2>
+
+    <p>
+      One of the most important effects of FT8 has been the way it allows operators to observe propagation in near real time.
+    </p>
+
+    <p>
+      Thousands of stations can exchange automated or semi-automated weak-signal contacts, creating a large amount of information about which bands are active, which paths are working and how conditions are changing.
+    </p>
+
+    <p>
+      Services such as PSK Reporter can use reception reports from participating stations to provide a broader picture of where signals are being heard around the world.
+    </p>
+
+    <p>
+      FT8 has therefore become not only a communication mode but also a useful tool for observing the behaviour of the HF spectrum.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      FT8 is successful because it is designed around a specific engineering problem: exchanging short, structured information under weak-signal conditions.
+    </p>
+
+    <p>
+      Its performance comes from the combination of narrow bandwidth, digital signal processing, forward error correction, structured messages and precise timing.
+    </p>
+
+    <p>
+      Understanding those principles helps explain why an FT8 signal that sounds almost insignificant to the human ear can still produce a valid decoded contact.
+    </p>
+
+    <p>
+      More importantly, FT8 demonstrates a fundamental principle of amateur radio: <strong>successful communication is not determined by transmitter power alone, but by how efficiently the entire system uses the available signal.</strong>
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore digital modes and weak-signal operation</h3>
+      <p>
+        The CE4RWS technical books explore FT8, digital modes, weak-signal communication, propagation, computer interfaces and practical digital-radio operation in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
