@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Does a Solar Flare Really Mean for HF Radio? | CE4RWS</title>
+
+<meta name="description" content="A practical explanation of solar flares, their effects on the ionosphere, and what they can mean for HF amateur radio propagation.">
+
+<style>
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-main{
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:-.03em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:7px;
+  font-size:14px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+}
+
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:15px;
+  text-transform:uppercase;
+}
+
+.nav-links a:hover{
+  color:var(--yellow);
+}
+
+.hero{
+  background:var(--navy);
+  color:#fff;
+  padding:105px 7% 95px;
+}
+
+.hero-inner{
+  max-width:1280px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:28px;
+}
+
+.hero h1{
+  max-width:1150px;
+  margin:0;
+  font-size:clamp(48px,6.5vw,88px);
+  line-height:.96;
+  letter-spacing:-.055em;
+  font-weight:800;
+}
+
+.hero-intro{
+  max-width:920px;
+  margin:38px 0 0;
+  font-size:21px;
+  line-height:1.65;
+  color:#dce7f2;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:32px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  padding:9px 16px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+.article{
+  max-width:900px;
+  margin:0 auto;
+  padding:85px 28px 100px;
+}
+
+.article p{
+  margin:0 0 30px;
+  font-size:20px;
+  line-height:1.75;
+  color:#263c54;
+}
+
+.article h2{
+  margin:72px 0 22px;
+  font-size:38px;
+  line-height:1.12;
+  letter-spacing:-.035em;
+  color:var(--ink);
+}
+
+.article h3{
+  margin:50px 0 18px;
+  font-size:27px;
+  color:var(--ink);
+}
+
+.note{
+  margin:45px 0;
+  padding:32px 36px;
+  background:#fff;
+  border-left:6px solid var(--yellow);
+  border-radius:0 18px 18px 0;
+  box-shadow:0 12px 30px rgba(9,39,66,.08);
+}
+
+.note p{
+  margin:0;
+  font-size:19px;
+  line-height:1.65;
+}
+
+.note strong{
+  color:var(--ink);
+}
+
+.go-deeper{
+  margin-top:70px;
+  padding:28px 30px;
+  background:var(--navy);
+  border-radius:18px;
+  color:#fff;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.go-deeper strong{
+  color:var(--yellow);
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  padding:42px 7%;
+  text-align:center;
+}
+
+footer strong{
+  color:#fff;
+}
+
+@media(max-width:900px){
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    gap:18px;
+  }
+
+  .hero{
+    padding:80px 7% 75px;
+  }
+
+  .article{
+    padding:65px 24px 80px;
+  }
+}
+
+@media(max-width:600px){
+  .brand-main{
+    font-size:22px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero-intro{
+    font-size:18px;
+  }
+
+  .article p{
+    font-size:18px;
+  }
+
+  .article h2{
+    font-size:31px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a class="brand" href="index.html">
+  <div class="brand-main">HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span></div>
+  <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+</a>
+
+<nav class="nav-links">
+  <a href="index.html">Home</a>
+  <a href="index.html#sobre-mi">About</a>
+  <a href="articles.html">Articles</a>
+  <a href="index.html#libros">Books</a>
+  <a href="index.html#radio">Amateur Radio</a>
+  <a href="index.html#contacto">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · PROPAGATION &amp; DX</div>
+
+    <h1>What Does a Solar Flare Really Mean for HF Radio?</h1>
+
+    <p class="hero-intro">
+      Solar flares can produce sudden changes in the ionosphere and, in some cases,
+      cause HF communication to deteriorate within minutes. Understanding what is
+      actually happening helps us interpret propagation conditions instead of simply
+      assuming that the bands have “gone dead.”
+    </p>
+
+    <div class="tags">
+      <span class="tag">HF Propagation</span>
+      <span class="tag">Solar Activity</span>
+      <span class="tag">DX</span>
+    </div>
+
+  </div>
+</section>
+
+<main class="article">
+
+<p>
+A solar flare is a sudden release of energy from the Sun. It produces intense
+electromagnetic radiation across a wide range of wavelengths, including
+ultraviolet and X-ray radiation. For amateur radio operators, the important
+point is not simply that the Sun has become more active. The important point is
+that this radiation can reach the Earth's upper atmosphere and modify the
+ionosphere very quickly.
+</p>
+
+<p>
+That is why a solar flare can sometimes be associated with an abrupt change in
+HF propagation. A band that was working normally can suddenly become much
+quieter, especially on the sunlit side of the Earth. The effect can develop much
+faster than the slower changes associated with the normal evolution of
+ionospheric conditions.
+</p>
+
+<h2>What happens when a solar flare occurs?</h2>
+
+<p>
+The electromagnetic radiation from a flare reaches Earth at the speed of light.
+The enhanced ultraviolet and X-ray radiation increases ionization in the
+ionosphere, particularly in the lower ionospheric regions that can strongly
+affect HF signals.
+</p>
+
+<p>
+This does not simply mean that “more ionization is always better.” For HF
+communication, the location and density of ionization matter. Increased
+ionization in the lower ionosphere can increase the absorption of radio
+energy, particularly at lower HF frequencies.
+</p>
+
+<div class="note">
+  <p>
+    <strong>The important point:</strong> a solar flare can temporarily change
+    the balance between useful ionospheric propagation and radio-frequency
+    absorption. More solar radiation does not automatically mean better HF
+    conditions.
+  </p>
+</div>
+
+<h2>Why can the lower bands be affected first?</h2>
+
+<p>
+HF frequencies do not all interact with the ionosphere in exactly the same way.
+Lower frequencies are generally more vulnerable to absorption in the ionized
+lower atmosphere. As a result, a sudden increase in ionization can make
+propagation on the lower HF bands more difficult.
+</p>
+
+<p>
+This is one reason why an operator may notice that a band such as 20 or 40
+metres becomes unusually weak during a strong solar flare, while conditions on
+higher frequencies may behave differently. The exact response depends on the
+strength of the event, the geographic location, the time of day, and the
+propagation path.
+</p>
+
+<h2>Why does the effect depend on daylight?</h2>
+
+<p>
+Solar flare radiation affects the side of Earth facing the Sun. Consequently,
+the strongest flare-related ionospheric effects are normally associated with
+the sunlit portion of the Earth.
+</p>
+
+<p>
+This creates an important geographical element. A station may experience a
+significant propagation disturbance while another station, located in a region
+where the relevant path is outside the most strongly affected area, may observe
+a different situation.
+</p>
+
+<p>
+For DX operators, this means that a solar flare should not be interpreted as a
+simple global switch that turns HF propagation on or off. The actual effect
+depends on where the stations are located and which part of the ionosphere the
+signal is using.
+</p>
+
+<h2>A flare is not the same as a geomagnetic storm</h2>
+
+<p>
+These two events are often mentioned together, but they are not the same thing.
+A solar flare is primarily an electromagnetic radiation event. Its radiation
+can affect the ionosphere very quickly.
+</p>
+
+<p>
+A geomagnetic storm, on the other hand, is associated with disturbances in
+Earth's magnetic environment, often following the arrival of solar material
+such as a coronal mass ejection. These disturbances develop on a different
+timescale and can produce different effects on HF propagation.
+</p>
+
+<p>
+A flare can occur without producing a major geomagnetic storm. Conversely, a
+geomagnetic disturbance can continue to affect HF propagation after the
+initial flare has already passed.
+</p>
+
+<h2>What should a radio amateur actually watch?</h2>
+
+<p>
+The practical response is not to look at a single solar number and immediately
+decide that the bands will be good or bad. Solar flares are best understood
+together with other information, including solar X-ray activity, geomagnetic
+conditions, ionospheric observations and actual reports from the bands.
+</p>
+
+<p>
+Listening is still one of the most valuable tools available to the operator.
+If several normally active bands become quiet at approximately the same time,
+and solar observations show a significant flare, there may be a useful
+connection between the two observations.
+</p>
+
+<p>
+Digital propagation tools can add another layer of information. FT8 reports,
+reverse beacon networks and online monitoring systems can show whether signals
+are still being received along particular paths. This helps distinguish a
+general propagation disturbance from a local problem at the station.
+</p>
+
+<h2>The practical lesson for HF operators</h2>
+
+<p>
+A solar flare is a reminder that HF propagation is dynamic. The ionosphere is
+not a fixed transmission medium, and solar radiation can change its behaviour
+on timescales much shorter than many operators expect.
+</p>
+
+<p>
+When a band suddenly becomes quiet, the correct question is not simply,
+“Why is HF dead?” It is better to ask what changed: the solar radiation, the
+ionosphere, the time of day, the propagation path, the level of absorption, or
+perhaps something local to the station.
+</p>
+
+<p>
+Understanding solar flares gives the operator another piece of that puzzle.
+It does not predict every contact, but it provides a physical explanation for
+some of the sudden changes that can be observed on the HF bands.
+</p>
+
+<div class="go-deeper">
+  <strong>GO DEEPER</strong>
+  &nbsp; Explore the subject in CE4RWS technical books and training manuals.
+</div>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
