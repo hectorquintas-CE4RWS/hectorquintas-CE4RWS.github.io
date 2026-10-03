@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is PSK Reporter and What Can It Tell You About Propagation? | CE4RWS</title>
+
+<meta name="description" content="What is PSK Reporter and how can radio amateurs use reception reports to observe propagation? Understand spotting, reception reports, FT8, paths, band openings and the limits of propagation data.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · DIGITAL RADIO</div>
+
+    <h1>What Is PSK Reporter and What Can It Tell You About Propagation?</h1>
+
+    <p class="hero-intro">
+      A digital contact tells you that a signal was successfully exchanged. A network of reception reports can tell you something much bigger: where signals are being heard, on which bands, at what times and along which paths.
+    </p>
+
+    <div class="tags">
+      <span class="tag">PSK Reporter</span>
+      <span class="tag">Propagation</span>
+      <span class="tag">FT8</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      Modern digital modes have created an interesting new way to observe amateur radio propagation. Instead of relying only on personal contacts or listening for distant stations, operators can use reception reports generated by participating stations to build a picture of where signals are travelling.
+    </p>
+
+    <p>
+      <strong>PSK Reporter</strong> is one of the systems used by amateur radio operators to share reception information from digital modes. When a participating station decodes a signal and reports it, that observation can become part of a much larger collection of reception data.
+    </p>
+
+    <p>
+      The result is valuable because propagation is constantly changing. A single receiver gives us one observation. Many receivers distributed around the world can reveal patterns that are much easier to recognize.
+    </p>
+
+    <div class="callout">
+      PSK Reporter does not predict propagation. It records observations of signals that participating stations have actually received and reported.
+    </div>
+
+    <h2>What is a reception report?</h2>
+
+    <p>
+      A reception report is an observation that a station has decoded or received a signal from another station.
+    </p>
+
+    <p>
+      Depending on the digital mode and reporting system, the information can include the transmitting callsign, receiving callsign, frequency or band, time, signal report and geographic information such as the grid locator of the stations involved.
+    </p>
+
+    <p>
+      Each report is therefore a small piece of information about a real radio path.
+    </p>
+
+    <h2>How does PSK Reporter become useful?</h2>
+
+    <p>
+      One reception report by itself may not tell us very much about the overall state of the ionosphere.
+    </p>
+
+    <p>
+      Imagine that a station in Chile receives an FT8 signal from Europe. That is one useful observation. If stations across South America, North America and the Pacific are simultaneously reporting different paths on the same band, the collection of observations becomes much more informative.
+    </p>
+
+    <p>
+      Patterns begin to appear. Certain bands may show activity toward particular regions while others may remain quiet. The situation can change as the Earth rotates and as ionospheric conditions evolve.
+    </p>
+
+    <h2>Why FT8 is especially useful for this</h2>
+
+    <p>
+      FT8 and other digital modes are well suited to automated reception reporting because the software can decode structured messages and transmit the resulting observations to reporting networks.
+    </p>
+
+    <p>
+      This can generate a large number of observations without requiring every operator to manually enter a reception report.
+    </p>
+
+    <p>
+      The result is a continuously changing view of the radio environment, provided enough stations are participating.
+    </p>
+
+    <h2>What can the map show?</h2>
+
+    <p>
+      A propagation map can show paths between transmitting and receiving stations.
+    </p>
+
+    <p>
+      When many paths are displayed together, the operator can see where a band is currently producing contacts or reception reports.
+    </p>
+
+    <p>
+      This can be particularly useful when comparing several HF bands. For example, one band may show numerous long-distance paths while another shows mostly local or regional reception.
+    </p>
+
+    <p>
+      The map therefore provides a visual representation of actual reported activity rather than a purely theoretical prediction.
+    </p>
+
+    <h2>Does a report prove that a band is open?</h2>
+
+    <p>
+      It provides evidence that a particular signal was received along a particular path at a particular time. That is valuable, but it should not be interpreted as proof that the entire band is uniformly open.
+    </p>
+
+    <p>
+      HF propagation is highly dependent on frequency, path, time, antenna systems, signal level and ionospheric conditions.
+    </p>
+
+    <p>
+      A single successful path can coexist with poor propagation in another direction on the same frequency.
+    </p>
+
+    <h2>Why receiving stations matter so much</h2>
+
+    <p>
+      A reception map is built from the stations that are actually listening and reporting.
+    </p>
+
+    <p>
+      If very few receiving stations are active in a particular region, the absence of reports from that region does not necessarily mean that the band is closed there.
+    </p>
+
+    <p>
+      This is an important limitation of all crowd-sourced reception data: <strong>absence of evidence is not automatically evidence of absence.</strong>
+    </p>
+
+    <p>
+      The distribution of reporting stations affects what the map can show.
+    </p>
+
+    <h2>Why your own noise floor matters</h2>
+
+    <p>
+      A receiving station can only report what its own receiver and antenna system can detect.
+    </p>
+
+    <p>
+      A station operating in a quiet rural environment may decode weak signals that a station surrounded by strong electrical interference cannot detect.
+    </p>
+
+    <p>
+      Consequently, the absence of a report from one station does not necessarily mean that the transmitting station was absent from the band.
+    </p>
+
+    <p>
+      Local noise, antenna efficiency, receiver performance and interference all influence what becomes visible in the reporting network.
+    </p>
+
+    <h2>What does a signal report add?</h2>
+
+    <p>
+      Digital signal reports add another dimension to the observation.
+    </p>
+
+    <p>
+      If several receiving stations report the same transmission with different signal values, the operator can compare the relative reception conditions across different locations.
+    </p>
+
+    <p>
+      A strong report from one station and a weak report from another does not automatically mean that the transmitter changed power. The difference may result from propagation, antenna characteristics, local noise, path geometry or receiver conditions.
+    </p>
+
+    <h2>How can PSK Reporter help with band selection?</h2>
+
+    <p>
+      One of the most practical uses is deciding which band deserves attention.
+    </p>
+
+    <p>
+      Instead of moving randomly between frequencies, an operator can examine recent reception activity and see which bands are currently producing paths toward the desired region.
+    </p>
+
+    <p>
+      This does not replace listening on the bands. It simply provides another source of information before deciding where to concentrate operating time.
+    </p>
+
+    <h2>Propagation changes with time</h2>
+
+    <p>
+      HF propagation is not static. The ionosphere changes with solar illumination, frequency, geographic location, season, solar activity and geomagnetic conditions.
+    </p>
+
+    <p>
+      A path that appears clearly on a map in the afternoon may disappear later in the evening. Another path may become possible as the grey line approaches one of the stations.
+    </p>
+
+    <p>
+      Watching reception reports over time can therefore be much more informative than looking at a single snapshot.
+    </p>
+
+    <h2>What PSK Reporter cannot tell you</h2>
+
+    <p>
+      Reception reports are observations, not a complete measurement of the ionosphere.
+    </p>
+
+    <p>
+      They cannot directly tell you the exact electron density along an entire propagation path, the precise propagation mechanism involved or the complete radiation pattern of a transmitting antenna.
+    </p>
+
+    <p>
+      They also cannot guarantee that a path will remain open. Conditions can change between the moment a report is received and the moment an operator attempts a contact.
+    </p>
+
+    <p>
+      The most useful approach is therefore to combine reception reports with other information such as solar indices, ionospheric observations, propagation predictions and direct listening.
+    </p>
+
+    <h2>Why the data becomes more valuable over time</h2>
+
+    <p>
+      A single reception report is a momentary observation. Thousands of reports collected over long periods can reveal recurring patterns.
+    </p>
+
+    <p>
+      Operators can begin to recognize how certain bands behave at different times of day, how paths change with solar activity and how geographical location influences the availability of particular routes.
+    </p>
+
+    <p>
+      This turns digital reporting into a practical observational tool for amateur radio.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      PSK Reporter is most useful when it is treated as a window into actual reported radio activity.
+    </p>
+
+    <p>
+      It can show where signals are being received, which bands are producing activity and how propagation paths are changing with time.
+    </p>
+
+    <p>
+      But the map must always be interpreted in context. Reporting stations are not evenly distributed, local noise affects reception, and the absence of a report does not prove that a path is impossible.
+    </p>
+
+    <p>
+      Used together with direct listening and knowledge of propagation, reception reporting becomes a powerful way to connect what we learn about the ionosphere with what is actually happening on the air.
+    </p>
+
+    <p>
+      In that sense, every digital reception report is more than a line on a map. It is a small observation of the radio environment at a specific place and time.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore propagation and real-world HF observations</h3>
+      <p>
+        The CE4RWS technical books explore HF propagation, ionospheric behaviour, digital modes, weak-signal communication, DX and the practical interpretation of radio observations in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
