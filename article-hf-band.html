@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Why Is One HF Band Open While Another Seems Completely Dead? | CE4RWS</title>
+
+<meta name="description" content="Why can one HF band be open while another seems completely dead? A practical explanation of ionospheric propagation, frequency, time and solar conditions.">
+
+<style>
+
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+a{
+  color:inherit;
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+}
+
+.brand-main{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:8px;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--yellow);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:white;
+  padding:85px 7% 90px;
+}
+
+.article-hero-inner{
+  max-width:1050px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.article-hero h1{
+  font-size:clamp(46px,6.5vw,78px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin:0;
+  max-width:1000px;
+}
+
+.article-intro{
+  max-width:780px;
+  margin:30px 0 0;
+  font-size:20px;
+  line-height:1.7;
+  color:#dce7f2;
+}
+
+.article-meta{
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.article-meta span{
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:75px 7% 100px;
+}
+
+.article-body{
+  font-size:18px;
+  line-height:1.85;
+  color:#26384d;
+}
+
+.article-body p{
+  margin:0 0 28px;
+}
+
+.article-body h2{
+  color:var(--ink);
+  font-size:32px;
+  line-height:1.15;
+  letter-spacing:-.025em;
+  margin:55px 0 20px;
+}
+
+.article-body strong{
+  color:var(--ink);
+}
+
+.highlight{
+  margin:42px 0;
+  padding:28px 30px;
+  border-left:5px solid var(--yellow);
+  background:white;
+  border-radius:0 14px 14px 0;
+  box-shadow:0 10px 28px rgba(9,39,66,.06);
+}
+
+.highlight p{
+  margin:0;
+}
+
+.back{
+  margin-top:65px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
+
+.back a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--cobalt);
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+.back a:hover{
+  color:var(--navy);
+}
+
+.deep{
+  margin-top:55px;
+  background:var(--navy);
+  color:white;
+  border-radius:18px;
+  padding:30px 32px;
+}
+
+.deep strong{
+  color:var(--yellow);
+  margin-right:8px;
+}
+
+.deep p{
+  display:inline;
+  color:#dce7f2;
+}
+
+footer{
+  background:var(--navy);
+  color:#dce7f2;
+  padding:35px 7%;
+  text-align:center;
+  font-size:14px;
+}
+
+footer strong{
+  color:white;
+}
+
+@media(max-width:800px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .article-hero{
+    padding:65px 6% 70px;
+  }
+
+  main{
+    padding:55px 6% 80px;
+  }
+
+  nav{
+    gap:16px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <a class="brand" href="index.html">
+
+    <div class="brand-main">
+      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
+    </div>
+
+    <div class="brand-sub">
+      Amateur Radio · Exploration · Books · Technology
+    </div>
+
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#sobre-mi">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="index.html#libros">Books</a>
+    <a href="index.html#radio">Amateur Radio</a>
+    <a href="index.html#contacto">Contact</a>
+  </nav>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">
+      CE4RWS · PROPAGATION & DX
+    </div>
+
+    <h1>
+      Why Is One HF Band Open While Another Seems Completely Dead?
+    </h1>
+
+    <p class="article-intro">
+      It is one of the most common experiences in HF amateur radio:
+      one band suddenly becomes alive with stations while another,
+      only a few megahertz away, seems completely silent.
+      The reason is not simply that one frequency is “better” than another.
+    </p>
+
+    <div class="article-meta">
+      <span>HF Propagation</span>
+      <span>DX</span>
+      <span>Propagation</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <article class="article-body">
+
+    <p>
+      Anyone who operates HF eventually encounters the same curious
+      situation. You move from one band to another and suddenly the
+      character of the radio changes completely. A frequency that was
+      full of signals a few minutes earlier may now seem almost empty,
+      while another band is carrying stations from hundreds or thousands
+      of kilometres away.
+    </p>
+
+    <p>
+      It can be tempting to think that something is wrong with the
+      antenna, the radio or the propagation conditions themselves.
+      Often, however, nothing is wrong. The difference comes from the
+      relationship between the operating frequency, the ionosphere,
+      the time of day, the propagation path and the current level of
+      solar and geomagnetic activity.
+    </p>
+
+    <h2>
+      HF propagation is frequency-dependent
+    </h2>
+
+    <p>
+      The ionosphere does not treat every HF frequency in exactly the
+      same way. Different frequencies interact with the ionospheric
+      layers differently, and the conditions required for a useful
+      propagation path change with frequency.
+    </p>
+
+    <p>
+      This is one of the fundamental reasons why amateur radio operators
+      work with several HF bands. A frequency that works well for a
+      particular path at one moment may become less useful as conditions
+      change. Another band may then become the better choice.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>The important point:</strong>
+        an HF band is not simply “open” or “closed” in isolation.
+        Its usefulness depends on the frequency, the path, the time,
+        the ionosphere and the signal level that can actually be detected.
+      </p>
+
+    </div>
+
+    <h2>
+      The ionosphere is constantly changing
+    </h2>
+
+    <p>
+      The ionosphere is influenced strongly by solar radiation. During
+      daylight, solar ultraviolet and X-ray radiation changes the
+      ionization of the upper atmosphere. After sunset, those conditions
+      change again as recombination reduces the ionization in some
+      regions.
+    </p>
+
+    <p>
+      These changes affect how radio waves travel. The result is that
+      propagation is dynamic rather than fixed. A path that works well
+      in the afternoon may behave differently after sunset, and a band
+      that is useful during daylight may not provide the same results
+      later in the evening.
+    </p>
+
+    <h2>
+      Frequency matters because the path matters
+    </h2>
+
+    <p>
+      A useful way to think about HF propagation is to imagine that each
+      frequency is looking for a propagation path through a changing
+      environment. The higher-frequency bands generally require more
+      favourable ionospheric conditions to support long-distance
+      propagation, while lower frequencies can remain useful under
+      different conditions.
+    </p>
+
+    <p>
+      This does not mean that lower frequencies are always better.
+      Absorption, noise, antenna efficiency, interference and the
+      geometry of the path all matter. The practical result is that
+      different bands can become useful at different times.
+    </p>
+
+    <h2>
+      Why a band can appear completely dead
+    </h2>
+
+    <p>
+      “Dead” is often an operational description rather than a precise
+      scientific statement. A band may appear silent because the
+      propagation path required for the stations we want to hear is not
+      currently supported.
+    </p>
+
+    <p>
+      There may still be signals elsewhere on the band, or stations may
+      be using different frequencies, different modes or different
+      paths. The apparent silence can therefore be highly local and
+      highly dependent on what we are trying to hear.
+    </p>
+
+    <p>
+      Receiver noise also matters. A weak signal can disappear into
+      the noise floor even though propagation is physically possible.
+      Conversely, a strong signal may be heard clearly because the path
+      is favourable and the signal-to-noise ratio is sufficient.
+    </p>
+
+    <h2>
+      The practical lesson for the operator
+    </h2>
+
+    <p>
+      The most useful response to a quiet band is not necessarily to
+      conclude that propagation has failed. Try another band. Listen
+      around the band. Check the time of day. Look at current solar and
+      geomagnetic information. Consider the direction of the path and
+      the type of propagation that may be involved.
+    </p>
+
+    <p>
+      This is one of the reasons experienced HF operators tend to move
+      between bands rather than remaining fixed on a single frequency.
+      The radio spectrum is changing continuously, and successful
+      operation often comes from recognizing those changes.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>Think of the bands as different windows into the
+        ionosphere.</strong>
+        When one window becomes less useful, another may provide a much
+        better view of the world.
+      </p>
+
+    </div>
+
+    <h2>
+      Understanding propagation changes everything
+    </h2>
+
+    <p>
+      Once the operator begins to understand why the bands behave
+      differently, an apparently mysterious HF station becomes much
+      easier to interpret. MUF, LUF, solar flux, geomagnetic activity,
+      the grey line, ionospheric conditions and antenna characteristics
+      all become pieces of the same picture.
+    </p>
+
+    <p>
+      The goal is not to predict every contact perfectly. Propagation is
+      too complex for that. The goal is to understand enough of the
+      environment to make better operating decisions.
+    </p>
+
+    <div class="deep">
+
+      <strong>GO DEEPER</strong>
+
+      <p>
+        Explore the CE4RWS technical books for a deeper look at HF
+        propagation, antennas, radio technology and practical operation.
+      </p>
+
+    </div>
+
+    <div class="back">
+
+      <a href="articles.html">
+        ← Back to Articles
+      </a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer>
+
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+
+</footer>
+
+</body>
+</html>
