@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How Does the Solar Cycle Change Amateur Radio? | CE4RWS</title>
+
+<meta name="description" content="How the solar cycle changes HF propagation and what amateur radio operators can expect from different phases of solar activity.">
+
+<style>
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:28px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+
+.brand-main{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-.03em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:8px;
+  font-size:14px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#dce6f2;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:15px;
+}
+
+.nav-links a:hover{
+  color:var(--yellow);
+}
+
+.hero{
+  background:var(--navy);
+  color:#fff;
+  padding:110px 13% 105px;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:30px;
+}
+
+.hero h1{
+  max-width:1100px;
+  margin:0;
+  font-size:clamp(48px,7vw,92px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:800;
+}
+
+.hero-intro{
+  max-width:900px;
+  margin:38px 0 0;
+  color:#dce6f2;
+  font-size:22px;
+  line-height:1.55;
+}
+
+.tags{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:32px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  padding:9px 16px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#dce6f2;
+}
+
+.article{
+  max-width:900px;
+  margin:0 auto;
+  padding:85px 28px 100px;
+}
+
+.article p{
+  font-size:20px;
+  line-height:1.8;
+  color:#263c55;
+  margin:0 0 30px;
+}
+
+.article h2{
+  margin:65px 0 22px;
+  font-size:38px;
+  line-height:1.15;
+  letter-spacing:-.035em;
+  color:var(--ink);
+}
+
+.article h3{
+  margin:45px 0 18px;
+  font-size:27px;
+  color:var(--ink);
+}
+
+.callout{
+  background:#fff;
+  border-radius:18px;
+  padding:35px 40px;
+  margin:48px 0;
+  border-left:6px solid var(--yellow);
+  box-shadow:0 12px 30px rgba(9,39,66,.08);
+}
+
+.callout p{
+  margin:0;
+  font-size:21px;
+}
+
+.callout strong{
+  color:var(--ink);
+}
+
+.deeper{
+  margin-top:75px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:20px;
+  padding:38px 42px;
+}
+
+.deeper-title{
+  color:var(--yellow);
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.deeper p{
+  color:#dce6f2;
+  margin:0;
+}
+
+footer{
+  background:var(--navy);
+  color:#dce6f2;
+  padding:45px 7%;
+  text-align:center;
+  font-size:14px;
+}
+
+footer strong{
+  color:#fff;
+}
+
+@media(max-width:850px){
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    gap:18px;
+  }
+
+  .hero{
+    padding:80px 7% 75px;
+  }
+
+  .hero h1{
+    font-size:clamp(44px,12vw,70px);
+  }
+
+  .article{
+    padding:65px 22px 80px;
+  }
+
+  .article p{
+    font-size:18px;
+  }
+
+  .article h2{
+    font-size:32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <div class="brand-main">
+      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
+    </div>
+    <div class="brand-sub">
+      Amateur Radio · Exploration · Books · Technology
+    </div>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="index.html#sobre-mi">ABOUT</a>
+    <a href="articles.html">ARTICLES</a>
+    <a href="index.html#libros">BOOKS</a>
+    <a href="index.html#radio">AMATEUR RADIO</a>
+    <a href="index.html#contacto">CONTACT</a>
+  </nav>
+</header>
+
+<section class="hero">
+
+  <div class="kicker">
+    CE4RWS · PROPAGATION &amp; DX
+  </div>
+
+  <h1>
+    How Does the Solar Cycle Change Amateur Radio?
+  </h1>
+
+  <p class="hero-intro">
+    The Sun does not behave the same way from year to year. Its changing
+    activity affects the ionosphere, and the ionosphere strongly influences
+    what amateur radio operators can hear and work on HF.
+  </p>
+
+  <div class="tags">
+    <div class="tag">HF Propagation</div>
+    <div class="tag">Solar Cycle</div>
+    <div class="tag">DX</div>
+  </div>
+
+</section>
+
+<main class="article">
+
+  <p>
+    One of the most interesting things about HF amateur radio is that the
+    bands are never completely independent of the Sun. The Sun provides the
+    energy that drives much of the ionization in the upper atmosphere, and
+    changes in solar activity can therefore change the way radio signals
+    travel around the Earth.
+  </p>
+
+  <p>
+    This does not mean that every increase in solar activity automatically
+    produces better propagation. The relationship is more subtle. What
+    matters to the radio amateur is how solar activity changes the
+    ionosphere and how those changes affect the frequencies, paths and times
+    that can be used successfully.
+  </p>
+
+  <h2>The solar cycle is a long-term change in solar activity</h2>
+
+  <p>
+    Solar activity follows an approximately eleven-year cycle. During this
+    cycle, the number of sunspots and the general level of solar activity
+    rise and fall. The cycle is commonly described in terms of a solar
+    minimum and a solar maximum.
+  </p>
+
+  <p>
+    During periods of higher solar activity, the Sun generally produces more
+    ultraviolet and extreme-ultraviolet radiation. This radiation contributes
+    to greater ionization in the ionosphere. For HF operators, that can
+    increase the usefulness of higher-frequency bands, particularly when
+    propagation paths and local conditions are favourable.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>The important point:</strong> the solar cycle does not directly
+      “open” or “close” amateur radio bands. It changes the ionospheric
+      environment in which HF propagation takes place.
+    </p>
+  </div>
+
+  <h2>Why higher solar activity can favour the higher HF bands</h2>
+
+  <p>
+    Frequencies such as 14 MHz, 18 MHz, 21 MHz and 28 MHz can require a
+    sufficiently ionized ionosphere to support useful long-distance
+    propagation. When ionization is favourable, these higher bands can remain
+    usable for longer periods and can provide excellent opportunities for
+    DX.
+  </p>
+
+  <p>
+    This is one reason solar maximum periods can be exciting for HF
+    operators. Twenty metres may become active over a much wider range of
+    times and paths, while 17, 15, 12 and 10 metres can provide spectacular
+    long-distance contacts when conditions cooperate.
+  </p>
+
+  <p>
+    However, the effect is never uniform. A band may be excellent for one
+    path and disappointing for another. Time of day, season, geographic
+    location, geomagnetic conditions and the characteristics of the
+    propagation path all remain important.
+  </p>
+
+  <h2>What happens during solar minimum?</h2>
+
+  <p>
+    During solar minimum, overall solar activity is lower and the ionosphere
+    often provides less support for long-distance propagation on the higher
+    HF bands. Ten metres, for example, may offer fewer sustained
+    ionospheric DX opportunities than during a period of high solar
+    activity.
+  </p>
+
+  <p>
+    That does not mean HF becomes useless. Lower frequencies such as 40 and
+    80 metres can remain very productive, especially when the appropriate
+    propagation mechanisms are present. Operators may simply find that the
+    most useful bands change.
+  </p>
+
+  <h2>Solar activity is not the same as stable propagation</h2>
+
+  <p>
+    One of the most important distinctions for radio amateurs is that
+    increased solar activity can improve the ionospheric conditions needed
+    for higher-frequency propagation, while sudden solar events can also
+    disturb those conditions.
+  </p>
+
+  <p>
+    Solar flares and coronal mass ejections can produce short-term changes
+    in the ionosphere and geomagnetic field. As a result, a period of
+    otherwise strong solar activity can sometimes be accompanied by
+    degraded HF conditions.
+  </p>
+
+  <p>
+    This is why experienced operators do not look at a single solar number
+    and assume that the bands will behave in a particular way. They look at
+    several indicators together and compare them with actual observations
+    from the station.
+  </p>
+
+  <h2>The solar cycle changes opportunities, not guarantees</h2>
+
+  <p>
+    The solar cycle is best understood as a background influence on HF
+    propagation. It changes the probability that certain frequencies and
+    propagation paths will be useful, but it cannot predict every contact.
+  </p>
+
+  <p>
+    An operator in Chile may experience a very different situation from an
+    operator in Europe or North America at the same moment. Even two
+    stations only a few hundred kilometres apart can observe different
+    propagation conditions.
+  </p>
+
+  <p>
+    The practical lesson is simple: use the solar cycle as context, not as
+    a promise. Watch the bands, listen carefully, check propagation data,
+    and learn how your own station behaves under different conditions.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>For the active operator:</strong> the best way to understand
+      the solar cycle is to combine solar data with what you actually hear
+      on the bands. Numbers explain the environment; your receiver tells
+      you what that environment is producing at your station.
+    </p>
+  </div>
+
+  <div class="deeper">
+    <div class="deeper-title">GO DEEPER</div>
+    <p>
+      Explore the subject in the CE4RWS technical books and training manuals,
+      where propagation, the ionosphere, solar activity and HF operation are
+      examined in greater depth.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
