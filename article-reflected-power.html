@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Really Happens to Reflected Power? | CE4RWS</title>
+
+<meta name="description" content="What really happens to reflected RF power in an amateur radio antenna system? Understand reflected power, SWR, feed-line losses and what happens to energy returning toward the transmitter.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · ANTENNAS &amp; RF</div>
+
+    <h1>What Really Happens to Reflected Power?</h1>
+
+    <p class="hero-intro">
+      Reflected power is one of the most misunderstood concepts in amateur radio. It does not simply disappear, and it does not automatically mean that the antenna is wasting all of the power. Understanding what actually happens on the transmission line makes SWR much easier to interpret.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Antennas</span>
+      <span class="tag">SWR</span>
+      <span class="tag">RF</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      When an RF signal travels from a transmitter toward an antenna, we normally want as much of the available power as possible to be transferred into the antenna system. When the antenna impedance does not match the characteristic impedance of the transmission line, part of the electromagnetic energy is reflected back toward the transmitter.
+    </p>
+
+    <p>
+      This reflected energy is the physical reason behind the standing-wave pattern measured as SWR. The important point is that reflected power is not simply “lost power.” It is energy traveling in the opposite direction on the transmission line, and what happens to it depends on the entire RF system.
+    </p>
+
+    <h2>Why is power reflected?</h2>
+
+    <p>
+      A transmission line is designed to transfer electromagnetic energy between a source and a load. When the load impedance matches the characteristic impedance of the line, the energy can be transferred without creating a reflected wave.
+    </p>
+
+    <p>
+      When the impedances are different, the electromagnetic fields at the load cannot satisfy the boundary conditions required for complete power transfer. A portion of the wave is therefore reflected back along the transmission line.
+    </p>
+
+    <p>
+      In a typical amateur radio station using 50-ohm coaxial cable, the transmitter and feed line are designed around a 50-ohm system. If the antenna system presents a significantly different impedance, the mismatch produces reflection.
+    </p>
+
+    <div class="callout">
+      Reflected power is not a separate kind of RF energy. It is part of the original electromagnetic wave that was not transferred to the load and is traveling back along the transmission line.
+    </div>
+
+    <h2>What does SWR measure?</h2>
+
+    <p>
+      SWR, or Standing Wave Ratio, describes the relationship between the forward and reflected waves on the transmission line. When the forward and reflected waves interact, they create a standing-wave pattern with points of maximum and minimum voltage and current.
+    </p>
+
+    <p>
+      A 1:1 SWR means that, under ideal conditions, there is no reflected wave caused by an impedance mismatch. As the mismatch becomes larger, the reflected component becomes larger and the SWR increases.
+    </p>
+
+    <p>
+      This gives the radio amateur a useful way to evaluate the relationship between the feed line and the load. But SWR itself is not a direct measurement of antenna efficiency.
+    </p>
+
+    <h2>Where does the reflected energy go?</h2>
+
+    <p>
+      Once reflected, the RF energy travels back toward the transmitter. If the transmitter output stage and the transmission line are part of the same system, the returning wave interacts with the forward wave and with the impedance presented by the source.
+    </p>
+
+    <p>
+      Some of the reflected energy may eventually be absorbed by the transmitter or another component in the system. Depending on the source impedance and the transmission-line conditions, some energy can also be reflected again toward the antenna.
+    </p>
+
+    <p>
+      This means that the simple statement “the reflected power goes back to the transmitter” is useful as a first approximation, but it does not describe the complete behaviour of a real RF system.
+    </p>
+
+    <h2>Reflected power is not necessarily the same as lost power</h2>
+
+    <p>
+      This distinction is extremely important. Reflected power and dissipated power are not the same thing.
+    </p>
+
+    <p>
+      A reflected wave represents energy moving back toward the source. It becomes actual system loss only when energy is ultimately dissipated in resistance or other lossy components rather than being transferred to the antenna and radiated.
+    </p>
+
+    <p>
+      A transmission line with very low loss can carry a reflected wave with relatively little additional loss. A long, lossy coaxial cable, however, can convert some of the RF energy into heat as the waves travel through the cable.
+    </p>
+
+    <h2>Why feed-line loss matters</h2>
+
+    <p>
+      Coaxial cable has resistance and dielectric losses. These losses occur in both the forward and reflected components of the RF energy.
+    </p>
+
+    <p>
+      This is one reason why a high SWR can become more significant when a long feed line is used. The reflected wave has to travel along the cable, and the additional current and voltage conditions associated with the standing-wave pattern can increase the amount of power dissipated in a lossy line.
+    </p>
+
+    <p>
+      A short, low-loss feed line and a long, high-loss feed line can therefore behave quite differently even when the antenna presents the same impedance.
+    </p>
+
+    <h2>Why the transmitter may reduce power</h2>
+
+    <p>
+      Modern transceivers often monitor the conditions at their RF output. If the system presents a high SWR, the transmitter may reduce output power to protect its final amplifier from excessive voltage or current conditions.
+    </p>
+
+    <p>
+      This does not mean that the reflected power is directly “burning up” the transmitter. The protection system is responding to electrical conditions associated with the mismatch and limiting the operating stress on the RF output stage.
+    </p>
+
+    <p>
+      Older or more robust equipment may tolerate higher mismatch conditions, but that does not make a badly mismatched system efficient. The antenna, transmission line and connectors still have to handle the resulting RF voltages and currents.
+    </p>
+
+    <h2>Can a tuner eliminate reflected power?</h2>
+
+    <p>
+      An antenna tuner can transform the impedance seen by the transmitter so that the transmitter operates into a much better match. This can reduce the SWR measured between the transmitter and the tuner.
+    </p>
+
+    <p>
+      But the tuner does not necessarily eliminate the mismatch between the transmission line and the actual antenna. If the tuner is located at the transmitter and the antenna system remains mismatched at the far end of a long coaxial cable, a standing wave can still exist on the section of line between the tuner and the antenna.
+    </p>
+
+    <p>
+      This is why the physical location of the tuner matters. A tuner at the antenna feed point can deal with the antenna impedance before the signal travels through a long feed line. A tuner in the shack can make the transmitter happy without necessarily changing the electrical conditions on the entire feed line.
+    </p>
+
+    <h2>What should the radio amateur actually worry about?</h2>
+
+    <p>
+      The presence of reflected power is not automatically a disaster. Real antenna systems rarely behave as perfectly matched 50-ohm loads across every frequency and operating condition.
+    </p>
+
+    <p>
+      The important questions are how much power is being reflected, how much loss exists in the feed line, how much voltage and current the equipment must withstand, and whether the antenna system is radiating efficiently for the intended communication.
+    </p>
+
+    <p>
+      A modest mismatch on a low-loss system may be perfectly manageable. A high mismatch combined with a long, lossy feed line can produce considerably more dissipation and reduce the amount of useful RF energy reaching the antenna.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      Reflected power is best understood as part of the behaviour of the complete RF system rather than as a mysterious quantity that simply disappears.
+    </p>
+
+    <p>
+      When the antenna and feed line are mismatched, part of the travelling wave returns toward the source. The resulting interaction creates the standing-wave pattern measured by SWR. Some energy may be reflected again, some may be dissipated in the system, and the remainder may eventually contribute to useful radiation depending on the conditions of the complete circuit.
+    </p>
+
+    <p>
+      That is why SWR should never be interpreted in isolation. The antenna, feed line, tuner, transmitter and operating frequency all form one RF system.
+    </p>
+
+    <p>
+      Once that becomes clear, reflected power stops being something mysterious. It becomes another useful clue about what is happening inside the station.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore SWR, impedance and RF systems</h3>
+      <p>
+        The CE4RWS technical books explore SWR, impedance, transmission lines, reflected power, antenna matching and practical RF systems in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
