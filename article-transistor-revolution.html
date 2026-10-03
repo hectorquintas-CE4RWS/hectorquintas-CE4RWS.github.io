@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Transistor Revolution: How Solid-State Electronics Changed Amateur Radio | CE4RWS</title>
+
+<meta name="description" content="How the transistor transformed amateur radio by replacing vacuum tubes with smaller, more efficient and more reliable solid-state electronics.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:920px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The Transistor Revolution</h1>
+
+    <p class="intro">
+      How solid-state electronics transformed amateur radio, replacing bulky vacuum tubes with smaller, more efficient and increasingly reliable technology.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">Transistors</span>
+      <span class="tag">Solid State</span>
+      <span class="tag">Electronics</span>
+      <span class="tag">HF</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>The Age of the Vacuum Tube</h2>
+
+    <p>
+      For several decades, the vacuum tube was at the heart of radio technology.
+    </p>
+
+    <p>
+      Tubes made practical amplification, oscillation, detection and radio-frequency power generation possible. They were responsible for enormous advances in radio during the first half of the twentieth century.
+    </p>
+
+    <p>
+      Amateur radio operators became skilled at building and maintaining tube equipment. Transmitters, receivers and eventually transceivers were constructed around valves that could operate at surprisingly high voltages and temperatures.
+    </p>
+
+    <p>
+      But vacuum tubes had limitations.
+    </p>
+
+    <p>
+      They were relatively large, consumed considerable electrical power, generated heat and required high-voltage power supplies. Tubes could also be physically fragile and eventually required replacement.
+    </p>
+
+    <p>
+      For a fixed station with a substantial power supply, these disadvantages could be acceptable. For portable equipment, battery operation and increasingly compact radios, they were much more significant.
+    </p>
+
+    <h2>The Birth of the Transistor</h2>
+
+    <p>
+      A fundamental change came in 1947 at Bell Telephone Laboratories, where John Bardeen, Walter Brattain and William Shockley developed the first practical transistor.
+    </p>
+
+    <p>
+      The transistor could perform many of the functions previously associated with vacuum tubes, but using a solid piece of semiconductor material rather than a heated vacuum device.
+    </p>
+
+    <p>
+      It was smaller, required much less power and could operate without a filament or high-voltage tube supply.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The transistor did not simply make radios smaller.</strong> It changed what engineers could realistically design around a radio, because electronic circuits no longer had to be dominated by the physical and electrical requirements of vacuum tubes.
+      </p>
+    </div>
+
+    <h2>Why the Change Was So Important</h2>
+
+    <p>
+      The advantages of solid-state electronics became increasingly clear as transistor technology matured.
+    </p>
+
+    <p>
+      A transistor could be extremely small compared with a vacuum tube. It could operate from relatively low supply voltages, consume much less power and tolerate mechanical conditions that would be difficult for fragile tube assemblies.
+    </p>
+
+    <p>
+      These characteristics were particularly attractive for communication equipment.
+    </p>
+
+    <p>
+      A radio designed around transistors could be made smaller and lighter. Battery operation became much more practical. Equipment could be transported more easily and used in locations where a large mains-powered station would be impossible.
+    </p>
+
+    <p>
+      For amateur radio, this opened an entirely new field of possibilities.
+    </p>
+
+    <h2>Transistors Enter Amateur Radio</h2>
+
+    <p>
+      Amateur equipment did not become fully solid-state overnight.
+    </p>
+
+    <p>
+      During the 1950s and 1960s, manufacturers and amateurs experimented with combinations of tubes and transistors. A radio might use transistors in its low-power stages while retaining vacuum tubes for the transmitter's final RF amplifier.
+    </p>
+
+    <p>
+      This hybrid approach made sense because high-power RF transistors were initially much more difficult to produce than small-signal devices.
+    </p>
+
+    <p>
+      As semiconductor technology improved, however, transistors became capable of handling increasingly demanding RF applications.
+    </p>
+
+    <p>
+      The balance gradually shifted toward solid-state designs.
+    </p>
+
+    <h2>The Rise of the Portable Radio</h2>
+
+    <p>
+      One of the most important consequences was portability.
+    </p>
+
+    <p>
+      A tube-based amateur station could certainly be transported, but doing so involved equipment, power supplies, batteries and often considerable weight.
+    </p>
+
+    <p>
+      Solid-state technology changed that equation.
+    </p>
+
+    <p>
+      Radios could become small enough to carry into the field. Battery operation became practical for longer periods, and portable amateur radio began to develop into an activity in its own right.
+    </p>
+
+    <p>
+      The modern idea of taking a transceiver into the mountains, operating from a campsite or making contacts from a vehicle is closely connected with this technological transformation.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Portability was not merely a convenience.</strong> It changed where amateur radio could be operated and helped turn the radio itself into something that could accompany the operator almost anywhere.
+      </p>
+    </div>
+
+    <h2>From Components to Integrated Circuits</h2>
+
+    <p>
+      The transistor was only the beginning of the solid-state revolution.
+    </p>
+
+    <p>
+      Engineers soon learned how to place multiple semiconductor components onto a single piece of material, creating the integrated circuit.
+    </p>
+
+    <p>
+      Integrated circuits allowed increasingly complex electronic functions to occupy very small physical spaces.
+    </p>
+
+    <p>
+      In amateur-radio equipment, this meant that functions that once required large numbers of individual components could increasingly be performed by compact semiconductor devices.
+    </p>
+
+    <p>
+      Receivers became more sophisticated. Frequency control improved. Automatic gain control, filtering, mixing and other functions could be implemented with smaller and more reliable circuitry.
+    </p>
+
+    <p>
+      The radio was becoming less a collection of large individual components and more a highly integrated electronic system.
+    </p>
+
+    <h2>Frequency Stability Became Easier</h2>
+
+    <p>
+      Solid-state technology also contributed to improvements in frequency control.
+    </p>
+
+    <p>
+      Early tube transmitters and receivers could drift as components warmed up. Operators often had to compensate for changes in frequency during operation.
+    </p>
+
+    <p>
+      Crystal-controlled oscillators had already provided important improvements, but the development of semiconductor circuits made increasingly sophisticated frequency-generation systems possible.
+    </p>
+
+    <p>
+      Eventually, phase-locked loops, frequency synthesizers and other electronic techniques made stable and precisely controlled operation practical across large portions of the amateur spectrum.
+    </p>
+
+    <p>
+      The days when an operator had to wait for a transmitter to warm up and stabilize were gradually disappearing.
+    </p>
+
+    <h2>Solid State Changed Transmitters Too</h2>
+
+    <p>
+      The transition was especially significant in RF power amplifiers.
+    </p>
+
+    <p>
+      Early high-power amateur transmitters depended heavily on vacuum tubes. These amplifiers could produce substantial RF output, but they required high voltages and appropriate cooling and power supplies.
+    </p>
+
+    <p>
+      As RF power transistors improved, solid-state amplifiers became increasingly practical.
+    </p>
+
+    <p>
+      This allowed transmitters to become smaller, more efficient and easier to integrate into a single transceiver.
+    </p>
+
+    <p>
+      The modern HF transceiver, with its compact chassis and integrated transmitter and receiver, would have been extremely difficult to achieve using only the technology of the early tube era.
+    </p>
+
+    <h2>Reliability Became Part of the Design</h2>
+
+    <p>
+      Another important advantage was reliability.
+    </p>
+
+    <p>
+      A vacuum tube contains a heated filament or cathode and operates at high temperatures. It is a consumable component with a finite operating life.
+    </p>
+
+    <p>
+      A transistor has no filament and, when operated within its specified limits, can provide very long service.
+    </p>
+
+    <p>
+      This did not make solid-state equipment indestructible. Excess voltage, excessive current, overheating and other conditions can damage semiconductor devices very quickly.
+    </p>
+
+    <p>
+      But it did change the maintenance philosophy of radio equipment.
+    </p>
+
+    <p>
+      Instead of routinely replacing tubes, operators increasingly depended on electronic circuits designed to operate reliably for long periods.
+    </p>
+
+    <h2>The Transistor and QRP</h2>
+
+    <p>
+      The relationship between solid-state electronics and low-power amateur radio is particularly interesting.
+    </p>
+
+    <p>
+      QRP operation depends on achieving useful communication with relatively little transmitter power. Efficient electronics, stable oscillators, sensitive receivers and low-power integrated circuits all contributed to making compact QRP equipment practical.
+    </p>
+
+    <p>
+      Modern portable radios can combine a small transceiver, battery supply and antenna system into equipment that can be carried into the field.
+    </p>
+
+    <p>
+      This is a dramatic contrast with the large tube stations of earlier generations.
+    </p>
+
+    <h2>From Transistors to Digital Radio</h2>
+
+    <p>
+      The transistor revolution eventually led to something even more profound: the transformation of radio from an almost entirely analog electronic system into a combination of analog and digital processing.
+    </p>
+
+    <p>
+      Microprocessors, digital signal processors and high-speed converters made it possible to perform increasingly complex functions in software.
+    </p>
+
+    <p>
+      Modern transceivers can implement filtering, demodulation, spectrum analysis, noise reduction, digital modes and frequency control using processors that would have seemed extraordinary to an engineer from the tube era.
+    </p>
+
+    <p>
+      Software-defined radio represents one of the clearest expressions of this evolution.
+    </p>
+
+    <p>
+      The physical radio still contains antennas, amplifiers, mixers and converters, but many functions once performed by dedicated analog circuits can now be performed mathematically.
+    </p>
+
+    <h2>The Radio Became Portable, Intelligent and Flexible</h2>
+
+    <p>
+      Looking at a modern amateur station, it is easy to think of the radio as a single finished device.
+    </p>
+
+    <p>
+      Historically, however, that device is the result of several major technological revolutions.
+    </p>
+
+    <p>
+      Vacuum tubes made practical electronic radio possible. Transistors made it smaller and more efficient. Integrated circuits made it more complex and reliable. Microprocessors and digital signal processing made it programmable.
+    </p>
+
+    <p>
+      Each generation built upon the previous one.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The transistor was the bridge between the classic electronic radio and the modern software-driven transceiver.</strong> Without solid-state electronics, the compact radios used by today's amateurs would be almost impossible to imagine.
+      </p>
+    </div>
+
+    <h2>Why the Revolution Still Matters</h2>
+
+    <p>
+      The transistor changed more than the size of radio equipment. It changed the relationship between the operator and the station.
+    </p>
+
+    <p>
+      A radio could now travel with its operator. A station could operate from a mountain, a beach, a vehicle or a temporary field location without requiring the infrastructure associated with a traditional tube station.
+    </p>
+
+    <p>
+      The technology also made sophisticated equipment available to ordinary amateurs at a scale that earlier generations could not have imagined.
+    </p>
+
+    <p>
+      Today, when a radio amateur carries a compact HF transceiver and battery into the field, the result may look completely modern.
+    </p>
+
+    <p>
+      But beneath that modern equipment is a technological history that began with a simple idea:
+    </p>
+
+    <p>
+      <strong>replace the heated vacuum device with a solid-state semiconductor.</strong>
+    </p>
+
+    <p>
+      That change helped transform amateur radio from a hobby dominated by large electronic assemblies into the compact, portable and highly sophisticated activity we know today.
+    </p>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From transistors to software-defined radio</h3>
+
+      <p>
+        The solid-state revolution prepared amateur radio for another major transformation: the arrival of integrated circuits, microprocessors, digital signal processing and software-defined radio.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
