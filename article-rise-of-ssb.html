@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Rise of SSB: How Single-Sideband Changed Amateur Radio | CE4RWS</title>
+
+<meta name="description" content="How single-sideband voice transformed amateur radio by making HF voice communication more efficient in power and spectrum.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:900px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>The Rise of SSB</h1>
+
+    <p class="intro">
+      How single-sideband modulation transformed HF voice communication by reducing bandwidth, improving power efficiency and changing the way amateurs operated the bands.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">SSB</span>
+      <span class="tag">AM</span>
+      <span class="tag">HF</span>
+      <span class="tag">Voice</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>The Problem with Conventional AM</h2>
+
+    <p>
+      Amplitude modulation transformed radio by making voice communication practical. An AM transmitter could place the information contained in speech onto a radio-frequency carrier and send it through an antenna.
+    </p>
+
+    <p>
+      But AM had an important weakness.
+    </p>
+
+    <p>
+      A conventional AM signal contains three principal components: the carrier, the upper sideband and the lower sideband.
+    </p>
+
+    <p>
+      The carrier is necessary for conventional AM reception, but it does not actually contain the voice information. The two sidebands contain essentially the same information in mirrored form.
+    </p>
+
+    <p>
+      This meant that a substantial amount of transmitted power and spectrum was being used in ways that were not strictly necessary for carrying the voice.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>AM works very well, but it is not the most efficient way to transmit voice.</strong> Much of the transmitted power can be concentrated in components that do not need to be sent in their conventional form.
+      </p>
+    </div>
+
+    <h2>The Basic Idea Behind SSB</h2>
+
+    <p>
+      The solution was to remove the parts of the AM signal that were not necessary.
+    </p>
+
+    <p>
+      Single-sideband modulation, or <strong>SSB</strong>, transmits only one of the two sidebands and suppresses the carrier.
+    </p>
+
+    <p>
+      There are therefore two principal forms of SSB: <strong>upper sideband (USB)</strong> and <strong>lower sideband (LSB)</strong>.
+    </p>
+
+    <p>
+      Both contain the necessary voice information. The difference is which sideband is transmitted.
+    </p>
+
+    <p>
+      By eliminating the carrier and one sideband, SSB can use considerably less bandwidth than conventional AM while concentrating the transmitter's available power more effectively into the information-bearing signal.
+    </p>
+
+    <h2>A Powerful Technical Advantage</h2>
+
+    <p>
+      The efficiency advantage becomes particularly important on HF.
+    </p>
+
+    <p>
+      Imagine an AM transmitter producing a strong carrier. That carrier may represent a large portion of the transmitter's RF output, even though it carries no voice information by itself.
+    </p>
+
+    <p>
+      With SSB, the transmitter does not need to continuously radiate that carrier at full power. The RF output follows the actual voice information being transmitted.
+    </p>
+
+    <p>
+      This makes SSB particularly attractive for stations where transmitter power, spectrum and antenna efficiency matter.
+    </p>
+
+    <p>
+      The improvement is especially valuable in long-distance communication, where every decibel can matter.
+    </p>
+
+    <h2>Narrower Bandwidth Means More Stations</h2>
+
+    <p>
+      SSB also provided an important advantage in spectrum usage.
+    </p>
+
+    <p>
+      A conventional AM voice signal requires a bandwidth approximately twice the highest audio frequency being transmitted. A typical amateur SSB signal can occupy roughly half the bandwidth of a comparable full AM signal, depending on the audio bandwidth and filtering used.
+    </p>
+
+    <p>
+      That difference becomes extremely important when many operators share the same amateur band.
+    </p>
+
+    <p>
+      More efficient bandwidth usage allows more voice conversations to fit into a limited portion of spectrum.
+    </p>
+
+    <p>
+      The amateur bands could therefore support a much greater number of voice contacts without requiring additional spectrum.
+    </p>
+
+    <h2>The Technology Was Not Simple</h2>
+
+    <p>
+      The idea of removing the carrier and one sideband was elegant, but implementing it reliably required increasingly sophisticated equipment.
+    </p>
+
+    <p>
+      SSB transmitters had to generate the desired sideband accurately while suppressing the carrier and unwanted sideband. Receivers had to reconstruct the suppressed carrier accurately enough for the human voice to sound natural.
+    </p>
+
+    <p>
+      Filter technology became particularly important. Crystal and mechanical filters could provide the selectivity required to isolate the desired portion of the signal.
+    </p>
+
+    <p>
+      Balanced modulators and mixers also became important parts of SSB transmitter and receiver designs.
+    </p>
+
+    <p>
+      As electronic components improved, these techniques became practical for amateur equipment.
+    </p>
+
+    <h2>Why SSB Became So Important on HF</h2>
+
+    <p>
+      HF amateur radio is fundamentally a shared environment.
+    </p>
+
+    <p>
+      Operators are often separated by thousands of kilometres, propagation conditions change constantly and available spectrum is limited.
+    </p>
+
+    <p>
+      SSB offered a combination that was difficult to ignore:
+    </p>
+
+    <p>
+      <strong>less bandwidth, better power efficiency and practical long-distance voice communication.</strong>
+    </p>
+
+    <p>
+      As amateur equipment became more sophisticated after the Second World War, SSB increasingly replaced AM as the principal voice mode for HF operation.
+    </p>
+
+    <p>
+      By the 1960s, SSB had become firmly established in amateur HF communication.
+    </p>
+
+    <h2>USB and LSB</h2>
+
+    <p>
+      Modern operators encounter two forms of SSB: USB and LSB.
+    </p>
+
+    <p>
+      Both modes transmit one sideband and suppress the carrier, but amateur-radio operating conventions traditionally associate different sidebands with different frequency ranges.
+    </p>
+
+    <p>
+      On the lower HF bands, LSB has historically been common, while USB is normally used on the higher HF bands and above.
+    </p>
+
+    <p>
+      These conventions became part of everyday amateur-radio operating practice and remain familiar to operators today.
+    </p>
+
+    <h2>SSB Changed the Operating Experience</h2>
+
+    <p>
+      SSB did more than improve transmitter efficiency. It changed what an amateur station could practically accomplish.
+    </p>
+
+    <p>
+      Operators could use relatively modest power to establish voice contacts over very long distances. A well-designed SSB station with a good antenna could communicate internationally without the large transmitters that earlier generations might have considered necessary.
+    </p>
+
+    <p>
+      This helped make long-distance voice communication a normal part of amateur HF operation rather than an extraordinary technical experiment.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>SSB made efficient HF voice communication practical.</strong> It allowed amateurs to put more of their transmitter's useful energy into the information that actually mattered: the voice.
+      </p>
+    </div>
+
+    <h2>From Analog SSB to Software-Defined Radio</h2>
+
+    <p>
+      For decades, SSB was implemented using analog circuits, filters, mixers, oscillators and amplifiers.
+    </p>
+
+    <p>
+      Modern radios increasingly perform many of these functions digitally.
+    </p>
+
+    <p>
+      A software-defined radio can generate or demodulate SSB using digital signal processing rather than relying entirely on traditional analog circuitry.
+    </p>
+
+    <p>
+      The result may look completely different inside the radio, but the communication principle remains the same.
+    </p>
+
+    <p>
+      The transmitter still has to represent the voice information as a controlled RF signal, and the receiver still has to reconstruct that information from the incoming signal.
+    </p>
+
+    <h2>Why SSB Still Matters</h2>
+
+    <p>
+      SSB has been used in amateur radio for generations, yet it remains one of the most important voice modes on HF.
+    </p>
+
+    <p>
+      It is efficient enough for weak-signal and long-distance communication, narrow enough to make effective use of the amateur bands and simple enough to remain practical for everyday operation.
+    </p>
+
+    <p>
+      Digital modes may now dominate many weak-signal applications, but SSB remains central to contests, DXing, emergency communication, portable operation and ordinary conversations across the bands.
+    </p>
+
+    <p>
+      The historical path is remarkable:
+    </p>
+
+    <p>
+      <strong>spark → CW → AM → SSB → digital signal processing.</strong>
+    </p>
+
+    <p>
+      Each step addressed limitations discovered in the previous generation of radio technology.
+    </p>
+
+    <p>
+      SSB was one of the most important of those steps because it demonstrated that better communication does not necessarily require more power. Sometimes it requires using the available power and spectrum more intelligently.
+    </p>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From SSB to software-defined radio</h3>
+
+      <p>
+        The development of SSB opened the door to increasingly efficient HF systems. The next major transformations would come from transistors, integrated circuits, digital signal processing and software-defined radio.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
