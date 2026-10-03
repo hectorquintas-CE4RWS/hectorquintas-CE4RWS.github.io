@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is a Feed Line and Why Does It Matter? | CE4RWS</title>
+
+<meta name="description" content="What is an RF feed line and why does it matter in amateur radio? Understand coaxial cable, characteristic impedance, losses, SWR and how the transmission line affects an HF antenna system.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · ANTENNAS &amp; RF</div>
+
+    <h1>What Is a Feed Line and Why Does It Matter?</h1>
+
+    <p class="hero-intro">
+      The feed line is the electrical path between the radio and the antenna. It is easy to think of coaxial cable as nothing more than a piece of wire, but its characteristic impedance, losses, length and installation can have a significant effect on the performance of an HF station.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Feed Line</span>
+      <span class="tag">Coaxial Cable</span>
+      <span class="tag">RF</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      An antenna system is rarely connected directly to the transmitter. In most amateur radio stations, the RF signal travels through a transmission line before reaching the antenna.
+    </p>
+
+    <p>
+      Coaxial cable is the most familiar example, but balanced lines such as ladder line and open-wire line are also widely used. The transmission line is not simply a passive piece of wire. It is an RF component with its own electrical characteristics.
+    </p>
+
+    <p>
+      Understanding those characteristics helps explain why the same antenna can behave differently when connected with different feed lines, why long cables can introduce significant losses, and why SWR must always be interpreted in relation to the transmission line.
+    </p>
+
+    <h2>What is a feed line?</h2>
+
+    <p>
+      A feed line, or transmission line, is designed to transfer electromagnetic energy between a source and a load. In an amateur radio station, the source is normally the transmitter and the load is the antenna system.
+    </p>
+
+    <p>
+      The feed line has two important jobs. It must carry RF energy from the transmitter to the antenna, and it must do so with predictable electrical characteristics over the frequencies being used.
+    </p>
+
+    <p>
+      Coaxial cable accomplishes this using a centre conductor surrounded by a dielectric material and an outer conductor or shield. The geometry of these components determines much of the cable's electrical behaviour.
+    </p>
+
+    <div class="callout">
+      A feed line is part of the RF system. Its impedance, losses, velocity factor and physical installation can all influence what happens between the transmitter and the antenna.
+    </div>
+
+    <h2>What is characteristic impedance?</h2>
+
+    <p>
+      One of the most important specifications of a transmission line is its characteristic impedance. In amateur radio, 50-ohm coaxial cable is extremely common.
+    </p>
+
+    <p>
+      Characteristic impedance is not simply the DC resistance measured with a multimeter. It is an RF property determined by the relationship between the electric and magnetic fields around the transmission line.
+    </p>
+
+    <p>
+      When a transmission line is terminated in its characteristic impedance, the RF energy can travel along the line without producing a reflection from the load.
+    </p>
+
+    <p>
+      If a 50-ohm transmission line is terminated in a 50-ohm load, the ideal SWR on that section of line is 1:1.
+    </p>
+
+    <h2>Why does coax have losses?</h2>
+
+    <p>
+      No real transmission line is lossless. Some of the RF energy is converted into heat as it travels through the cable.
+    </p>
+
+    <p>
+      Conductor resistance contributes to this loss, as does dielectric loss in the insulating material between the conductors. The amount of loss depends on the cable construction, frequency, length and operating conditions.
+    </p>
+
+    <p>
+      Cable loss generally increases with frequency. A coaxial cable that performs very well on 14 MHz can have noticeably greater attenuation at 50 MHz or higher.
+    </p>
+
+    <h2>Why cable length matters</h2>
+
+    <p>
+      The longer the feed line, the more opportunity there is for RF energy to be dissipated before it reaches the antenna.
+    </p>
+
+    <p>
+      If a cable has a specified attenuation per unit length, increasing the physical length increases the total loss. This is why a short run of low-loss coax can be significantly more efficient than a very long run of the same cable.
+    </p>
+
+    <p>
+      The effect becomes especially important when the antenna is used at higher frequencies or when the cable has relatively high attenuation.
+    </p>
+
+    <h2>What is velocity factor?</h2>
+
+    <p>
+      RF does not travel through a practical coaxial cable at exactly the speed of light in free space. The dielectric material inside the cable slows the propagation of the electromagnetic wave.
+    </p>
+
+    <p>
+      The velocity factor describes the approximate fraction of the speed of light at which signals propagate through the transmission line.
+    </p>
+
+    <p>
+      This matters when calculating electrical length. A physically short piece of coax can represent a significant fraction of a wavelength at higher frequencies.
+    </p>
+
+    <p>
+      The electrical length therefore cannot always be determined from the physical length alone.
+    </p>
+
+    <h2>Why SWR and feed-line loss are connected</h2>
+
+    <p>
+      When the antenna is not matched to the characteristic impedance of the transmission line, reflected waves can exist on the feed line.
+    </p>
+
+    <p>
+      Those standing-wave conditions change the distribution of voltage and current along the cable. In a lossy line, this can increase the amount of power dissipated as heat compared with an equivalent line operating under a more favourable voltage and current distribution.
+    </p>
+
+    <p>
+      This is one reason why high SWR can be more significant when the feed line is long and lossy.
+    </p>
+
+    <h2>Does coax length change the antenna?</h2>
+
+    <p>
+      The physical antenna itself does not change simply because a different length of coax is connected to it. However, the impedance measured at the transmitter end of the feed line can change with cable length when the antenna is not matched to the line.
+    </p>
+
+    <p>
+      This can sometimes create the impression that changing coax length has “tuned” the antenna.
+    </p>
+
+    <p>
+      What has changed is the electrical transformation produced by the transmission line between the antenna and the point where the impedance is being measured.
+    </p>
+
+    <p>
+      In a lossless line, the impedance transformation is determined by the line's characteristic impedance, electrical length and load impedance. In a real line, attenuation also affects the result.
+    </p>
+
+    <h2>Why a low SWR at the radio can be misleading</h2>
+
+    <p>
+      If an antenna tuner is installed between the transmitter and the feed line, the transmitter can see a low SWR even when the antenna itself is not closely matched to the feed line.
+    </p>
+
+    <p>
+      This can be perfectly acceptable if the feed line and antenna system are designed to handle the resulting conditions. But the low SWR measured at the transmitter does not automatically mean that the entire transmission path has low SWR.
+    </p>
+
+    <p>
+      The section of line between the tuner and the antenna can still have a significant standing-wave ratio.
+    </p>
+
+    <h2>Coaxial cable versus balanced line</h2>
+
+    <p>
+      Coaxial cable is popular because it is mechanically convenient, relatively easy to install and naturally shields the RF fields from the surrounding environment.
+    </p>
+
+    <p>
+      Balanced lines such as ladder line can have very low losses, particularly when used with appropriate antenna systems. However, they require different installation practices and must be kept away from conductive objects that can disturb their balance and impedance.
+    </p>
+
+    <p>
+      Neither transmission-line type is universally better. The appropriate choice depends on the antenna, frequency range, installation and operating objective.
+    </p>
+
+    <h2>Why connectors and installation matter</h2>
+
+    <p>
+      A high-quality coaxial cable can still be compromised by poor connectors, water ingress, mechanical damage or improper installation.
+    </p>
+
+    <p>
+      Moisture can increase losses and alter the dielectric properties of the cable. Repeated bending can damage the structure of some coaxial cables, while poorly installed connectors can introduce additional resistance or impedance discontinuities.
+    </p>
+
+    <p>
+      Feed-line performance is therefore a combination of cable design and installation quality.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      The feed line is not simply the cable that connects the radio to the antenna. It is an RF component with its own impedance, attenuation, velocity factor and electrical length.
+    </p>
+
+    <p>
+      A good antenna connected through a very lossy transmission line may deliver less useful RF power to the antenna than expected. Conversely, a well-designed low-loss feed system can preserve a much larger portion of the transmitter's available power.
+    </p>
+
+    <p>
+      When evaluating an antenna system, it is therefore useful to think of the complete path: <strong>transmitter, connectors, transmission line, matching network, antenna and the surrounding RF environment.</strong>
+    </p>
+
+    <p>
+      Once the feed line is treated as part of the antenna system rather than as an afterthought, many apparently mysterious SWR and performance differences become much easier to understand.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore transmission lines and practical RF systems</h3>
+      <p>
+        The CE4RWS technical books explore coaxial cable, balanced lines, characteristic impedance, velocity factor, feed-line losses, SWR and practical antenna systems in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
