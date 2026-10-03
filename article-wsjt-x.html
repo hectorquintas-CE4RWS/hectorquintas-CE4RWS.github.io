@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is WSJT-X and How Does It Work with FT8? | CE4RWS</title>
+
+<meta name="description" content="What is WSJT-X and how does it work with FT8? Understand the relationship between the software, radio, computer audio, CAT control, timing and digital signal processing.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · DIGITAL RADIO</div>
+
+    <h1>What Is WSJT-X and How Does It Work with FT8?</h1>
+
+    <p class="hero-intro">
+      FT8 is a digital mode, but the software that makes it practical at the amateur radio station is just as important as the mode itself. WSJT-X connects the radio, computer audio, timing and digital signal processing into one operating system.
+    </p>
+
+    <div class="tags">
+      <span class="tag">WSJT-X</span>
+      <span class="tag">FT8</span>
+      <span class="tag">Digital Radio</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      When an operator first encounters FT8, it can appear that everything happens inside a single program. In reality, several systems work together: the transceiver generates and receives RF, the computer exchanges audio with the radio, software controls the digital mode, and accurate timing keeps the entire process synchronized.
+    </p>
+
+    <p>
+      <strong>WSJT-X</strong> is the software environment that brings these elements together for modes such as FT8. It provides the interface for decoding received signals, preparing transmissions, managing the structured message exchange and communicating with the radio.
+    </p>
+
+    <p>
+      Understanding this relationship is extremely useful because many problems that appear to be “FT8 problems” are actually audio, CAT control, timing or interface problems.
+    </p>
+
+    <div class="callout">
+      FT8 is the digital communication mode. WSJT-X is the software that implements FT8 and connects the digital processing with the radio station.
+    </div>
+
+    <h2>What does WSJT-X actually do?</h2>
+
+    <p>
+      WSJT-X receives audio from the computer's configured input, analyses the spectrum and attempts to decode digital signals according to the selected mode.
+    </p>
+
+    <p>
+      When the operator chooses to transmit, WSJT-X generates the appropriate digital waveform and sends audio toward the radio through the computer's configured output.
+    </p>
+
+    <p>
+      The radio then treats that audio as the modulation source for the RF transmission. The exact implementation depends on the transceiver and interface being used.
+    </p>
+
+    <p>
+      WSJT-X can also communicate with the transceiver through a CAT control connection. This allows the software to read or change parameters such as frequency and operating mode.
+    </p>
+
+    <h2>The three main connections</h2>
+
+    <p>
+      A typical computer-controlled digital station can be understood as three separate paths.
+    </p>
+
+    <p>
+      The first is the <strong>receive audio path</strong>. Audio from the radio reaches the computer, where WSJT-X analyses it.
+    </p>
+
+    <p>
+      The second is the <strong>transmit audio path</strong>. WSJT-X generates the digital signal and sends the audio toward the radio.
+    </p>
+
+    <p>
+      The third is the <strong>CAT or control path</strong>. This connection allows the software to communicate with the transceiver and control or monitor its operating frequency and other settings.
+    </p>
+
+    <p>
+      These paths can be integrated into a single USB connection on some modern radios, while other stations use an external digital interface.
+    </p>
+
+    <h2>Why audio configuration matters</h2>
+
+    <p>
+      Digital modes depend heavily on the audio interface being correctly configured.
+    </p>
+
+    <p>
+      On receive, WSJT-X must receive the actual audio coming from the radio. If the wrong input device is selected, the software may display an apparently empty waterfall even though the radio itself is receiving signals.
+    </p>
+
+    <p>
+      On transmit, WSJT-X must send its generated audio to the correct output device. If the wrong output is selected, the software may appear to transmit while the radio receives no useful digital audio.
+    </p>
+
+    <p>
+      This is one of the most common sources of confusion when setting up a digital station.
+    </p>
+
+    <h2>Why the waterfall is important</h2>
+
+    <p>
+      The waterfall provides a visual representation of activity within the received audio passband.
+    </p>
+
+    <p>
+      FT8 signals appear as narrow traces in the waterfall. WSJT-X analyses this audio region and searches for signals that match the characteristics expected for the selected digital mode.
+    </p>
+
+    <p>
+      The waterfall is therefore not merely decorative. It provides useful information about the audio being delivered to the software and about activity within the selected portion of the band.
+    </p>
+
+    <h2>What happens when you press Enable TX?</h2>
+
+    <p>
+      When transmission is enabled, WSJT-X waits for the appropriate transmission interval according to the mode's timing structure.
+    </p>
+
+    <p>
+      The software generates the selected message as a digital audio waveform and sends that waveform to the configured output device.
+    </p>
+
+    <p>
+      The transceiver then modulates its RF carrier using the audio signal and transmits it on the selected frequency.
+    </p>
+
+    <p>
+      If everything is configured correctly, the complete chain is:
+      <strong>WSJT-X → computer audio → radio → RF → antenna.</strong>
+    </p>
+
+    <h2>Why can WSJT-X show transmission while no RF is produced?</h2>
+
+    <p>
+      This is an important troubleshooting question.
+    </p>
+
+    <p>
+      WSJT-X can successfully generate audio without necessarily causing the radio to transmit RF. The software may indicate that a transmission is taking place while the radio interface, CAT connection, PTT control or audio routing is not functioning correctly.
+    </p>
+
+    <p>
+      The operator therefore needs to distinguish between <strong>software transmission</strong> and <strong>actual RF transmission</strong>.
+    </p>
+
+    <p>
+      Watching the radio's transmit indicator, output power and other relevant measurements can help establish where the chain is failing.
+    </p>
+
+    <h2>What is CAT control?</h2>
+
+    <p>
+      CAT stands for Computer Aided Transceiver control. It allows software to communicate with the radio through a supported control interface.
+    </p>
+
+    <p>
+      Depending on the transceiver, CAT control can provide access to frequency, mode, split operation, PTT and other functions.
+    </p>
+
+    <p>
+      For digital operation, this is extremely useful because the software can keep its displayed frequency synchronized with the radio.
+    </p>
+
+    <p>
+      A station can still receive or transmit digital signals without every CAT feature being available, but correct CAT configuration makes automated operation much more reliable.
+    </p>
+
+    <h2>Why does split operation matter?</h2>
+
+    <p>
+      Digital software can use different methods to keep the transmitted audio within a suitable part of the RF passband.
+    </p>
+
+    <p>
+      One approach is to keep the radio on a fixed RF frequency while moving the audio frequency within the passband. This is often referred to as working “split” in the software sense.
+    </p>
+
+    <p>
+      Understanding this distinction is useful because the frequency displayed by the radio and the audio tone generated by WSJT-X are not necessarily the same thing.
+    </p>
+
+    <p>
+      The final RF frequency is determined by the combination of the radio's carrier frequency and the transmitted audio frequency.
+    </p>
+
+    <h2>Why timing and CAT are related to reliable operation</h2>
+
+    <p>
+      Accurate timing allows the software to transmit and receive within the expected digital intervals. CAT control allows the software to know which radio frequency and operating state are being used.
+    </p>
+
+    <p>
+      If either system is unreliable, digital operation can become confusing. A station may decode correctly but transmit on an unexpected frequency, or the software may display one frequency while the radio is actually somewhere else.
+    </p>
+
+    <p>
+      Good digital operation therefore depends on synchronizing both the <strong>time</strong> and the <strong>radio state</strong>.
+    </p>
+
+    <h2>Audio levels are important too</h2>
+
+    <p>
+      The audio signal used to drive a digital transmission must be configured carefully.
+    </p>
+
+    <p>
+      Excessive transmit audio can overdrive the radio and produce distortion or unwanted occupied bandwidth. Too little audio may produce insufficient RF output.
+    </p>
+
+    <p>
+      The objective is not simply to obtain maximum power. The objective is to produce a clean digital signal while operating the transmitter within its intended limits.
+    </p>
+
+    <p>
+      This is particularly important with modes such as FT8 because the signal is designed to be narrow and structured.
+    </p>
+
+    <h2>WSJT-X is only one part of the station</h2>
+
+    <p>
+      It is tempting to think that installing WSJT-X is enough to create an FT8 station. In reality, the software is only one part of the complete system.
+    </p>
+
+    <p>
+      The radio, antenna, feed line, interface, computer audio system, CAT connection, time synchronization and local RF environment all contribute to the final result.
+    </p>
+
+    <p>
+      A perfectly configured WSJT-X installation cannot compensate for a poor antenna, severe local noise or an incorrect radio configuration.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      WSJT-X works best when it is understood as the central software component of a larger digital-radio system.
+    </p>
+
+    <p>
+      It receives audio, processes digital signals, generates transmissions, communicates with the transceiver and keeps the operator informed about the state of the digital exchange.
+    </p>
+
+    <p>
+      When a problem occurs, the most effective approach is therefore to follow the signal path step by step:
+      <strong>RF → radio → receive audio → computer → WSJT-X</strong>
+      for reception, and
+      <strong>WSJT-X → transmit audio → radio → RF → antenna</strong>
+      for transmission.
+    </p>
+
+    <p>
+      Once the station is viewed as a complete chain rather than as a single program, troubleshooting becomes much easier. Digital radio stops being mysterious and becomes what it really is: a carefully connected RF and computer system.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore FT8 and digital-radio station design</h3>
+      <p>
+        The CE4RWS technical books explore FT8, WSJT-X, digital interfaces, CAT control, audio configuration, weak-signal communication and practical digital-radio operation in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
