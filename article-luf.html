@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is the LUF and Why Do Lower Frequencies Sometimes Disappear? | CE4RWS</title>
+
+<meta name="description" content="What is the Lowest Usable Frequency? A practical explanation of LUF and why absorption, noise and ionospheric conditions can make lower HF frequencies difficult to use.">
+
+<style>
+
+:root{
+  --navy:#071525;
+  --cobalt:#155EEF;
+  --yellow:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#071525;
+  --muted:#617285;
+  --line:#dfe7ee;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+}
+
+a{
+  color:inherit;
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:22px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+}
+
+.brand-main{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
+.brand-main span{
+  color:var(--yellow);
+}
+
+.brand-sub{
+  margin-top:8px;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--yellow);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:white;
+  padding:85px 7% 90px;
+}
+
+.article-hero-inner{
+  max-width:1050px;
+  margin:auto;
+}
+
+.kicker{
+  color:var(--yellow);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.article-hero h1{
+  font-size:clamp(46px,6.5vw,78px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin:0;
+  max-width:1000px;
+}
+
+.article-intro{
+  max-width:780px;
+  margin:30px 0 0;
+  font-size:20px;
+  line-height:1.7;
+  color:#dce7f2;
+}
+
+.article-meta{
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.article-meta span{
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#dce7f2;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:75px 7% 100px;
+}
+
+.article-body{
+  font-size:18px;
+  line-height:1.85;
+  color:#26384d;
+}
+
+.article-body p{
+  margin:0 0 28px;
+}
+
+.article-body h2{
+  color:var(--ink);
+  font-size:32px;
+  line-height:1.15;
+  letter-spacing:-.025em;
+  margin:55px 0 20px;
+}
+
+.article-body strong{
+  color:var(--ink);
+}
+
+.highlight{
+  margin:42px 0;
+  padding:28px 30px;
+  border-left:5px solid var(--yellow);
+  background:white;
+  border-radius:0 14px 14px 0;
+  box-shadow:0 10px 28px rgba(9,39,66,.06);
+}
+
+.highlight p{
+  margin:0;
+}
+
+.back{
+  margin-top:65px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
+
+.back a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--cobalt);
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+.back a:hover{
+  color:var(--navy);
+}
+
+.deep{
+  margin-top:55px;
+  background:var(--navy);
+  color:white;
+  border-radius:18px;
+  padding:30px 32px;
+}
+
+.deep strong{
+  color:var(--yellow);
+  margin-right:8px;
+}
+
+.deep p{
+  display:inline;
+  color:#dce7f2;
+}
+
+footer{
+  background:var(--navy);
+  color:#dce7f2;
+  padding:35px 7%;
+  text-align:center;
+  font-size:14px;
+}
+
+footer strong{
+  color:white;
+}
+
+@media(max-width:800px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .article-hero{
+    padding:65px 6% 70px;
+  }
+
+  main{
+    padding:55px 6% 80px;
+  }
+
+  nav{
+    gap:16px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <a class="brand" href="index.html">
+
+    <div class="brand-main">
+      HÉCTOR QUINTAS IGLESIAS <span>| CE4RWS</span>
+    </div>
+
+    <div class="brand-sub">
+      Amateur Radio · Exploration · Books · Technology
+    </div>
+
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#sobre-mi">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="index.html#libros">Books</a>
+    <a href="index.html#radio">Amateur Radio</a>
+    <a href="index.html#contacto">Contact</a>
+  </nav>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">
+      CE4RWS · PROPAGATION & DX
+    </div>
+
+    <h1>
+      What Is the LUF and Why Do Lower Frequencies Sometimes Disappear?
+    </h1>
+
+    <p class="article-intro">
+      The Lowest Usable Frequency helps explain why lower HF frequencies
+      can become difficult to use even when propagation is still possible.
+      Absorption, atmospheric noise and the required signal-to-noise ratio
+      all play an important role.
+    </p>
+
+    <div class="article-meta">
+      <span>LUF</span>
+      <span>HF Propagation</span>
+      <span>DX</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <article class="article-body">
+
+    <p>
+      Amateur radio operators often notice an interesting behaviour on
+      HF: a higher band may still provide readable signals while a lower
+      band becomes noisy, weak or apparently unusable. At first this can
+      seem surprising. If a lower frequency can propagate over a long
+      distance, why would it suddenly become difficult to use?
+    </p>
+
+    <p>
+      One concept that helps explain this situation is the Lowest Usable
+      Frequency, or LUF. Unlike the MUF, which is associated with the
+      upper frequency limit of a propagation path, the LUF describes a
+      lower practical limit. Below that range, absorption, noise and
+      other factors can reduce the signal-to-noise ratio enough to make
+      communication unreliable.
+    </p>
+
+    <h2>
+      What does LUF actually mean?
+    </h2>
+
+    <p>
+      The LUF is not simply the lowest frequency that can physically
+      propagate through the ionosphere. Lower-frequency signals can often
+      continue to propagate in some form. The practical question is
+      whether the received signal remains strong and clear enough for the
+      communication system being used.
+    </p>
+
+    <p>
+      For a particular path, the LUF represents the approximate lower
+      frequency boundary at which the required communication quality can
+      be achieved under the prevailing conditions. Below that frequency,
+      absorption and noise may become sufficiently important that the
+      signal is no longer usable for the intended purpose.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>The important point:</strong>
+        LUF is a practical communication limit, not a physical wall.
+        A frequency below the LUF may still carry radio energy, but the
+        received signal may no longer have enough quality for reliable
+        communication.
+      </p>
+
+    </div>
+
+    <h2>
+      Why can lower frequencies become difficult?
+    </h2>
+
+    <p>
+      One of the main factors is ionospheric absorption. The ionosphere
+      does not simply reflect or refract HF signals without loss.
+      Depending on the conditions, energy can be absorbed as the signal
+      passes through ionospheric regions.
+    </p>
+
+    <p>
+      This effect can become particularly important at lower HF
+      frequencies. During periods of increased ionization, absorption
+      can change significantly and may reduce the strength of signals
+      travelling along a particular path.
+    </p>
+
+    <p>
+      The result can be counterintuitive. A lower frequency may have a
+      propagation path available in principle, yet the signal arriving
+      at the receiver may be too weak relative to the background noise
+      to provide useful communication.
+    </p>
+
+    <h2>
+      Noise is part of the equation
+    </h2>
+
+    <p>
+      Signal strength alone does not determine whether a frequency is
+      usable. The receiver also has to deal with noise.
+    </p>
+
+    <p>
+      Atmospheric noise, electrical interference and local man-made
+      noise can all reduce the effective signal-to-noise ratio. Lower
+      HF frequencies can be especially affected by atmospheric noise,
+      including noise associated with thunderstorms and lightning over
+      large geographic areas.
+    </p>
+
+    <p>
+      This means that a signal does not necessarily need to become
+      extremely weak before communication becomes difficult. If the
+      noise floor rises at the same time, the difference between the
+      desired signal and the background can become too small for
+      comfortable reception.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>Think in terms of signal-to-noise ratio:</strong>
+        a usable signal is not simply a strong signal. It is a signal
+        that is sufficiently strong compared with the noise and
+        interference surrounding it.
+      </p>
+
+    </div>
+
+    <h2>
+      LUF changes with the propagation path
+    </h2>
+
+    <p>
+      Just as the MUF depends on the path between two locations, the
+      LUF also depends on the path and its conditions. There is no
+      single LUF that applies to the entire planet at a particular
+      moment.
+    </p>
+
+    <p>
+      A path crossing regions with different ionospheric conditions can
+      behave differently from another path. Latitude, local time,
+      season, solar activity and geomagnetic conditions can all
+      influence the propagation environment.
+    </p>
+
+    <p>
+      This is one reason why a band can sound perfectly usable in one
+      direction while another path on the same frequency is much more
+      difficult.
+    </p>
+
+    <h2>
+      What happens below the LUF?
+    </h2>
+
+    <p>
+      When an operating frequency falls below the useful range for a
+      particular path, the signal may become progressively less
+      reliable. Absorption can reduce its strength, while noise may
+      increase the difficulty of detecting it.
+    </p>
+
+    <p>
+      There is not necessarily a sudden moment when the signal
+      disappears. In many situations the transition is gradual. The
+      signal may become weaker, noisier and more difficult to copy
+      until communication eventually becomes impractical.
+    </p>
+
+    <p>
+      This is important because the phrase “the band is closed” can
+      sometimes oversimplify what is actually happening. The band may
+      still contain signals, but the propagation conditions may no
+      longer provide enough margin for the desired communication.
+    </p>
+
+    <h2>
+      LUF and MUF work together
+    </h2>
+
+    <p>
+      LUF becomes especially useful when considered together with MUF.
+      The MUF describes an upper practical boundary for a propagation
+      path, while the LUF describes a lower practical boundary.
+    </p>
+
+    <p>
+      Between these limits is a region where communication may be
+      possible. The size and position of that usable frequency range
+      change with time and propagation conditions.
+    </p>
+
+    <p>
+      This gives us a useful way to think about HF propagation. Instead
+      of imagining that a band is simply open or closed, we can think
+      about whether the operating frequency falls inside a useful
+      propagation window for the particular path we are interested in.
+    </p>
+
+    <div class="highlight">
+
+      <p>
+        <strong>LUF and MUF define different sides of the picture.</strong>
+        MUF helps explain why a frequency may be too high for the path.
+        LUF helps explain why a frequency may be too low because
+        absorption and noise make the signal insufficiently usable.
+      </p>
+
+    </div>
+
+    <h2>
+      Why the time of day matters
+    </h2>
+
+    <p>
+      The ionosphere changes continuously as the Earth rotates and
+      solar radiation changes. The balance between ionization,
+      absorption and propagation therefore changes with local time.
+    </p>
+
+    <p>
+      A frequency that provides a useful path during one part of the
+      day may become less attractive later. Lower bands often become
+      increasingly important as higher-frequency propagation weakens,
+      but the lower frequencies are not immune to absorption and noise.
+    </p>
+
+    <p>
+      This is why experienced operators often move between bands rather
+      than remaining fixed on one frequency. The propagation window is
+      constantly changing.
+    </p>
+
+    <h2>
+      A practical example
+    </h2>
+
+    <p>
+      Imagine a long-distance HF path during a period of increased
+      ionospheric activity. A higher band may be working well because
+      the ionosphere can support that frequency over the required path.
+    </p>
+
+    <p>
+      On a lower band, however, the same path may experience greater
+      absorption and a higher noise background. The receiver may still
+      detect the signal, but copying it reliably could be difficult.
+    </p>
+
+    <p>
+      Moving slightly higher in frequency may therefore improve the
+      signal-to-noise ratio and make the contact easier, even though
+      the frequency is higher. This is one of the practical situations
+      where the concept of LUF becomes useful.
+    </p>
+
+    <h2>
+      LUF is not a fixed number
+    </h2>
+
+    <p>
+      It is tempting to look for a single LUF value for a band or a
+      location, but that would give a false sense of precision.
+      The usable lower limit depends on the propagation path, the
+      required communication quality and the conditions at that time.
+    </p>
+
+    <p>
+      Different modes can also tolerate different signal-to-noise
+      conditions. A weak-signal digital mode may successfully decode a
+      signal that would be difficult to copy by ear, while a voice
+      contact may require a much more comfortable signal margin.
+    </p>
+
+    <p>
+      For this reason, propagation predictions should be treated as
+      useful guidance rather than an absolute guarantee of what the
+      receiver will hear.
+    </p>
+
+    <h2>
+      How can the LUF help at the station?
+    </h2>
+
+    <p>
+      The practical value of LUF is that it helps explain why simply
+      going lower in frequency is not always the solution when a
+      higher band becomes difficult.
+    </p>
+
+    <p>
+      If a propagation tool indicates that a particular path has a
+      relatively high LUF, moving to a much lower frequency may not
+      improve the situation. Absorption and noise could make the lower
+      band less useful.
+    </p>
+
+    <p>
+      Listening across several bands provides the best practical
+      complement to propagation information. The operator can compare
+      signal strength, noise levels and actual readability rather than
+      relying on a single number.
+    </p>
+
+    <h2>
+      The useful frequency range
+    </h2>
+
+    <p>
+      When LUF and MUF are considered together, HF propagation becomes
+      easier to visualize. There is a lower practical boundary and an
+      upper practical boundary, with a potentially useful range between
+      them.
+    </p>
+
+    <p>
+      That range is not fixed. It moves as the ionosphere changes.
+      Sometimes it may be broad enough to provide several good band
+      choices. At other times it may become narrower and leave the
+      operator with fewer practical options.
+    </p>
+
+    <p>
+      Understanding this changing window is far more useful than simply
+      memorizing that one band is “good” and another is “bad.”
+    </p>
+
+    <div class="deep">
+
+      <strong>GO DEEPER</strong>
+
+      <p>
+        Explore the CE4RWS technical books for a deeper look at HF
+        propagation, the ionosphere, antennas and practical radio
+        operation.
+      </p>
+
+    </div>
+
+    <div class="back">
+
+      <a href="articles.html">
+        ← Back to Articles
+      </a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer>
+
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+
+</footer>
+
+</body>
+</html>
