@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How Does Antenna Height Really Change HF Performance? | CE4RWS</title>
+
+<meta name="description" content="How does antenna height affect HF performance? Understand radiation angle, ground effects, propagation, and why raising an antenna can change its useful coverage.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.75;
+}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  padding:22px 28px;
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:#DCEBFF;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  position:relative;
+  background:var(--navy);
+  color:#fff;
+  padding:88px 28px 82px;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21,94,239,.16),
+      rgba(7,21,37,.02) 65%,
+      rgba(7,21,37,.35)
+    );
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  max-width:920px;
+  margin:20px 0 22px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.hero-intro{
+  max-width:760px;
+  margin:0;
+  font-size:19px;
+  line-height:1.7;
+  color:#F5F7FA;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.tag{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(900px,100%);
+  margin:auto;
+  padding:72px 28px 90px;
+}
+
+.article{
+  background:#fff;
+  padding:54px 58px;
+  box-shadow:var(--shadow);
+  border-radius:18px;
+}
+
+.article p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article h2{
+  margin:48px 0 18px;
+  font-family:"Space Grotesk",sans-serif;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.article h2:first-child{
+  margin-top:0;
+}
+
+.callout{
+  margin:34px 0;
+  padding:25px 28px;
+  border-left:5px solid var(--gold);
+  background:#F5F7FA;
+  font-size:17px;
+  font-weight:600;
+  color:#26364a;
+}
+
+.go-deeper{
+  margin-top:58px;
+  padding:34px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper .label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:9px 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+}
+
+.go-deeper p{
+  margin:0;
+  color:#DCEBFF;
+}
+
+footer{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  font-size:14px;
+}
+
+footer strong{
+  letter-spacing:.06em;
+}
+
+@media(max-width:800px){
+
+  header{
+    padding:20px;
+  }
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .article-hero{
+    padding:65px 22px;
+  }
+
+  .article-wrap{
+    padding:45px 16px 60px;
+  }
+
+  .article{
+    padding:34px 24px;
+  }
+
+  .article h2{
+    font-size:26px;
+  }
+
+  .article p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-title">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="article-hero">
+
+  <div class="hero-inner">
+
+    <div class="kicker">CE4RWS · ANTENNAS &amp; RF</div>
+
+    <h1>How Does Antenna Height Really Change HF Performance?</h1>
+
+    <p class="hero-intro">
+      Raising an HF antenna can change much more than its physical position. Height can alter the radiation pattern, the angles at which energy leaves the antenna, its interaction with the ground and, ultimately, the distances and directions in which the signal is most useful.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Antennas</span>
+      <span class="tag">HF</span>
+      <span class="tag">Radiation Pattern</span>
+    </div>
+
+  </div>
+
+</section>
+
+<main class="article-wrap">
+
+  <article class="article">
+
+    <p>
+      One of the most common pieces of advice in amateur radio is simple: <strong>get the antenna higher</strong>. In many situations, this is excellent advice. But the real reason is more interesting than simply being farther away from the ground.
+    </p>
+
+    <p>
+      Antenna height can change the shape of the radiation pattern. It can alter how much energy is launched at high or low elevation angles, change the interaction between the antenna and the ground, and influence which propagation paths are most effectively excited.
+    </p>
+
+    <p>
+      The result is that two otherwise similar antennas can behave very differently simply because they are installed at different heights.
+    </p>
+
+    <h2>Height is measured in wavelengths</h2>
+
+    <p>
+      When discussing HF antenna height, physical metres are useful, but wavelength is often more meaningful. An antenna that is two metres above ground is at a very different electrical height on 80 metres than it is on 10 metres.
+    </p>
+
+    <p>
+      For this reason, antenna engineers often describe height as a fraction of wavelength. A horizontal antenna at 0.1 wavelength above ground behaves differently from one at 0.5 wavelength, even if both are built with similar wire and fed in similar ways.
+    </p>
+
+    <p>
+      This is one of the reasons an antenna can appear to improve dramatically when the same physical installation is used on a higher-frequency band.
+    </p>
+
+    <div class="callout">
+      The important idea is not simply “higher is better.” It is that antenna height changes the electrical relationship between the antenna, the wavelength and the ground.
+    </div>
+
+    <h2>What happens at low heights?</h2>
+
+    <p>
+      A horizontal antenna installed relatively close to the ground tends to produce significant radiation at high elevation angles. The ground strongly influences the fields around the antenna, and the resulting pattern can favour energy traveling upward.
+    </p>
+
+    <p>
+      This can be useful for regional communication. High-angle radiation is an important part of NVIS operation, where the objective is to use the ionosphere to return HF signals over relatively short and medium distances.
+    </p>
+
+    <p>
+      This does not mean that every low antenna automatically becomes an NVIS antenna. The actual radiation pattern depends on the antenna geometry, height, ground characteristics, frequency and surrounding environment.
+    </p>
+
+    <h2>What changes as the antenna gets higher?</h2>
+
+    <p>
+      As a horizontal antenna is raised through increasing fractions of a wavelength, its radiation pattern changes. At suitable heights, more of the radiated energy can be concentrated toward lower elevation angles.
+    </p>
+
+    <p>
+      Lower-angle radiation is particularly useful for many long-distance HF paths because the signal can travel farther before returning to Earth from the ionosphere. This is one reason higher antennas are often associated with improved DX performance.
+    </p>
+
+    <p>
+      However, the pattern does not simply improve continuously as the antenna goes higher. Additional lobes can appear, their angles can change, and nulls can develop in directions where little energy is radiated.
+    </p>
+
+    <h2>Why the ground matters</h2>
+
+    <p>
+      An HF antenna does not operate in isolation. The ground beneath and around it interacts with the electromagnetic field.
+    </p>
+
+    <p>
+      Ground conductivity, terrain, nearby structures and the physical height of the antenna all influence the resulting radiation pattern. A good installation therefore cannot be evaluated by antenna height alone.
+    </p>
+
+    <p>
+      This is particularly important when comparing antennas installed over very different environments. An antenna over salt water, dry soil, a rooftop or uneven mountainous terrain may produce noticeably different results even when the nominal height above ground appears similar.
+    </p>
+
+    <h2>Height can change the useful direction of radiation</h2>
+
+    <p>
+      One of the most important consequences of antenna height is that it can change the elevation angles at which the antenna radiates most strongly.
+    </p>
+
+    <p>
+      This matters because HF propagation is strongly dependent on geometry. A signal leaving the antenna at a low elevation angle may be useful for a distant DX path, while a signal leaving at a high angle may be more useful for regional coverage.
+    </p>
+
+    <p>
+      The antenna is therefore not simply producing “more” or “less” signal. It may be producing a different distribution of signal energy in the vertical plane.
+    </p>
+
+    <h2>Why a higher antenna can improve DX</h2>
+
+    <p>
+      For many common horizontal HF antennas, increasing height can favour lower-angle radiation. This can increase the amount of energy launched toward the horizon and make the antenna more effective for certain long-distance paths.
+    </p>
+
+    <p>
+      The improvement can be especially noticeable when an antenna moves from a very low installation toward a height that represents a significant fraction of a wavelength.
+    </p>
+
+    <p>
+      But the result depends on the band. An antenna that is a useful height on 20 metres may be electrically low on 40 or 80 metres. The same physical structure can therefore have a very different radiation pattern from one band to another.
+    </p>
+
+    <h2>Higher is not always the only answer</h2>
+
+    <p>
+      There are practical limits to antenna height. Towers, supports, trees, buildings, regulations, safety requirements and available space all affect what can realistically be installed.
+    </p>
+
+    <p>
+      More importantly, the best height depends on the communication objective. A station focused on regional NVIS communication may deliberately use an antenna installation that favours high-angle radiation. A station focused on long-distance DX may benefit from an installation that produces stronger low-angle radiation.
+    </p>
+
+    <p>
+      Neither objective makes one antenna universally superior. They are simply different engineering solutions to different communication problems.
+    </p>
+
+    <h2>The practical lesson</h2>
+
+    <p>
+      Antenna height is one of the most powerful variables available to the amateur radio operator because it can change the radiation pattern without changing the transmitter power.
+    </p>
+
+    <p>
+      But the useful question is not simply, “How high is my antenna?” It is, “What elevation angles is my antenna producing on this band, and are those angles appropriate for the communication I want to make?”
+    </p>
+
+    <p>
+      Once we begin thinking in terms of radiation patterns rather than SWR alone, antenna installation becomes much more interesting. Height is no longer just a mechanical dimension. It becomes part of the RF design.
+    </p>
+
+    <div class="go-deeper">
+      <div class="label">Go Deeper</div>
+      <h3>Explore antenna performance and RF design</h3>
+      <p>
+        The CE4RWS technical books explore antenna height, radiation patterns, SWR, impedance, propagation, feed lines and practical antenna design in greater depth.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  <strong>CE4RWS · CHILE</strong><br><br>
+  © 2026 Héctor Quintas Iglesias · CE4RWS
+</footer>
+
+</body>
+</html>
