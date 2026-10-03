@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>From Spark to CW: The Transformation of Amateur Radio | CE4RWS</title>
+
+<meta name="description" content="How amateur radio moved from spark transmitters to continuous-wave operation and how CW transformed long-distance communication.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071525;
+  --navy2:#155EEF;
+  --blue:#155EEF;
+  --gold:#FFD21F;
+  --paper:#F5F7FA;
+  --white:#ffffff;
+  --ink:#202938;
+  --muted:#617285;
+  --line:#dfe7ee;
+  --shadow:0 18px 45px rgba(7,21,37,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+}
+
+.site-header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  padding:22px 28px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.brand{
+  text-decoration:none;
+  display:block;
+}
+
+.brand-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+}
+
+.brand-sub{
+  margin-top:4px;
+  color:#b9c8d8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:22px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#eaf0f6;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--gold);
+}
+
+.article-hero{
+  background:var(--navy);
+  color:#fff;
+  padding:86px 28px 92px;
+  position:relative;
+  overflow:hidden;
+}
+
+.article-hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-180px;
+  top:-220px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.025),
+    0 0 0 110px rgba(255,255,255,.018);
+}
+
+.article-hero-inner{
+  width:min(1000px,100%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#DCEBFF;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:52px;
+  height:5px;
+  background:var(--gold);
+}
+
+.article-hero h1{
+  margin:20px 0 20px;
+  max-width:900px;
+  font-family:"Archivo",sans-serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.intro{
+  max-width:790px;
+  color:#d8e4ef;
+  font-size:20px;
+  line-height:1.65;
+  margin:0;
+}
+
+.tags{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 11px;
+  border-radius:999px;
+  color:#dce7f2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.article-wrap{
+  width:min(980px,100%);
+  margin:-35px auto 80px;
+  position:relative;
+  z-index:3;
+  padding:0 20px;
+}
+
+.article-card{
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:60px clamp(28px,6vw,78px);
+}
+
+.article-card p{
+  margin:0 0 24px;
+  font-size:17px;
+}
+
+.article-card h2{
+  margin:48px 0 18px;
+  font-family:"Archivo",sans-serif;
+  font-size:31px;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.article-card h2:first-child{
+  margin-top:0;
+}
+
+.article-card strong{
+  color:var(--navy);
+}
+
+.callout{
+  margin:38px 0;
+  padding:26px 28px;
+  border-left:5px solid var(--gold);
+  background:#fff9d9;
+  border-radius:8px;
+}
+
+.callout p{
+  margin:0;
+  font-size:17px;
+}
+
+.go-deeper{
+  margin-top:55px;
+  padding:38px 34px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:14px;
+}
+
+.go-deeper-label{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.go-deeper h3{
+  margin:10px 0 10px;
+  font-family:"Archivo",sans-serif;
+  font-size:28px;
+}
+
+.go-deeper p{
+  color:#d3dfeb;
+  margin:0 0 20px;
+}
+
+.go-deeper a{
+  display:inline-flex;
+  align-items:center;
+  background:var(--gold);
+  color:#0a2d49;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.site-footer{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 28px;
+}
+
+.footer-inner{
+  width:min(1240px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  font-family:"Archivo",sans-serif;
+  font-weight:700;
+}
+
+.footer-copy{
+  color:#aebdcd;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    gap:14px 18px;
+  }
+
+  .article-hero{
+    padding:65px 22px 75px;
+  }
+
+  .article-card{
+    padding:42px 25px;
+  }
+
+  .article-card p{
+    font-size:16px;
+  }
+
+  .article-card h2{
+    font-size:27px;
+  }
+
+  .article-wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <div class="brand-main">HÉCTOR QUINTAS IGLESIAS | CE4RWS</div>
+      <div class="brand-sub">Amateur Radio · Exploration · Books · Technology</div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre-mi">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#libros">Books</a>
+      <a href="index.html#radio">Amateur Radio</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="article-hero">
+
+  <div class="article-hero-inner">
+
+    <div class="kicker">CE4RWS · RADIO HISTORY</div>
+
+    <h1>From Spark to CW</h1>
+
+    <p class="intro">
+      How the replacement of spark transmitters by continuous-wave technology transformed amateur radio, reduced interference and opened the way to modern long-distance communication.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Radio History</span>
+      <span class="tag">CW</span>
+      <span class="tag">Morse Code</span>
+      <span class="tag">Transmitters</span>
+      <span class="tag">DX</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="article-wrap">
+
+  <article class="article-card">
+
+    <h2>When Radio Was Made with Sparks</h2>
+
+    <p>
+      The earliest amateur radio transmitters were remarkably different from the equipment found in a modern station. There were no stable oscillators, no digital signal processors and no compact transceivers. Radio-frequency energy was produced using electrical sparks.
+    </p>
+
+    <p>
+      A spark transmitter charged a capacitor and then discharged it across a gap. The resulting electrical oscillation generated radio-frequency energy that could be coupled into an antenna.
+    </p>
+
+    <p>
+      It worked. Morse code could be transmitted, received and copied. But the method had a serious technical disadvantage: the resulting signal occupied a very wide portion of the spectrum.
+    </p>
+
+    <p>
+      Spark transmitters therefore produced what are often described as <strong>damped waves</strong>. Their energy was spread over a relatively broad range of frequencies rather than being concentrated around a single precise carrier frequency. ([arrl.org](https://www.arrl.org/files/file/OTA%20Magazine/OTA%20CW.pdf?utm_source=chatgpt.com))
+    </p>
+
+    <h2>A Crowded Radio Spectrum</h2>
+
+    <p>
+      In the early days of wireless, this was a major problem.
+    </p>
+
+    <p>
+      If several spark transmitters operated near one another in frequency, their signals could overlap substantially. A receiver might hear more than one station at the same time, making communication difficult or impossible.
+    </p>
+
+    <p>
+      As more stations appeared, the limitations of spark became increasingly obvious.
+    </p>
+
+    <p>
+      The problem was not simply that spark transmitters were inefficient. They also made efficient use of the spectrum almost impossible.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Spark made radio possible, but it also created a fundamental problem:</strong> too much radio-frequency energy was spread over too much spectrum.
+      </p>
+    </div>
+
+    <h2>The Search for a Better Way</h2>
+
+    <p>
+      Engineers were already working on technologies capable of generating more controlled radio-frequency signals. The development of vacuum-tube technology was especially important.
+    </p>
+
+    <p>
+      The vacuum tube had originally been developed for detection and amplification, but researchers soon discovered that tubes could also be used to generate radio-frequency oscillations.
+    </p>
+
+    <p>
+      This opened the way toward transmitters capable of producing a much more controlled form of radio-frequency energy: the <strong>continuous wave</strong>, or CW.
+    </p>
+
+    <p>
+      By around 1920, increasing numbers of radio amateurs were experimenting with CW transmitters. The difference was fundamental. Instead of producing a series of heavily damped oscillations, a CW transmitter could generate a much more continuous and stable RF signal. ([arrl.org](https://www.arrl.org/files/file/OTA%20Magazine/OTA%20CW.pdf?utm_source=chatgpt.com))
+    </p>
+
+    <h2>Why CW Was So Much Better</h2>
+
+    <p>
+      The greatest advantage of CW was its narrow bandwidth.
+    </p>
+
+    <p>
+      A properly generated CW signal concentrated most of its energy very close to its operating frequency. Compared with the extremely broad signal produced by a spark transmitter, this represented a dramatic improvement in the use of spectrum.
+    </p>
+
+    <p>
+      That meant more stations could operate in the same general frequency region without interfering with one another.
+    </p>
+
+    <p>
+      It also meant that a receiver could concentrate its attention on a much narrower slice of the spectrum.
+    </p>
+
+    <p>
+      Weak signals that might have been lost inside atmospheric noise or interference could become much easier to detect and copy.
+    </p>
+
+    <p>
+      The result was not simply a cleaner signal. It was a fundamental improvement in the ability of a radio station to communicate using limited power.
+    </p>
+
+    <h2>The Receiver Was Just as Important</h2>
+
+    <p>
+      The transition to CW was closely connected with improvements in receiving technology.
+    </p>
+
+    <p>
+      In 1913, Edwin Howard Armstrong developed the regenerative receiver, a design that dramatically improved sensitivity compared with earlier crystal detectors. As vacuum tubes became more accessible, amateur operators increasingly experimented with regenerative receivers and other advanced designs. ([arrl.org](https://www.arrl.org/files/file/About%20ARRL/Ham_Radio_100_Years.pdf?utm_source=chatgpt.com))
+    </p>
+
+    <p>
+      This combination was extremely powerful.
+    </p>
+
+    <p>
+      A more efficient transmitter could put energy into a narrow portion of the spectrum, while a more sensitive receiver could extract weak signals from the surrounding noise.
+    </p>
+
+    <p>
+      Amateur radio was becoming a much more capable communications technology.
+    </p>
+
+    <h2>CW and the Discovery of DX</h2>
+
+    <p>
+      The advantages of CW became particularly obvious when amateurs began seriously testing long-distance communication.
+    </p>
+
+    <p>
+      During the transatlantic tests of 1921, American amateur signals were successfully heard in Europe. The experiments showed not only that amateur signals could cross the Atlantic, but also that CW was substantially more effective for this kind of communication than spark transmission. ([arrl.org](https://www.arrl.org/files/file/About%20ARRL/Ham_Radio_100_Years.pdf?utm_source=chatgpt.com))
+    </p>
+
+    <p>
+      On November 27, 1923, French station 8AB established two-way transatlantic communication with Connecticut amateurs Fred Schnell, 1MO, and John Reinartz, 1XAL, using CW on a specially authorized wavelength of 110 meters. ([arrl.org](https://www.arrl.org/files/file/About%20ARRL/Ham_Radio_100_Years.pdf?utm_source=chatgpt.com))
+    </p>
+
+    <p>
+      These achievements helped establish a new reality: amateur stations operating with comparatively modest power could communicate across oceans.
+    </p>
+
+    <h2>The End of Spark</h2>
+
+    <p>
+      Spark did not disappear overnight. For a period, both technologies existed side by side.
+    </p>
+
+    <p>
+      But the advantages of CW became increasingly difficult to ignore. It occupied less spectrum, allowed more efficient reception and made long-distance communication much more practical.
+    </p>
+
+    <p>
+      By the middle of the 1920s, CW had become the dominant transmitting method in amateur radio, while spark transmitters were rapidly becoming obsolete. Eventually, spark transmission was prohibited on the amateur bands in the United States. ([arrl.org](https://ema.arrl.org/a-history-of-amateur-radio-license-changes/?utm_source=chatgpt.com))
+    </p>
+
+    <p>
+      The transformation was complete.
+    </p>
+
+    <h2>CW Became More Than a Technology</h2>
+
+    <p>
+      There is an interesting historical detail here. CW began as a technological solution to the limitations of spark transmitters, but it became much more than that.
+    </p>
+
+    <p>
+      Morse code and CW developed their own operating culture. Operators learned to communicate efficiently using very short signals, and the ability to copy weak signals became an important part of amateur-radio skill.
+    </p>
+
+    <p>
+      CW also reinforced one of the defining characteristics of amateur radio: the ability to achieve surprisingly long distances with modest equipment.
+    </p>
+
+    <p>
+      A skilled operator could communicate across an ocean using a transmitter whose power would seem extremely small by modern standards.
+    </p>
+
+    <h2>The Technology Changed, the Principle Remained</h2>
+
+    <p>
+      Modern digital modes may look completely different from early Morse operation, but the underlying principle is familiar.
+    </p>
+
+    <p>
+      Concentrating useful information into a limited amount of spectrum allows a receiver to extract that information more effectively from noise and interference.
+    </p>
+
+    <p>
+      FT8, weak-signal digital modes and modern DSP techniques use far more sophisticated methods, but they continue to exploit the same fundamental relationship between bandwidth, signal energy, noise and detection.
+    </p>
+
+    <p>
+      That is one reason the history of CW remains technically relevant.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>The journey from spark to CW was not simply a change of transmitter design.</strong> It was a transformation in the way radio amateurs used spectrum, detected weak signals and achieved long-distance communication.
+      </p>
+    </div>
+
+    <h2>Why CW Still Matters</h2>
+
+    <p>
+      More than a century later, CW remains an active amateur-radio mode.
+    </p>
+
+    <p>
+      Modern operators use sophisticated transceivers, narrow filters and computer-controlled equipment, but the essential signal is still based on turning a carrier on and off according to Morse code.
+    </p>
+
+    <p>
+      The technology surrounding CW has changed enormously. The basic idea has not.
+    </p>
+
+    <p>
+      That continuity is one of the fascinating aspects of amateur-radio history. A technique developed during the earliest decades of wireless communication can still be heard today on the same HF bands where modern digital signals, voice communications and experimental modes coexist.
+    </p>
+
+    <div class="go-deeper">
+
+      <div class="go-deeper-label">Go Deeper</div>
+
+      <h3>From spark to the modern radio station</h3>
+
+      <p>
+        The transition from spark to CW was only one step in a much larger technological transformation. Vacuum tubes, improved receivers, short-wave propagation and eventually voice and digital modes would continue to reshape amateur radio.
+      </p>
+
+      <a href="index.html#libros">Explore CE4RWS Books →</a>
+
+    </div>
+
+  </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-main">
+      CE4RWS · CHILE
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Héctor Quintas Iglesias · CE4RWS
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
